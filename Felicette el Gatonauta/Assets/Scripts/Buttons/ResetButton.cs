@@ -11,17 +11,13 @@ public class ResetButton : Button
     private void Start()
     {
         //currentScene = SceneManager.GetActiveScene();
-        EventManager.Subscribe("DeathWall", ResetScene);
     }
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("scene reset");
-        ResetScene();
+        //Debug.Log("scene reset");
+        EventManager.Trigger("ResetButtonUp");
     }
 
-    public void ResetScene(params object[] parameters)
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+   
 }

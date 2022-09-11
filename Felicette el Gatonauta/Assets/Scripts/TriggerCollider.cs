@@ -7,16 +7,16 @@ public class TriggerCollider : Trigger
 {
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger enter");
+        //Debug.Log("trigger enter");
     }
 
     protected virtual void OnTriggerExit(Collider other)
     {
-        Debug.Log("trigger exit");
+        //Debug.Log("trigger exit");
     }
 
     protected virtual void OnTriggerStay(Collider other)
     {
-        Debug.Log("trigger stay");
+        //Debug.Log("trigger stay");
     }
 }

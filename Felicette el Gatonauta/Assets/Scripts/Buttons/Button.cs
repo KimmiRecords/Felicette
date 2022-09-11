@@ -7,11 +7,11 @@ public abstract class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 {
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("onpointerdown");
+        //Debug.Log("onpointerdown");
     }
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("onpointerup");
+        //Debug.Log("onpointerup");
     }
 }

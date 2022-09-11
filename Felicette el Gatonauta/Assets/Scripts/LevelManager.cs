@@ -8,6 +8,9 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         EventManager.Subscribe("WinWall", GoToScene);
+        EventManager.Subscribe("DeathWall", ResetScene);
+        EventManager.Subscribe("ResetButtonUp", ResetScene);
+
     }
 
     void GoToScene(params object[] parameters)
@@ -22,5 +25,10 @@ public class LevelManager : MonoBehaviour
         {
             print("el primer parametro que me pasaste no era un string");
         }
+    }
+
+    public void ResetScene(params object[] parameters)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
