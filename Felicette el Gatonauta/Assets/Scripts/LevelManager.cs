@@ -5,12 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
     void Start()
     {
+        //cosas del nivel
         EventManager.Subscribe("WinWall", GoToScene);
         EventManager.Subscribe("DeathWall", ResetScene);
         EventManager.Subscribe("ResetButtonUp", ResetScene);
 
+        //btones del main menu
+        EventManager.Subscribe("PlayButtonUp", GoToScene);
+        EventManager.Subscribe("SettingsButtonUp", GoToScene);
+        EventManager.Subscribe("QuitGameButtonUp", QuitGame);
+
+        //botones de settings
+        EventManager.Subscribe("BackToMainMenuButtonUp", GoToScene);
     }
 
     void GoToScene(params object[] parameters)
@@ -30,5 +52,10 @@ public class LevelManager : MonoBehaviour
     public void ResetScene(params object[] parameters)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitGame(params object[] parameters)
+    {
+        Application.Quit();
     }
 }

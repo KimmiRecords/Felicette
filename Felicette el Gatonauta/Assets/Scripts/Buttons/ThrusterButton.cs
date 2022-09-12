@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ThrusterButton : Button
+public class ThrusterButton : BaseButton
 {
-
     public override void OnPointerDown(PointerEventData eventData)
     {
         EventManager.Trigger("ThrusterDown");
-        Debug.Log("pointerdown");
+        //Debug.Log("pointerdown");
     }
 
     public override void OnPointerUp(PointerEventData eventData)
     {
         EventManager.Trigger("ThrusterUp");
-        Debug.Log("pointerup");
+        //Debug.Log("pointerup");
     }
 }

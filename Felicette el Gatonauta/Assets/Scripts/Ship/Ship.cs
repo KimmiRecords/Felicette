@@ -7,12 +7,20 @@ public enum Rotation
     clockwise,
     counterclockwise
 }
+public enum BasePositionDirection
+{
+    left,
+    right
+}
 
 public class Ship : MonoBehaviour
 {
+    //la clase base de la nave. despues puede servir para otros tipos de naves
+
     public Rigidbody myRigidBody;
     public float thrusterPower;
-    public float rotationPower;
+    public float moveSpeed;
+    //public float rotationPower;
     public float maxGas;
     public float burnFactor;
 

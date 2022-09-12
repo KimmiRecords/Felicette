@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class TriggerCollider : Trigger
 {
+    //clase base para los colliders triggers que hacen cosas
+
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         //Debug.Log("trigger enter");

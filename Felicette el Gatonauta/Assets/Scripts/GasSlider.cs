@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GasSlider : MonoBehaviour
 {
+    //este script actualiza el slider que muestra la cantidad de gas restante
+
     public Slider gasSlider;
     public Ship ship;
 

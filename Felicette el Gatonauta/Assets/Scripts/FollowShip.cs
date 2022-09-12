@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class FollowShip : MonoBehaviour
 {
+    //este script se lo adjunto a la camara para que siga a la nave
+
     public Ship ship;
     public Vector3 offset;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+ 
     void Update()
     {
         transform.position = ship.transform.position + offset;   
