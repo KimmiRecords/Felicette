@@ -26,7 +26,7 @@ public class Ship : MonoBehaviour
 
     float _currentGas;
 
-    protected float CurrentGas
+    public float CurrentGas
     {
         get
         {

@@ -52,6 +52,12 @@ public class ShipThrusters : Ship, IGravity
     public void ReleaseShip(params object[] parameters)
     {
         //la primera vez que tocas el thrusterbutton, suelta a la nave de su base
+
+        //if (!AudioManager.instance.sound["EroicaLoop"].isPlaying)
+        //{
+        //    AudioManager.instance.StopByName("RadioPreLaunchSFX");
+        //    AudioManager.instance.PlayByName("EroicaLoop");
+        //}
         myRigidBody.constraints = RigidbodyConstraints.None;
         myRigidBody.constraints = RigidbodyConstraints.FreezePositionZ;
         isReleased = true;
@@ -60,7 +66,11 @@ public class ShipThrusters : Ship, IGravity
 
     public void StartThruster(params object[] parameters)
     {
-        isThrusting = true;
+        if (CurrentGas > 0)
+        {
+            AudioManager.instance.PlayByName("PropulsoresSFX");
+            isThrusting = true;
+        }
     }
     public void Thruster()
     {
@@ -71,6 +81,7 @@ public class ShipThrusters : Ship, IGravity
     }
     public void EndThruster(params object[] parameters)
     {
+        AudioManager.instance.StopByName("PropulsoresSFX");
         isThrusting = false;
     }
 
@@ -119,6 +130,12 @@ public class ShipThrusters : Ship, IGravity
 
     public void EscapeAtmosphere(params object[] parameters)
     {
+        AudioManager.instance.StopByName("RadioPreLaunchSFX");
+
+        if (!AudioManager.instance.sound["EroicaLoop"].isPlaying)
+        {
+            AudioManager.instance.PlayByName("EroicaLoop");
+        }
         myRigidBody.useGravity = false;
         //print("escapaste de la gravedad del planeta");
     }

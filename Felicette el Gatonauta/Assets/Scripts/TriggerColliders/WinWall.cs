@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class WinWall : TriggerCollider
 {
+    public int numeroDeEsteNivel;
     string esteNivel;
 
     private void Start()
@@ -16,6 +17,6 @@ public class WinWall : TriggerCollider
     protected override void OnTriggerEnter(Collider other)
     {
         //base.OnTriggerEnter(other);
-        EventManager.Trigger(Evento.WinWall, esteNivel);
+        EventManager.Trigger(Evento.WinWall, esteNivel, numeroDeEsteNivel);
     }
 }

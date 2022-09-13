@@ -19,7 +19,8 @@ public enum Evento
     ResetLevelButtonUp,
 
     //otros
-    BurnGas
+    BurnGas,
+    OutOfGas
 }
 public class EventManager
 {

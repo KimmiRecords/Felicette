@@ -6,6 +6,7 @@ using UnityEngine;
 public class ShipTrail : MonoBehaviour
 {
     TrailRenderer myTrailRenderer;
+    public Ship myShip;
 
     void Awake()
     {
@@ -21,9 +22,12 @@ public class ShipTrail : MonoBehaviour
         //print("SHIPTRAIL: me suscribi a los eventos");
     }
 
-    void StartTrail(params object[] parameters)
+    public void StartTrail(params object[] parameters)
     {
-        myTrailRenderer.startColor = Color.red;
+        if (myShip.CurrentGas > 0)
+        {
+            myTrailRenderer.startColor = Color.red;
+        }
         //print("SHIPTRAIL: dispare startTrail");
     }
 

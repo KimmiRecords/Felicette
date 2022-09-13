@@ -24,11 +24,10 @@ public class LevelManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-
     }
     void Start()
     {
-        //SceneManager.sceneLoaded += OnSceneLoaded;
+        AudioManager.instance.PlayBGM();
 
         //eventos de los niveles
         EventManager.Subscribe(Evento.WinWall, NivelCompletado);
@@ -55,11 +54,19 @@ public class LevelManager : MonoBehaviour
 
     void GoToScene(params object[] parameters)
     {
+        AudioManager.instance.StopByName("RadioPreLaunchSFX");
+        AudioManager.instance.StopByName("PropulsoresSFX");
+
         //al metodo gotoscene le pasas un string con el nombre de la escena a la que queres ir
         if (parameters[0] is string)
         {
-            //print(parameters[0]);
             string sceneName = parameters[0].ToString();
+
+            if (sceneName == "SampleScene")
+            {
+                AudioManager.instance.PlayByName("RadioPreLaunchSFX");
+            }
+
             SceneManager.LoadScene(sceneName);
         }
         else
@@ -71,10 +78,10 @@ public class LevelManager : MonoBehaviour
     void NivelCompletado(params object[] parameters)
     {
         //pongo true en el numero de nivel que se completo recien
-        if (parameters[0] is int)
+        if (parameters[1] is int)
         {
-            nivelesCompletados[(int)parameters[0]] = true;
-            print("acabo de completar el nivel " + (int)parameters[0]);
+            nivelesCompletados[(int)parameters[1]] = true;
+            print("acabo de completar el nivel " + (int)parameters[1]);
         }
         else
         {
@@ -108,11 +115,6 @@ public class LevelManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //Scene ultimoNivelCargado;
-
-        //ultimaEscenaCargada = SceneManager.GetActiveScene();
-
-        //Debug.Log("OnSceneLoaded: " + scene.name);
-        //Debug.Log(mode);
+        
     }
 }
