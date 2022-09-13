@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 479435961}
   - component: {fileID: 479435964}
   m_Layer: 5
-  m_Name: Play
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,8 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c379ee2ec150ae43affb6bbec1aff39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: Play
-  sceneName: SampleScene
+  sceneName: LevelSelect
 --- !u!1 &736173018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,8 +1063,9 @@ GameObject:
   - component: {fileID: 1408997377}
   - component: {fileID: 1408997376}
   - component: {fileID: 1408997375}
+  - component: {fileID: 1408997378}
   m_Layer: 5
-  m_Name: QUIT
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1173,6 +1173,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408997373}
   m_CullTransparentMesh: 1
+--- !u!114 &1408997378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408997373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775de2bfd58c73242873c9ee65a3e733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1580114972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,7 +1320,7 @@ GameObject:
   - component: {fileID: 1913992555}
   - component: {fileID: 1913992558}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: SettingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1428,7 +1440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c379ee2ec150ae43affb6bbec1aff39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonName: Settings
   sceneName: Settings
 --- !u!1 &2053614744
 GameObject:

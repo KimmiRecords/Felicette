@@ -24,21 +24,12 @@ public class LevelManager : MonoBehaviour
         //cosas del nivel
         EventManager.Subscribe("WinWall", GoToScene);
         EventManager.Subscribe("DeathWall", ResetScene);
-        EventManager.Subscribe("ExitLevelButtonUp", GoToScene);
 
         //btones del main menu
-        EventManager.Subscribe("PlayButtonUp", GoToScene);
-        EventManager.Subscribe("SettingsButtonUp", GoToScene);
         EventManager.Subscribe("QuitGameButtonUp", QuitGame);
 
-        //botones de settings
-        EventManager.Subscribe("BackToMainMenuButtonUp", GoToScene);
-
-        //botones del level select
-        EventManager.Subscribe("LevelSelectButtonUp", GoToScene);
-
-
-
+        //botones de GoToScene
+        EventManager.Subscribe("GoToSceneButtonUp", GoToScene);
     }
 
     void GoToScene(params object[] parameters)
