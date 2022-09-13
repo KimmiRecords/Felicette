@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
         //cosas del nivel
         EventManager.Subscribe("WinWall", GoToScene);
         EventManager.Subscribe("DeathWall", ResetScene);
-        EventManager.Subscribe("ResetButtonUp", ResetScene);
+        EventManager.Subscribe("ExitLevelButtonUp", GoToScene);
 
         //btones del main menu
         EventManager.Subscribe("PlayButtonUp", GoToScene);
@@ -33,10 +33,17 @@ public class LevelManager : MonoBehaviour
 
         //botones de settings
         EventManager.Subscribe("BackToMainMenuButtonUp", GoToScene);
+
+        //botones del level select
+        EventManager.Subscribe("LevelSelectButtonUp", GoToScene);
+
+
+
     }
 
     void GoToScene(params object[] parameters)
     {
+        //al metodo gotoscene le pasas un string con el nombre de la escena a la que queres ir
         if (parameters[0] is string)
         {
             print(parameters[0]);
@@ -57,5 +64,6 @@ public class LevelManager : MonoBehaviour
     public void QuitGame(params object[] parameters)
     {
         Application.Quit();
+        print("quitee el juego");
     }
 }

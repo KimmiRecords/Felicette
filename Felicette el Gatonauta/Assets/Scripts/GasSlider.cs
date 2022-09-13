@@ -24,6 +24,10 @@ public class GasSlider : MonoBehaviour
         {
             gasSlider.value = (float)parameters[0];
         }
+        else
+        {
+            print("ojo que no me pasaste un float eh");
+        }
         //print("gas slider value = " + gasSlider.value);
     }
 }

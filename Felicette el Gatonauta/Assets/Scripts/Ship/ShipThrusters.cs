@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody))]
-public class ShipThrusters : Ship
+public class ShipThrusters : Ship, IGravity
 {
     //la clase principal de nuestra nave
     //controla su rigidbody, y aplica la fuerza que corresponde
@@ -130,10 +130,18 @@ public class ShipThrusters : Ship
         myRigidBody.useGravity = false;
         print("escapaste de la gravedad del planeta");
     }
+
+    public void ApplyGravity(Vector3 planetPosition, float planetMass)
+    {
+        Vector3 grav = GravityForce.GetGravityVector3(myRigidBody.mass, planetMass, Vector3.Distance(transform.position, planetPosition), (planetPosition - transform.position).normalized);
+
+        myRigidBody.AddForce(grav * Time.deltaTime, ForceMode.Force);
+    }
+
     //public void StartRotate(params object[] parameters)
     //{
     //    isRotating = true;
-        
+
 
     //    if (parameters[0] is Rotation)
     //    {
