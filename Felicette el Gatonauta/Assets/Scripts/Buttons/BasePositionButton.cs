@@ -15,13 +15,13 @@ public class BasePositionButton : BaseButton
     public override void OnPointerDown(PointerEventData eventData)
     {
         base.OnPointerDown(eventData);
-        EventManager.Trigger("BasePositionDown", dir);
+        EventManager.Trigger(Evento.BasePositionDown, dir);
     }
 
     public override void OnPointerUp(PointerEventData eventData)
     {
         base.OnPointerUp(eventData);
-        EventManager.Trigger("BasePositionUp", dir);
+        EventManager.Trigger(Evento.BasePositionUp, dir);
     }
 
     

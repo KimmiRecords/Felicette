@@ -21,22 +21,5 @@ public class ButtonManager : MonoBehaviour
             _botones.Add(_childrenButtons[i].gameObject.name, _childrenButtons[i]);
             print(_childrenButtons[i].gameObject.name);
         }
-
-        //EventManager.Subscribe("ThrusterDown", DisableBasePositionButton);
-
     }
-
-    void DisableBasePositionButton(params object[] parameters)
-    {
-        foreach (Button item in _childrenButtons)
-        {
-            if (item.GetComponent<BasePositionButton>() != null)
-            {
-                item.gameObject.SetActive(false);
-            }
-        }
-
-        //EventManager.Unsubscribe("ThrusterDown", DisableBasePositionButton);
-    }
-
 }

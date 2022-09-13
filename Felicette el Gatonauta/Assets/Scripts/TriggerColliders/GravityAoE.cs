@@ -12,7 +12,7 @@ public class GravityAoE : TriggerCollider
         {
             var afectado = other.GetComponent<IGravity>();
             afectado.ApplyGravity(transform.position, planetMass);
-            print("gravityAoE: stay");
+            //print("gravityAoE: stay");
         }
     }
 

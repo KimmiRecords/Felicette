@@ -13,8 +13,8 @@ public class BasePosition : MonoBehaviour
 
     void Start()
     {
-        EventManager.Subscribe("BasePositionDown", StartMoveBase);
-        EventManager.Subscribe("BasePositionUp", EndMoveBase);
+        EventManager.Subscribe(Evento.BasePositionDown, StartMoveBase);
+        EventManager.Subscribe(Evento.BasePositionUp, EndMoveBase);
     }
 
     void FixedUpdate()

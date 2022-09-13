@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ResetButton : BaseButton
+
+public class ResetLevelButton : BaseButton
 {
+    //este boton te lleva al ultimo nivel que jugaste
     public override void OnPointerUp(PointerEventData eventData)
     {
-        //Debug.Log("scene reset");
-        EventManager.Trigger("ResetButtonUp");
+        EventManager.Trigger(Evento.ResetLevelButtonUp);
     }
 }

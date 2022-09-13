@@ -2,39 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Evento
+{
+    //triggers
+    WinWall,
+    DeathWall,
+    AtmosphereWall,
+
+    //botones
+    BasePositionDown,
+    BasePositionUp,
+    ThrusterDown,
+    ThrusterUp,
+    QuitGameButtonUp,
+    GoToSceneButtonUp,
+    ResetLevelButtonUp,
+
+    //otros
+    BurnGas
+}
 public class EventManager
 {
     public delegate void EventReceiver(params object[] parameters);
 
-    //en vez de string, la posta seria usar enum, cosa de no poder equivocarme
-    static Dictionary<string, EventReceiver> _events = new Dictionary<string, EventReceiver>();
+    static Dictionary<Evento, EventReceiver> _events = new Dictionary<Evento, EventReceiver>();
 
     
-    public static void Subscribe(string eventName, EventReceiver listener)
+    public static void Subscribe(Evento evento, EventReceiver metodo)
     {
-        if (!_events.ContainsKey(eventName))
+        if (!_events.ContainsKey(evento))
         {
-            _events.Add(eventName, listener);
+            _events.Add(evento, metodo);
         }
         else
         {
-            _events[eventName] += listener;
+            _events[evento] += metodo;
         }
     }
 
-    public static void Unsubscribe(string eventName, EventReceiver listener)
+    public static void Unsubscribe(Evento evento, EventReceiver metodo)
     {
-        if (_events.ContainsKey(eventName))
+        if (_events.ContainsKey(evento))
         {
-            _events[eventName] -= listener;
+            _events[evento] -= metodo;
         }
     }
 
-    public static void Trigger(string eventName, params object[] parameters)
+    public static void Trigger(Evento evento, params object[] parameters)
     {
-        if (_events.ContainsKey(eventName))
+        if (_events.ContainsKey(evento))
         {
-            _events[eventName](parameters);
+            _events[evento](parameters);
         }
     }
 }

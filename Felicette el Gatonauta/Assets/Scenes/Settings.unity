@@ -622,5 +622,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Back
       objectReference: {fileID: 0}
+    - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
+      propertyPath: m_text
+      value: VOLVER
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}

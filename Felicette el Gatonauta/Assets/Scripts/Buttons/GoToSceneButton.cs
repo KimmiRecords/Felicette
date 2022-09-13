@@ -12,6 +12,6 @@ public class GoToSceneButton : BaseButton
     public override void OnPointerUp(PointerEventData eventData)
     {
         //en el LevelManager dice a donde te lleva cada boton
-        EventManager.Trigger("GoToSceneButtonUp", sceneName);
+        EventManager.Trigger(Evento.GoToSceneButtonUp, sceneName);
     }
 }

@@ -13,7 +13,7 @@ public class GasSlider : MonoBehaviour
 
     void Start()
     {
-        EventManager.Subscribe("BurnGas", UpdateSlider);
+        EventManager.Subscribe(Evento.BurnGas, UpdateSlider);
         gasSlider.maxValue = ship.maxGas;
         gasSlider.value = ship.maxGas;
     }

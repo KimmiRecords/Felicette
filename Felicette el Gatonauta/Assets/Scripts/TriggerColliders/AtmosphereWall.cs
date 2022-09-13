@@ -8,6 +8,6 @@ public class AtmosphereWall : TriggerCollider
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        EventManager.Trigger("AtmosphereWall");
+        EventManager.Trigger(Evento.AtmosphereWall);
     }
 }

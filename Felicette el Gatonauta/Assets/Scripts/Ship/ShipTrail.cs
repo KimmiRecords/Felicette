@@ -9,26 +9,41 @@ public class ShipTrail : MonoBehaviour
 
     void Awake()
     {
-        if (myTrailRenderer == null)
-        {
-            myTrailRenderer = GetComponent<TrailRenderer>();
-        }
+        
+        myTrailRenderer = GetComponent<TrailRenderer>();
+        //print("SHIPTRAIL: cargue el trailrenderer: " + myTrailRenderer.name);
     }
 
     void Start()
     {
-        EventManager.Subscribe("ThrusterDown", StartTrail);
-        EventManager.Subscribe("ThrusterUp", EndTrail);
+        EventManager.Subscribe(Evento.ThrusterDown, StartTrail);
+        EventManager.Subscribe(Evento.ThrusterUp, EndTrail);
+        //print("SHIPTRAIL: me suscribi a los eventos");
     }
-
 
     void StartTrail(params object[] parameters)
     {
-        //myTrailRenderer.startColor = Color.red;
+        myTrailRenderer.startColor = Color.red;
+        //print("SHIPTRAIL: dispare startTrail");
     }
 
     void EndTrail(params object[] parameters)
     {
-        //myTrailRenderer.startColor = Color.white;
+        myTrailRenderer.startColor = Color.white;
+        //print("SHIPTRAIL: dispare endTrail");
+    }
+
+    private void OnDestroy()
+    {
+        if (gameObject.scene.isLoaded) //cuando se destruye porque lo destrui a mano
+        {
+            //print("destrui a este shiptrail on isloaded");
+        }
+        else //cuando se destruye porque cambie de escena
+        {
+            EventManager.Unsubscribe(Evento.ThrusterDown, StartTrail);
+            EventManager.Unsubscribe(Evento.ThrusterUp, EndTrail);
+            //print("destrui a este shiptrail on sceneclosure");
+        }
     }
 }

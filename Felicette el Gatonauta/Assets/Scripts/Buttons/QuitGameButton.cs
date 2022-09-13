@@ -9,6 +9,6 @@ public class QuitGameButton : BaseButton
     public override void OnPointerUp(PointerEventData eventData)
     {
         base.OnPointerUp(eventData);
-        EventManager.Trigger("QuitGameButtonUp");
+        EventManager.Trigger(Evento.QuitGameButtonUp);
     }
 }
