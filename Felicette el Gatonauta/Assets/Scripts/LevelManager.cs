@@ -44,11 +44,11 @@ public class LevelManager : MonoBehaviour
 
 
         nivelesCompletados = new bool[nivelesJugables];
-        print("hay " + nivelesCompletados.Length + " niveles");
+        //print("hay " + nivelesCompletados.Length + " niveles");
         for (int i = 0; i < nivelesCompletados.Length; i++)
         {
             nivelesCompletados[i] = false;
-            print("el nivel" + i + " es " + nivelesCompletados[i]);
+            //print("el nivel" + i + " es " + nivelesCompletados[i]);
         }
     }
 

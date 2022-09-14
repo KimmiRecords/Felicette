@@ -83,7 +83,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBGM()
     {
-        print("reproduje el sonido " + thisLevelBgm);
+        //print("reproduje el sonido " + thisLevelBgm);
         sound[thisLevelBgm].Play();
     }
     public void StopBGM()

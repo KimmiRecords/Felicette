@@ -20,7 +20,7 @@ public class Ship : MonoBehaviour
     public Rigidbody myRigidBody;
     public float thrusterPower;
     public float moveSpeed;
-    //public float rotationPower;
+    public float basePositionMoveSpeed;
     public float maxGas;
     public float burnFactor;
 

@@ -11,8 +11,6 @@ public class ShipThrusters : Ship, IGravity
 
     bool isThrusting;
     bool isReleased;
-    //bool isRotating;
-    //Rotation rotationOrientation;
     
     bool isMoving;
     BasePositionDirection dir;
@@ -111,10 +109,17 @@ public class ShipThrusters : Ship, IGravity
 
         if (isReleased)
         {
+            //fuera de la base se mueve mucho pero quema gas
             BurnGas();
+            transform.position += move * moveSpeed * Time.deltaTime;
+
+        }
+        else
+        {
+            //en la base no quema gas pero se mueve poquito
+            transform.position += move * basePositionMoveSpeed * Time.deltaTime;
         }
 
-        transform.position += move * moveSpeed * Time.deltaTime;
     }
     public void EndMoveShip(params object[] parameters)
     {
