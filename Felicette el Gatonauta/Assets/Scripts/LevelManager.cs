@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
 
     string escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel;
 
+    int coins;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -40,16 +42,75 @@ public class LevelManager : MonoBehaviour
         EventManager.Subscribe(Evento.GoToSceneButtonUp, GoToScene);
         EventManager.Subscribe(Evento.ResetLevelButtonUp, ResetLevel);
 
-
-
-
         nivelesCompletados = new bool[nivelesJugables];
-        //print("hay " + nivelesCompletados.Length + " niveles");
-        for (int i = 0; i < nivelesCompletados.Length; i++)
+        print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
+        print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
+
+        //for (int i = 0; i < nivelesCompletados.Length; i++)
+        //{
+        //    nivelesCompletados[i] = false;
+        //    //print("el nivel" + i + " es " + nivelesCompletados[i]);
+        //}
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            nivelesCompletados[i] = false;
-            //print("el nivel" + i + " es " + nivelesCompletados[i]);
+            coins++;
+            print("toque esc");
+            print("tengo " + coins + " coins");
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SaveData();
+            print("toque Q");
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            LoadData();
+            print("toque W");
+        }
+    }
+
+    public void SaveData()
+    {
+        PlayerPrefs.SetInt("coins", coins);
+        PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(nivelesCompletados));
+
+        print("guarde la data");
+    }
+
+    public void LoadData()
+    {
+        coins = PlayerPrefs.GetInt("coins");
+
+        for (int i = 0; i < PlayerPrefs.GetInt("nivelesCompletados"); i++)
+        {
+            nivelesCompletados[i] = true;
+        }
+        print("cargue la data");
+        print("load data: tengo " + coins + " coins");
+        print("load data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
+
+
+    }
+
+    public int CountCompletedLevels(bool[] levelList)
+    {
+        int value = 0;
+
+        for (int i = 0; i < levelList.Length; i++)
+        {
+            if (levelList[i] == true)
+            {
+                value++;
+            }
+        }
+        print("en " + levelList + " hay " + value + " valores True");
+        return value;
     }
 
     void GoToScene(params object[] parameters)
@@ -82,6 +143,7 @@ public class LevelManager : MonoBehaviour
         {
             nivelesCompletados[(int)parameters[1]] = true;
             print("acabo de completar el nivel " + (int)parameters[1]);
+
         }
         else
         {
