@@ -8,6 +8,7 @@ public enum Evento
     WinWall,
     DeathWall,
     AtmosphereWall,
+    CoinPickup,
 
     //botones
     BasePositionDown,
@@ -15,12 +16,15 @@ public enum Evento
     ThrusterDown,
     ThrusterUp,
     QuitGameButtonUp,
+    ExitLevelButtonUp,
     GoToSceneButtonUp,
     ResetLevelButtonUp,
 
     //otros
     BurnGas,
-    OutOfGas
+    OutOfGas,
+    CoinUpdate
+
 }
 public class EventManager
 {

@@ -16,7 +16,6 @@ public class GoToSceneButton : BaseButton
         if (sceneName == "MainMenu")
         {
             AudioManager.instance.PlayByName("PickupReversedSFX");
-
         }
         else
         {
