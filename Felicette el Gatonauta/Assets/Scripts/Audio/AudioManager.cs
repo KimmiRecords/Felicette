@@ -76,9 +76,23 @@ public class AudioManager : MonoBehaviour
     public void PlayByNamePitch(string clipName, float pitch)
     {
         AudioSource sound;
-        sound = this.sound[clipName];
-        sound.pitch = pitch;
-        sound.Play();
+        sound = this.sound[clipName]; //establezco que voy a estar laburando con el audio cuyo nombre es clipname
+
+        float originalPitch = sound.pitch; //pido el pitch original y lo guardo
+
+        sound.pitch = pitch; //cambio al pitch deseado
+        sound.Play(); //doy play
+        StartCoroutine(SetPitchToOriginal(sound, originalPitch)); //le vuelvo a poner el pitch que tenia antes
+    }
+
+    public IEnumerator SetPitchToOriginal(AudioSource sound, float originalPitch)
+    {
+        while (sound.isPlaying)
+        {
+            yield return null;
+        }
+
+        sound.pitch = originalPitch; 
     }
 
     public void PlayBGM()

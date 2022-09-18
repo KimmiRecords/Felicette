@@ -59,6 +59,6 @@ public class SoundToggleButton : BaseButton
         cb.highlightedColor = color;
         cb.selectedColor = color;
         yo.colors = cb;
-        print("cambie el color a " + color);
+        //print("cambie el color a " + color);
     }
 }

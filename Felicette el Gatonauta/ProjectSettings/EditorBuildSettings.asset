@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tienda.unity
     guid: b5e40792dffc32341b6114bce744fcf9
+  - enabled: 1
+    path: Assets/Scenes/BorrarTodo.unity
+    guid: f6bc9485ca47fc04daabc86570f155aa
   m_configObjects: {}

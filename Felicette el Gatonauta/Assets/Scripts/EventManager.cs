@@ -19,6 +19,7 @@ public enum Evento
     ExitLevelButtonUp,
     GoToSceneButtonUp,
     ResetLevelButtonUp,
+    EraseDataButtonUp,
 
     //otros
     BurnGas,

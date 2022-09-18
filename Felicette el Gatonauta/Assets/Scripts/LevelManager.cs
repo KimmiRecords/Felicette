@@ -53,50 +53,47 @@ public class LevelManager : MonoBehaviour
         EventManager.Subscribe(Evento.CoinPickup, AddCoin);
         EventManager.Subscribe(Evento.ExitLevelButtonUp, ExitLevel);
 
-
-
-        //btones del main menu
+        //btones de menuses
         EventManager.Subscribe(Evento.QuitGameButtonUp, QuitGame);
-
-        //botones de GoToScene
         EventManager.Subscribe(Evento.GoToSceneButtonUp, GoToScene);
+        EventManager.Subscribe(Evento.EraseDataButtonUp, EraseData);
 
+        //???
         EventManager.Subscribe(Evento.ResetLevelButtonUp, ResetLevel);
 
         nivelesCompletados = new bool[nivelesJugables];
-        print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
-        print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
-
+        //print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
+        //print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _coins++;
-            print("toque esc");
-            print("tengo " + _coins + " coins");
-        }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        _coins++;
+    //        print("toque esc");
+    //        print("tengo " + _coins + " coins");
+    //    }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SaveData();
-            print("toque Q");
-        }
+    //    if (Input.GetKeyDown(KeyCode.Q))
+    //    {
+    //        SaveData();
+    //        print("toque Q");
+    //    }
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            LoadData();
-            print("toque W");
-        }
-    }
+    //    if (Input.GetKeyDown(KeyCode.W))
+    //    {
+    //        LoadData();
+    //        print("toque W");
+    //    }
+    //}
 
     public void SaveData()
     {
         PlayerPrefs.SetInt("coins", _coins);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(nivelesCompletados));
 
-        print("guarde la data");
+        //print("guarde la data");
     }
 
     public void LoadData()
@@ -109,9 +106,20 @@ public class LevelManager : MonoBehaviour
         }
 
         EventManager.Trigger(Evento.CoinUpdate, Coins);
-        print("cargue la data");
-        print("load data: tengo " + Coins + " coins");
-        print("load data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
+
+        //print("cargue la data");
+        //print("load data: tengo " + Coins + " coins");
+        //print("load data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
+    }
+
+    public void EraseData(params object[] parameters)
+    {
+        PlayerPrefs.SetInt("coins", 0);
+        PlayerPrefs.SetInt("nivelesCompletados", 0);
+        LoadData();
+
+        //print("erase data: tengo " + Coins + " coins");
+        //print("erase data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
     }
 
     public int CountCompletedLevels(bool[] levelList)
@@ -131,8 +139,9 @@ public class LevelManager : MonoBehaviour
 
     public void AddCoin(params object[] parameters)
     {
+        AudioManager.instance.PlayByNamePitch("PickupSFX", 2);
         _coins++;
-        print("ahora tengo " + _coins + " coins");
+        //print("ahora tengo " + _coins + " coins");
         EventManager.Trigger(Evento.CoinUpdate, _coins);
 
     }
@@ -211,8 +220,4 @@ public class LevelManager : MonoBehaviour
         print("quitee el juego");
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        
-    }
 }
