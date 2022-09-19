@@ -25,6 +25,8 @@ public class ShipThrusters : Ship, IGravity
         EventManager.Subscribe(Evento.BasePositionDown, StartMoveShip);
         EventManager.Subscribe(Evento.BasePositionUp, EndMoveShip);
 
+        EventManager.Subscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+
         EventManager.Subscribe(Evento.AtmosphereWall, EscapeAtmosphere);
 
         CurrentGas = maxGas;
@@ -51,11 +53,6 @@ public class ShipThrusters : Ship, IGravity
     {
         //la primera vez que tocas el thrusterbutton, suelta a la nave de su base
 
-        //if (!AudioManager.instance.sound["EroicaLoop"].isPlaying)
-        //{
-        //    AudioManager.instance.StopByName("RadioPreLaunchSFX");
-        //    AudioManager.instance.PlayByName("EroicaLoop");
-        //}
         myRigidBody.constraints = RigidbodyConstraints.None;
         myRigidBody.constraints = RigidbodyConstraints.FreezePositionZ;
         isReleased = true;
@@ -150,6 +147,11 @@ public class ShipThrusters : Ship, IGravity
         Vector3 grav = GravityForce.GetGravityVector3(myRigidBody.mass, planetMass, Vector3.Distance(transform.position, planetPosition), (planetPosition - transform.position).normalized);
 
         myRigidBody.AddForce(grav * Time.deltaTime, ForceMode.Force);
+    }
+
+    public void ActivatePowerUp(params object[] parameters)
+    {
+        //_currentPowerup.Activate o algo asi, lo que diga en la interfaz
     }
 
     private void OnDestroy()

@@ -26,6 +26,8 @@ public class Ship : MonoBehaviour
 
     float _currentGas;
 
+    //IPowerUp _currentPowerUp;
+
     public float CurrentGas
     {
         get

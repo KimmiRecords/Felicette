@@ -139,11 +139,9 @@ public class LevelManager : MonoBehaviour
 
     public void AddCoin(params object[] parameters)
     {
-        AudioManager.instance.PlayByNamePitch("PickupSFX", 2);
         _coins++;
         //print("ahora tengo " + _coins + " coins");
         EventManager.Trigger(Evento.CoinUpdate, _coins);
-
     }
 
     void GoToScene(params object[] parameters)

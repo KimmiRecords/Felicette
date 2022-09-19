@@ -9,6 +9,7 @@ public enum Evento
     DeathWall,
     AtmosphereWall,
     CoinPickup,
+    CajaPickup,
 
     //botones
     BasePositionDown,
@@ -20,6 +21,7 @@ public enum Evento
     GoToSceneButtonUp,
     ResetLevelButtonUp,
     EraseDataButtonUp,
+    PowerUpButtonUp,
 
     //otros
     BurnGas,
