@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     string escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel;
 
     int _coins;
+
     public int Coins
     {
         get
@@ -92,6 +93,7 @@ public class LevelManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("coins", _coins);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(nivelesCompletados));
+        PlayerPrefs.Save();
 
         //print("guarde la data");
     }
