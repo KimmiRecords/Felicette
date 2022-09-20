@@ -22,6 +22,9 @@ public enum Evento
     ResetLevelButtonUp,
     EraseDataButtonUp,
     PowerUpButtonUp,
+    PauseButtonUp,
+    UnpauseButtonUp,
+
 
     //otros
     BurnGas,
