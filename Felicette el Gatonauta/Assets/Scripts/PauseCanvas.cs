@@ -11,15 +11,13 @@ public class PauseCanvas : MonoBehaviour
         EventManager.Subscribe(Evento.PauseButtonUp, ShowPauseCanvas);
         EventManager.Subscribe(Evento.UnpauseButtonUp, HidePauseCanvas);
         EventManager.Subscribe(Evento.GoToSceneButtonUp, HidePauseCanvas);
-
-
     }
 
     public void ShowPauseCanvas(params object[] parameters)
     {
         AudioManager.instance.PlayByNamePitch("PickupSFX", 1.2f);
         pauseCanvas.SetActive(true);
-        print("showpausecanvas: muestro");
+        //print("showpausecanvas: muestro");
         Time.timeScale = 0;
     }
 
@@ -27,7 +25,7 @@ public class PauseCanvas : MonoBehaviour
     {
         AudioManager.instance.PlayByNamePitch("PickupReversedSFX", 1.2f);
         pauseCanvas.SetActive(false);
-        print("hidepausecanvas: escondo");
+        //print("hidepausecanvas: escondo");
         Time.timeScale = 1;
     }
 
@@ -42,8 +40,6 @@ public class PauseCanvas : MonoBehaviour
             EventManager.Unsubscribe(Evento.PauseButtonUp, ShowPauseCanvas);
             EventManager.Unsubscribe(Evento.UnpauseButtonUp, HidePauseCanvas);
             EventManager.Unsubscribe(Evento.GoToSceneButtonUp, HidePauseCanvas);
-
-
         }
     }
 }

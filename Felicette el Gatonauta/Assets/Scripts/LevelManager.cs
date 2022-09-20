@@ -52,42 +52,19 @@ public class LevelManager : MonoBehaviour
         EventManager.Subscribe(Evento.WinWall, NivelCompletado);
         EventManager.Subscribe(Evento.DeathWall, NivelFallado);
         EventManager.Subscribe(Evento.CoinPickup, AddCoin);
+        EventManager.Subscribe(Evento.ResetLevelButtonUp, ResetLevel);
         EventManager.Subscribe(Evento.ExitLevelButtonUp, ExitLevel);
 
         //btones de menuses
         EventManager.Subscribe(Evento.QuitGameButtonUp, QuitGame);
         EventManager.Subscribe(Evento.GoToSceneButtonUp, GoToScene);
         EventManager.Subscribe(Evento.EraseDataButtonUp, EraseData);
-
-        //???
-        EventManager.Subscribe(Evento.ResetLevelButtonUp, ResetLevel);
+       
 
         nivelesCompletados = new bool[nivelesJugables];
         //print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
         //print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
     }
-
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        _coins++;
-    //        print("toque esc");
-    //        print("tengo " + _coins + " coins");
-    //    }
-
-    //    if (Input.GetKeyDown(KeyCode.Q))
-    //    {
-    //        SaveData();
-    //        print("toque Q");
-    //    }
-
-    //    if (Input.GetKeyDown(KeyCode.W))
-    //    {
-    //        LoadData();
-    //        print("toque W");
-    //    }
-    //}
 
     public void SaveData()
     {

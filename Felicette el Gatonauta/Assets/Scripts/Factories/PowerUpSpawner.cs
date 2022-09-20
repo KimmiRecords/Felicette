@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PowerUpSpawner : MonoBehaviour
 {
+    //este script fabrica n cajas en las n posiciones que le pidas
+
     private CajaFactory _factory;
 
     public CajaPowerUp cajaPrefab;
