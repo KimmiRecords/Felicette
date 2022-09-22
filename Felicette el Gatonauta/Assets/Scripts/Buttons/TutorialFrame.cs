@@ -27,7 +27,6 @@ public class TutorialFrame : MonoBehaviour
     {
         targetColor.a = amplitude * Mathf.Sin(frequency * Time.time) + offset;
         targetColor.a = Mathf.Clamp(targetColor.a, 0, 1);
-        print(targetColor.a);
 
         yo.color = targetColor;
     }

@@ -30,11 +30,10 @@ public class ButtonManager : MonoBehaviour
 
     public void ActivateLevelButtons()
     {
-        for (int i = 0; i < PlayerPrefs.GetInt("nivelesCompletados"); i++)
+        for (int i = 0; i < (PlayerPrefs.GetInt("nivelesCompletados") + 1); i++)
         {
             _childrenButtons[i].gameObject.SetActive(true);
             print("habilite el boton " + _childrenButtons[i].name);
         }
-
     }
 }

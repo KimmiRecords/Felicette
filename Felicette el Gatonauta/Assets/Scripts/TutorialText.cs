@@ -154,7 +154,7 @@ public class TutorialText : MonoBehaviour
         {
             case 0: //bienvenido a ...
                 yield return new WaitForSeconds(fadeTime);
-                textIndex++;
+                StartCoroutine(NextText());
                 break;
             case 1: //el objetivo es...
                 yield return new WaitForSeconds(fadeTime);
