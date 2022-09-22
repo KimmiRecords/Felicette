@@ -10,6 +10,7 @@ public enum Evento
     AtmosphereWall,
     CoinPickup,
     CajaPickup,
+    NextTextWall,
 
     //botones
     BasePositionDown,
