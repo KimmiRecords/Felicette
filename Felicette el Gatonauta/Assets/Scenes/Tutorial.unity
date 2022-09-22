@@ -2961,6 +2961,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &328429301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 218278685592661501, guid: b9cf91198c738c64dba4fd17f3916c5e, type: 3}
+  m_PrefabInstance: {fileID: 1895682190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &336026002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3469,8 +3480,8 @@ MonoBehaviour:
   thrusterPower: 18
   moveSpeed: 20
   basePositionMoveSpeed: 1.5
-  maxGas: 1000
-  burnFactor: 0.1
+  maxGas: 500
+  burnFactor: 0.2
 --- !u!54 &465543665
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6519,6 +6530,7 @@ MonoBehaviour:
   - {fileID: 97373273}
   - {fileID: 968415981}
   - {fileID: 1675223811}
+  - {fileID: 328429301}
 --- !u!1 &1211790355
 GameObject:
   m_ObjectHideFlags: 0
@@ -6531,6 +6543,7 @@ GameObject:
   - component: {fileID: 1211790359}
   - component: {fileID: 1211790358}
   - component: {fileID: 1211790357}
+  - component: {fileID: 1211790360}
   m_Layer: 5
   m_Name: PowerUpButton
   m_TagString: Untagged
@@ -6640,6 +6653,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211790355}
   m_CullTransparentMesh: 1
+--- !u!114 &1211790360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211790355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9665b74c432acdf499dee187ff5c0096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1218749237
 Mesh:
   m_ObjectHideFlags: 0
@@ -9433,6 +9458,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 121189393}
     m_Modifications:
+    - target: {fileID: 218278685592661496, guid: b9cf91198c738c64dba4fd17f3916c5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6733585396692058863, guid: b9cf91198c738c64dba4fd17f3916c5e, type: 3}
       propertyPath: m_IsActive
       value: 0

@@ -12,7 +12,7 @@ public class TutorialText : MonoBehaviour
 
     public float fadeTime;
     public string[] textos;
-    public Image[] cuadrosRojos;
+    public Graphic[] cuadrosRojos;
 
     
     void Start()
@@ -115,8 +115,6 @@ public class TutorialText : MonoBehaviour
         }
         yo.color = Color.clear;
         yield return null;
-
-        //StartCoroutine(FadeInText());
     }
 
     public IEnumerator FadeInText()
@@ -166,6 +164,8 @@ public class TutorialText : MonoBehaviour
             case 3: //mantene el propulsor
                 cuadrosRojos[0].gameObject.SetActive(false);
                 cuadrosRojos[1].gameObject.SetActive(true);
+                cuadrosRojos[4].gameObject.SetActive(true);
+
                 break;
             case 4:  //una vez que cruzes la atmosfera
                 cuadrosRojos[1].gameObject.SetActive(false);
@@ -182,8 +182,8 @@ public class TutorialText : MonoBehaviour
             case 9: //ojo que no se te acabe el gas
                 cuadrosRojos[2].gameObject.SetActive(false);
                 cuadrosRojos[3].gameObject.SetActive(true);
-                yield return new WaitForSeconds(fadeTime);
-                textIndex++;
+                yield return new WaitForSeconds(fadeTime * 5);
+                StartCoroutine(NextText());
                 break;
             case 10:
                 break;
