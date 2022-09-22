@@ -9,9 +9,9 @@ public enum Orientation
 public class FloatInPlace : MonoBehaviour
 {
     [Range(0.01f, 0.1f)]
-    public float amplitude;
-    public float frequency;
-    public Orientation orientation;
+    public float amplitude = 0.05f;
+    public float frequency = 1;
+    public Orientation orientation = Orientation.vertical;
 
     Vector3 dir;
     void Start()

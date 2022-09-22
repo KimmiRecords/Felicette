@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
-    public int nivelesJugables;
+    public int nivelesJugables = 2;
     bool[] nivelesCompletados;
 
     string escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel;

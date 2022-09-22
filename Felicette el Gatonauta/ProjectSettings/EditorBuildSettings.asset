@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BorrarTodo.unity
     guid: f6bc9485ca47fc04daabc86570f155aa
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: f25911d189d0133499b429b046b1c011
   m_configObjects: {}
