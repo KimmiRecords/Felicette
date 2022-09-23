@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    AudioSource[] allSounds;
+    AudioSource[] _allSounds;
 
     [HideInInspector]
     public Dictionary<string, AudioSource> sound = new Dictionary<string, AudioSource>();
@@ -50,13 +50,13 @@ public class AudioManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
 
-        allSounds = GetComponentsInChildren<AudioSource>(); //construyo mi array con todos los audiosource
+        _allSounds = GetComponentsInChildren<AudioSource>(); //construyo mi array con todos los audiosource
 
-        for (int i = 0; i < allSounds.Length; i++) //lleno el diccionario de pares string-audiosource
+        for (int i = 0; i < _allSounds.Length; i++) //lleno el diccionario de pares string-audiosource
         {
-            string s = allSounds[i].ToString(); //convierto a string
+            string s = _allSounds[i].ToString(); //convierto a string
             s = s.Substring(0, s.Length - 26); //formateo para que no me quede (UnityEngine.AudioSource) en cada nombre
-            sound.Add(s, allSounds[i]);
+            sound.Add(s, _allSounds[i]);
             //print("agregue el key " + s + " con value " + allSounds[i]+ " al diccionario");
         }
     }
@@ -117,24 +117,24 @@ public class AudioManager : MonoBehaviour
 
     public void StopAll()
     {
-        for (int i = 0; i < allSounds.Length; i++)
+        for (int i = 0; i < _allSounds.Length; i++)
         {
-            allSounds[i].Stop();
+            _allSounds[i].Stop();
         }
     }
 
     public void MuteAll()
     {
-        for (int i = 0; i < allSounds.Length; i++)
+        for (int i = 0; i < _allSounds.Length; i++)
         {
-            allSounds[i].mute = true;
+            _allSounds[i].mute = true;
         }
     }
     public void UnmuteAll()
     {
-        for (int i = 0; i < allSounds.Length; i++)
+        for (int i = 0; i < _allSounds.Length; i++)
         {
-            allSounds[i].mute = false;
+            _allSounds[i].mute = false;
         }
     }
 }

@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class DeathWall : TriggerCollider
 {
-    string esteNivel;
+    string _esteNivel;
 
     private void Start()
     {
-        esteNivel = SceneManager.GetActiveScene().name;
+        _esteNivel = SceneManager.GetActiveScene().name;
     }
 
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        EventManager.Trigger(Evento.DeathWall, esteNivel);
+        EventManager.Trigger(Evento.DeathWall, _esteNivel);
     }
 }

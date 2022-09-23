@@ -6,9 +6,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TMPro.TextMeshProUGUI))]
 public class TutorialText : MonoBehaviour
 {
-    TMPro.TextMeshProUGUI yo;
-    Color originalColor;
-    int textIndex;
+    TMPro.TextMeshProUGUI _yo;
+    Color _originalColor;
+    int _textIndex;
 
     public float fadeTime;
     public string[] textos;
@@ -17,32 +17,24 @@ public class TutorialText : MonoBehaviour
     
     void Start()
     {
-        yo = GetComponent<TMPro.TextMeshProUGUI>();
-        originalColor = yo.color;
-        textIndex = 0;
-        yo.text = textos[textIndex];
+        _yo = GetComponent<TMPro.TextMeshProUGUI>();
+        _originalColor = _yo.color;
+        _textIndex = 0;
+        _yo.text = textos[_textIndex];
 
-        EventManager.Subscribe(Evento.BasePositionUp, BasePositionTuki);
-        EventManager.Subscribe(Evento.ThrusterDown, ThrusterTuki);
-        EventManager.Subscribe(Evento.NextTextWall, WallTuki);
-        EventManager.Subscribe(Evento.CajaPickup, CajaPickupTuki);
-        EventManager.Subscribe(Evento.PowerUpButtonUp, PowerUpTuki);
+        EventManager.Subscribe(Evento.BasePositionUp, BasePositionNext);
+        EventManager.Subscribe(Evento.ThrusterDown, ThrusterNext);
+        EventManager.Subscribe(Evento.NextTextWall, WallNext);
+        EventManager.Subscribe(Evento.CajaPickup, CajaPickupNext);
+        EventManager.Subscribe(Evento.PowerUpButtonUp, PowerUpNext);
 
         StartCoroutine(NextText());
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(NextText());
-        }
-    }
-
     //estos metodos son para prevenir que se sobre disparen los textos
-    public void BasePositionTuki(params object[] parameters)
+    public void BasePositionNext(params object[] parameters)
     {
-        if (textIndex == 2)
+        if (_textIndex == 2)
         {
             StartCoroutine(NextText());
         }
@@ -51,9 +43,9 @@ public class TutorialText : MonoBehaviour
             return;
         }
     }
-    public void ThrusterTuki(params object[] parameters)
+    public void ThrusterNext(params object[] parameters)
     {
-        if (textIndex == 3)
+        if (_textIndex == 3)
         {
             StartCoroutine(NextText());
         }
@@ -62,11 +54,11 @@ public class TutorialText : MonoBehaviour
             return;
         }
     }
-    public void WallTuki(params object[] parameters)
+    public void WallNext(params object[] parameters)
     {
         if (parameters[0] is int)
         {
-            if (textIndex == (int)parameters[0])
+            if (_textIndex == (int)parameters[0])
             {
                 StartCoroutine(NextText());
             }
@@ -80,9 +72,9 @@ public class TutorialText : MonoBehaviour
             print("ojo q no me pasaste un int");
         }
     }
-    public void CajaPickupTuki(params object[] parameters)
+    public void CajaPickupNext(params object[] parameters)
     {
-        if (textIndex == 7)
+        if (_textIndex == 7)
         {
             StartCoroutine(NextText());
         }
@@ -91,9 +83,9 @@ public class TutorialText : MonoBehaviour
             return;
         }
     }
-    public void PowerUpTuki(params object[] parameters)
+    public void PowerUpNext(params object[] parameters)
     {
-        if (textIndex == 8)
+        if (_textIndex == 8)
         {
             StartCoroutine(NextText());
         }
@@ -109,46 +101,44 @@ public class TutorialText : MonoBehaviour
 
         while (elapsedTime < fadeTime)
         {
-            yo.color = Color.Lerp(yo.color, Color.clear, elapsedTime / fadeTime);
+            _yo.color = Color.Lerp(_yo.color, Color.clear, elapsedTime / fadeTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        yo.color = Color.clear;
+        _yo.color = Color.clear;
         yield return null;
     }
-
     public IEnumerator FadeInText()
     {
         float elapsedTime = 0;
 
         while (elapsedTime < fadeTime)
         {
-            yo.color = Color.Lerp(Color.clear, originalColor, elapsedTime / fadeTime);
+            _yo.color = Color.Lerp(Color.clear, _originalColor, elapsedTime / fadeTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        yo.color = originalColor;
+        _yo.color = _originalColor;
         yield return null;
 
     }
-
     public IEnumerator NextText()
     {
-        if (textIndex < 2)
+        if (_textIndex < 2)
         {
             yield return new WaitForSeconds(fadeTime * 2);
         }
 
         StartCoroutine(FadeOutText());
         yield return new WaitForSeconds(fadeTime);
-        if (textIndex < textos.Length)
+        if (_textIndex < textos.Length)
         {
-            textIndex++;
+            _textIndex++;
         }
-        yo.text = textos[textIndex];
+        _yo.text = textos[_textIndex];
         StartCoroutine(FadeInText());
 
-        switch (textIndex)
+        switch (_textIndex)
         {
             case 0: //bienvenido a ...
                 yield return new WaitForSeconds(fadeTime);
@@ -189,9 +179,4 @@ public class TutorialText : MonoBehaviour
                 break;
         }
     }
-
-    //on destroy
-    //bal bla bla
-    //seguro se rompe todo x lo del subscribe
-
 }

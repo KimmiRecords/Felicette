@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityForce : MonoBehaviour
+public class GravityForce
 {
     public static float gravityConstant = 1000;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NextTextWall : TriggerCollider
 {
+    //un tipo de wall que avisa al tutorial text manager cual texto disparar
     public int nextText;
     protected override void OnTriggerEnter(Collider other)
     {

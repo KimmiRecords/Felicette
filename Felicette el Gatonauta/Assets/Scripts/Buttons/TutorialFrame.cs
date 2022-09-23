@@ -6,28 +6,27 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class TutorialFrame : MonoBehaviour
 {
+    //el script de los recuadros rojos del tutorial. 
+    //la opacidad oscila
+
     [Range(-1,0.5f)]
     public float amplitude;
     public float frequency;
     public float offset;
 
-    Image yo;
-
-    Color targetColor;
-
-
+    Image _yo;
+    Color _targetColor;
 
     void Start()
     {
-        yo = GetComponent<Image>();
-        targetColor = yo.color;
+        _yo = GetComponent<Image>();
+        _targetColor = _yo.color;
     }
 
     void Update()
     {
-        targetColor.a = amplitude * Mathf.Sin(frequency * Time.time) + offset;
-        targetColor.a = Mathf.Clamp(targetColor.a, 0, 1);
-
-        yo.color = targetColor;
+        _targetColor.a = amplitude * Mathf.Sin(frequency * Time.time) + offset;
+        _targetColor.a = Mathf.Clamp(_targetColor.a, 0, 1);
+        _yo.color = _targetColor;
     }
 }

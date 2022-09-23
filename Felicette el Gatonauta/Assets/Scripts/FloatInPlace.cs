@@ -8,26 +8,29 @@ public enum Orientation
 }
 public class FloatInPlace : MonoBehaviour
 {
+    //este script se lo adjuntas a un objeto para que oscile en el lugar. 
+    //podes elegir amplitud, frecuencia y sentido del movimiento
+
     [Range(0.01f, 0.1f)]
     public float amplitude = 0.05f;
     public float frequency = 1;
     public Orientation orientation = Orientation.vertical;
 
-    Vector3 dir;
+    Vector3 _dir;
     void Start()
     {
         if (orientation == Orientation.horizontal)
         {
-            dir = Vector3.right;
+            _dir = Vector3.right;
         }
         else
         {
-            dir = Vector3.up;
+            _dir = Vector3.up;
         }
     }
 
     void Update()
     {
-        transform.position += dir * amplitude * Mathf.Sin(frequency * Time.time);
+        transform.position += _dir * amplitude * Mathf.Sin(frequency * Time.time);
     }
 }

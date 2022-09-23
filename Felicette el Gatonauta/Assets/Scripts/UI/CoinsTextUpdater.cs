@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class CoinsTextUpdater : TextUpdater
 {
+    //actualiza el texto del boton donde dice cuantas monedas tenes
     public string baseText;
 
     private void Start()

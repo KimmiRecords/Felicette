@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    //un singleton que lleva la cuenta de tus monedas y los niveles completados
+    //tiene los metodos para guardar y moverte entre escenas
+
     public static LevelManager instance;
 
     public int nivelesJugables = 2;
-    bool[] nivelesCompletados;
 
-    string escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel;
-
+    bool[] _nivelesCompletados;
+    string _escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel;
     int _coins;
 
     public int Coins
@@ -44,6 +46,7 @@ public class LevelManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
+
     void Start()
     {
         AudioManager.instance.PlayBGM();
@@ -60,8 +63,7 @@ public class LevelManager : MonoBehaviour
         EventManager.Subscribe(Evento.GoToSceneButtonUp, GoToScene);
         EventManager.Subscribe(Evento.EraseDataButtonUp, EraseData);
        
-
-        nivelesCompletados = new bool[nivelesJugables];
+        _nivelesCompletados = new bool[nivelesJugables];
         //print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
         //print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
     }
@@ -69,19 +71,18 @@ public class LevelManager : MonoBehaviour
     public void SaveData()
     {
         PlayerPrefs.SetInt("coins", _coins);
-        PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(nivelesCompletados));
+        PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(_nivelesCompletados));
         PlayerPrefs.Save();
 
         //print("guarde la data");
     }
-
     public void LoadData()
     {
         Coins = PlayerPrefs.GetInt("coins");
 
         for (int i = 0; i < PlayerPrefs.GetInt("nivelesCompletados"); i++)
         {
-            nivelesCompletados[i] = true;
+            _nivelesCompletados[i] = true;
         }
 
         EventManager.Trigger(Evento.CoinUpdate, Coins);
@@ -90,7 +91,6 @@ public class LevelManager : MonoBehaviour
         //print("load data: tengo " + Coins + " coins");
         //print("load data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
     }
-
     public void EraseData(params object[] parameters)
     {
         PlayerPrefs.SetInt("coins", 0);
@@ -119,7 +119,6 @@ public class LevelManager : MonoBehaviour
     public void AddCoin(params object[] parameters)
     {
         _coins++;
-        //print("ahora tengo " + _coins + " coins");
         EventManager.Trigger(Evento.CoinUpdate, _coins);
     }
 
@@ -142,18 +141,17 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            //print("el primer parametro que me pasaste no era un string");
+            print("el primer parametro que me pasaste no era un string");
         }
     }
-
     void NivelCompletado(params object[] parameters)
     {
         //pongo true en el numero de nivel que se completo recien
+        //y te mando a la escena de level completed
         if (parameters[1] is int)
         {
-            nivelesCompletados[(int)parameters[1]] = true;
+            _nivelesCompletados[(int)parameters[1]] = true;
             print("acabo de completar el nivel " + (int)parameters[1]);
-
         }
         else
         {
@@ -165,32 +163,23 @@ public class LevelManager : MonoBehaviour
 
         GoToScene("LevelComplete");
     }
-
     public void NivelFallado(params object[] parameters)
     {
-        escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel = (string)parameters[0];
+        _escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel = (string)parameters[0];
         LoadData();
         print("nivel fallado: loaddata");
 
         GoToScene("LevelFailed");
     }
-
     public void ExitLevel(params object[] parameters)
     {
         LoadData();
         print("exitlevel: loaddata");
     }
-
     public void ResetLevel(params object[] parameters)
     {
-        GoToScene(escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel);
+        GoToScene(_escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel);
     }
-
-    public void ResetScene(params object[] parameters)
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
     public void QuitGame(params object[] parameters)
     {
         Application.Quit();
