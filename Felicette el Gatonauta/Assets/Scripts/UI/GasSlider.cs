@@ -28,6 +28,5 @@ public class GasSlider : MonoBehaviour
         {
             print("ojo que no me pasaste un float eh");
         }
-        //print("gas slider value = " + gasSlider.value);
     }
 }

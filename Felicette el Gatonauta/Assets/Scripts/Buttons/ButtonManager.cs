@@ -26,6 +26,7 @@ public class ButtonManager : MonoBehaviour
         }
 
         ActivateLevelButtons();
+        UpdateLevelButtonsColor();
     }
 
     public void ActivateLevelButtons()
@@ -34,6 +35,17 @@ public class ButtonManager : MonoBehaviour
         {
             _childrenButtons[i].gameObject.SetActive(true);
             print("habilite el boton " + _childrenButtons[i].name);
+        }
+    }
+
+    public void UpdateLevelButtonsColor()
+    {
+        for (int i = 0; i < PlayerPrefs.GetInt("nivelesCompletados"); i++)
+        {
+            ColorBlock cb = _childrenButtons[i].colors;
+            cb.normalColor = Color.green;
+            _childrenButtons[i].colors = cb;
+            print("pinte el boton " + _childrenButtons[i].name);
         }
     }
 }

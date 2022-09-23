@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Rigidbody))]
 public class ShipThrusters : Ship, IGravity
 {
     //la clase principal de nuestra nave
     //controla su rigidbody, y aplica la fuerza que corresponde
 
-    bool isThrusting;
-    bool isReleased;
+    bool _isThrusting;
+    bool _isReleased;
     
-    bool isMoving;
-    BasePositionDirection dir;
-    Vector3 move;
+    bool _isMoving;
+    BasePositionDirection _dir;
+    Vector3 _move;
 
     void Start()
     {
@@ -31,19 +30,19 @@ public class ShipThrusters : Ship, IGravity
 
         CurrentGas = maxGas;
         myRigidBody.useGravity = true;
-        isReleased = false;
+        _isReleased = false;
 
         myRigidBody = this.gameObject.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        if (isThrusting && CurrentGas > 0)
+        if (_isThrusting && CurrentGas > 0)
         {
             Thruster();
         }
 
-        if (isMoving && CurrentGas > 0)
+        if (_isMoving && CurrentGas > 0)
         {
             MoveShip();
         }
@@ -55,7 +54,7 @@ public class ShipThrusters : Ship, IGravity
 
         myRigidBody.constraints = RigidbodyConstraints.None;
         myRigidBody.constraints = RigidbodyConstraints.FreezePositionZ;
-        isReleased = true;
+        _isReleased = true;
         EventManager.Unsubscribe(Evento.ThrusterDown, ReleaseShip);
     }
 
@@ -64,7 +63,7 @@ public class ShipThrusters : Ship, IGravity
         if (CurrentGas > 0)
         {
             AudioManager.instance.PlayByName("PropulsoresSFX");
-            isThrusting = true;
+            _isThrusting = true;
         }
     }
     public void Thruster()
@@ -72,21 +71,20 @@ public class ShipThrusters : Ship, IGravity
         //pum para arriba, y consume gas
         myRigidBody.AddForce(transform.up * thrusterPower);
         BurnGas();
-        //print("thruster: quemando gas....");
     }
     public void EndThruster(params object[] parameters)
     {
         AudioManager.instance.StopByName("PropulsoresSFX");
-        isThrusting = false;
+        _isThrusting = false;
     }
 
     public void StartMoveShip(params object[] parameters)
     {
-        isMoving = true;
+        _isMoving = true;
 
         if (parameters[0] is BasePositionDirection)
         {
-            dir = (BasePositionDirection)parameters[0];
+            _dir = (BasePositionDirection)parameters[0];
         }
         else
         {
@@ -95,32 +93,32 @@ public class ShipThrusters : Ship, IGravity
     }
     public void MoveShip()
     {
-        if (dir == BasePositionDirection.left)
+        if (_dir == BasePositionDirection.left)
         {
-            move = Vector3.left;
+            _move = Vector3.left;
         }
         else
         {
-            move = Vector3.right;
+            _move = Vector3.right;
         }
 
-        if (isReleased)
+        if (_isReleased)
         {
             //fuera de la base se mueve mucho pero quema gas
             BurnGas();
-            transform.position += move * moveSpeed * Time.deltaTime;
+            transform.position += _move * moveSpeed * Time.deltaTime;
 
         }
         else
         {
             //en la base no quema gas pero se mueve poquito
-            transform.position += move * basePositionMoveSpeed * Time.deltaTime;
+            transform.position += _move * basePositionMoveSpeed * Time.deltaTime;
         }
 
     }
     public void EndMoveShip(params object[] parameters)
     {
-        isMoving = false;
+        _isMoving = false;
     }
 
     public void BurnGas()
@@ -166,7 +164,6 @@ public class ShipThrusters : Ship, IGravity
             EventManager.Unsubscribe(Evento.ThrusterDown, ReleaseShip);
             EventManager.Unsubscribe(Evento.ThrusterUp, EndThruster);
             EventManager.Unsubscribe(Evento.AtmosphereWall, EscapeAtmosphere);
-
             //print("destrui a este shipthrusters on sceneclosure");
         }
     }

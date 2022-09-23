@@ -26,7 +26,6 @@ public enum Evento
     PauseButtonUp,
     UnpauseButtonUp,
 
-
     //otros
     BurnGas,
     OutOfGas,

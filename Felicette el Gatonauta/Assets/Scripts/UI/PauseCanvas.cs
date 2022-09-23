@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PauseCanvas : MonoBehaviour
 {
+    //prende y apaga el canvas de pausa en los niveles
+
     public GameObject pauseCanvas;
 
     void Start()

@@ -5,36 +5,33 @@ using UnityEngine;
 [RequireComponent(typeof(TrailRenderer))]
 public class ShipTrail : MonoBehaviour
 {
-    TrailRenderer myTrailRenderer;
+    //este script cambia el color del trail de mi nave
+
+    TrailRenderer _myTrailRenderer;
     public Ship myShip;
 
     void Awake()
     {
-        
-        myTrailRenderer = GetComponent<TrailRenderer>();
-        //print("SHIPTRAIL: cargue el trailrenderer: " + myTrailRenderer.name);
+        _myTrailRenderer = GetComponent<TrailRenderer>();
     }
 
     void Start()
     {
         EventManager.Subscribe(Evento.ThrusterDown, StartTrail);
         EventManager.Subscribe(Evento.ThrusterUp, EndTrail);
-        //print("SHIPTRAIL: me suscribi a los eventos");
     }
 
     public void StartTrail(params object[] parameters)
     {
         if (myShip.CurrentGas > 0)
         {
-            myTrailRenderer.startColor = Color.red;
+            _myTrailRenderer.startColor = Color.red;
         }
-        //print("SHIPTRAIL: dispare startTrail");
     }
 
     void EndTrail(params object[] parameters)
     {
-        myTrailRenderer.startColor = Color.white;
-        //print("SHIPTRAIL: dispare endTrail");
+        _myTrailRenderer.startColor = Color.white;
     }
 
     private void OnDestroy()
@@ -47,7 +44,6 @@ public class ShipTrail : MonoBehaviour
         {
             EventManager.Unsubscribe(Evento.ThrusterDown, StartTrail);
             EventManager.Unsubscribe(Evento.ThrusterUp, EndTrail);
-            //print("destrui a este shiptrail on sceneclosure");
         }
     }
 }

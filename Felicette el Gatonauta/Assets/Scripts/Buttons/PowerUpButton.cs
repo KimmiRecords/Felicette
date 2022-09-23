@@ -10,7 +10,5 @@ public class PowerUpButton : BaseButton
     public override void OnPointerUp(PointerEventData eventData)
     {
         EventManager.Trigger(Evento.PowerUpButtonUp);
-
-        //print("THRUSTERBUTTON: triggeree el thrusterup");
     }
 }

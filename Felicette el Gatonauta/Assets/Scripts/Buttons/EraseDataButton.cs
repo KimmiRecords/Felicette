@@ -8,7 +8,7 @@ public class EraseDataButton : BaseButton
     // borra todo gg
     public override void OnPointerUp(PointerEventData eventData)
     {
-        AudioManager.instance.PlayByNamePitch("PickupReversedSFX", 0.4f);
+        AudioManager.instance.PlayByNamePitch("PickupReversedSFX", 0.5f);
         EventManager.Trigger(Evento.EraseDataButtonUp);
     }
 }

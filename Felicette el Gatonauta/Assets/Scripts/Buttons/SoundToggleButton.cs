@@ -7,34 +7,25 @@ using UnityEngine.EventSystems;
 
 public class SoundToggleButton : BaseButton
 {
-    Button yo;
-    ColorBlock cb;
+    Button _yo;
+    ColorBlock _cb;
 
-    Color verde = new Color(0.8f, 1, 0.74f, 1);
-    Color rojo = new Color(1, 0.74f, 0.74f, 1);
-
-
+    //Color verde = new Color(0.8f, 1, 0.74f, 1);
+    //Color rojo = new Color(1, 0.74f, 0.74f, 1);
     private void Start()
     {
-        yo = GetComponent<Button>();
-        cb = yo.colors;
-        print("nacio el soundtogglebutton");
-        PaintButton(verde);
-
+        _yo = GetComponent<Button>();
+        _cb = _yo.colors;
+        PaintButton(Color.green);
 
         if (AudioManager.instance.SoundOn)
         {
-            PaintButton(verde);
+            PaintButton(Color.green);
         }
         else
         {
-            PaintButton(rojo);
+            PaintButton(Color.red);
         }
-    }
-
-    public override void OnPointerDown(PointerEventData eventData)
-    {
-
     }
 
     public override void OnPointerUp(PointerEventData eventData)
@@ -43,22 +34,19 @@ public class SoundToggleButton : BaseButton
 
         if (AudioManager.instance.SoundOn)
         {
-            PaintButton(verde);
+            PaintButton(Color.green);
         }
         else
         {
-            PaintButton(rojo);
+            PaintButton(Color.red);
         }
-
     }
-
 
     public void PaintButton(Color color)
     {
-        cb.normalColor = color;
-        cb.highlightedColor = color;
-        cb.selectedColor = color;
-        yo.colors = cb;
-        //print("cambie el color a " + color);
+        _cb.normalColor = color;
+        _cb.highlightedColor = color;
+        _cb.selectedColor = color;
+        _yo.colors = _cb;
     }
 }

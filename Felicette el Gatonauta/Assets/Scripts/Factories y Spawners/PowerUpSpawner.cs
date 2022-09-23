@@ -5,11 +5,12 @@ using UnityEngine;
 public class PowerUpSpawner : MonoBehaviour
 {
     //este script fabrica n cajas en las n posiciones que le pidas
+    //solo para probar
+    //es mas comodo poner las cajas a mano en la jerarquia y ya
 
     private CajaFactory _factory;
 
     public CajaPowerUp cajaPrefab;
-
     public Vector3[] cajasPosition;
 
     private void Start()
@@ -27,8 +28,4 @@ public class PowerUpSpawner : MonoBehaviour
         var instance = _factory.Get();
         instance.transform.position = cajaPosition;
     }
-
-
-
-
 }

@@ -11,11 +11,15 @@ public enum PowerType
 
 public class CajaPowerUp : TriggerCollider
 {
-    PowerType powerType;
+    //el script de las cajas
+    //cuando las chocas, te dan su poder.
+    //falta implementar
+
+    PowerType _powerType;
 
     private void Start()
     {
-        powerType = GetPowerType();
+        _powerType = GetPowerType();
     }
 
     PowerType GetPowerType()
@@ -28,8 +32,8 @@ public class CajaPowerUp : TriggerCollider
     {
         AudioManager.instance.PlayByNamePitch("PickupSFX", 1.7f);
 
-        print("rompi la caja, su poder es " + powerType);
-        EventManager.Trigger(Evento.CajaPickup, powerType);
+        print("rompi la caja, su poder es " + _powerType);
+        EventManager.Trigger(Evento.CajaPickup, _powerType); //la ship deberia hacer algo con esto
         Destroy(this.gameObject);
     }
 }
