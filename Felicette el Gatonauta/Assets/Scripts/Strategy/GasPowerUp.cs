@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GasPowerUp : MonoBehaviour
+public class GasPowerUp : IPowerUp
 {
-    // Start is called before the first frame update
-    void Start()
+    void Activate(Ship ship)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ship.CurrentGas = ship.CurrentGas + 250f;
     }
 }

@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedPowerUp : MonoBehaviour
+public class SpeedPowerUp : IPowerUp
 {
-    // Start is called before the first frame update
-    void Start()
+    void Activate(Ship ship)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ship.moveSpeed = ship.moveSpeed + 2f;
     }
 }

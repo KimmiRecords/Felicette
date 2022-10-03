@@ -19,10 +19,10 @@ public class Ship : MonoBehaviour
     public float basePositionMoveSpeed;
     public float maxGas;
     public float burnFactor;
+    public float _bonusGas;
+    public float _bonusSpeed;
 
     float _currentGas;
-
-    //IPowerUp _currentPowerUp;
 
     public float CurrentGas
     {
@@ -45,5 +45,42 @@ public class Ship : MonoBehaviour
                 _currentGas = maxGas;
             }
         }
+    }
+
+    IPowerUp[] _powers = new IPowerUp[3];
+    IPowerUp _currentPowerUp;
+
+    void Awake()
+    {
+        _powers[0] = new empty();
+        _powers[1] = new GasPowerUp(CurrentGas,_bonusGas);
+        _powers[2] = new SpeedPowerUp(moveSpeed,_bonusSpeed);
+        //_powers[3] = new ShieldPowerUp();
+    }
+
+    void Start()
+    {
+        EventManager.Subscribe(Evento.CajaPickup, SetCurrentPowerUp);
+        EventManager.Subscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+    }
+
+    void SetCurrentPowerUp(params object[] parameters)
+    {
+        _currentPowerUp = parameters[0];
+
+        switch (parameters[0])
+        {
+            case PowerType.Gas:
+                _currentPowerUp = _powers[1];
+                break;
+            case PowerType.Speed:
+                _currentPowerUp = _powers[2];
+                break;
+        }
+    }
+
+    void ActivatePowerUp(params object[] parameters)
+    {
+        _currentPowerUp.Activate(this);
     }
 }

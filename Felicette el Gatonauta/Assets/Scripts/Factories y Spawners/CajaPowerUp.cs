@@ -6,7 +6,7 @@ public enum PowerType
 {
     Gas = 0,
     Speed = 1,
-    Shield = 2
+    //Shield = 2
 }
 
 public class CajaPowerUp : TriggerCollider
