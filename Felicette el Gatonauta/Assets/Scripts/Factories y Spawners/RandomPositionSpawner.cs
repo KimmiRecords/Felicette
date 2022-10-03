@@ -9,6 +9,7 @@ public class RandomPositionSpawner : MonoBehaviour
     private TriggerColliderFactory _factory;
 
     public TriggerCollider prefab;
+
     public int objectAmount;
 
     [Header("Random Position Limits")]

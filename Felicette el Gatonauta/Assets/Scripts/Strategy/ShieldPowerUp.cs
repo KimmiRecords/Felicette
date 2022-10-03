@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ShieldPowerUp : IPowerUp
 {
-    // Start is called before the first frame update
-    void Start()
+    Ship _ship;
+
+    public ShieldPowerUp(Ship ship)
     {
-        
+        _ship = ship;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Activate()
     {
-        
+        //giveshield;
     }
 }

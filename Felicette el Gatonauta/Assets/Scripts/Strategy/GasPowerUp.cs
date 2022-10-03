@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class GasPowerUp : IPowerUp
 {
-    void Activate(Ship ship)
+    Ship _ship;
+
+    public GasPowerUp(Ship ship)
     {
-        ship.CurrentGas = ship.CurrentGas + 250f;
+        _ship = ship;
+    }
+
+    public void Activate()
+    {
+        _ship.CurrentGas = _ship.CurrentGas + 250f;
+        EventManager.Trigger(Evento.BurnGas, _ship.CurrentGas);
+        Debug.Log("aumente el gas");
+
     }
 }
