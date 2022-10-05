@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CoinPowerUp : IPowerUp
 {
+    //este tipo de powerup te da una cantidad de monedas random
+
     Ship _ship;
 
     public CoinPowerUp(Ship ship)
@@ -13,7 +15,9 @@ public class CoinPowerUp : IPowerUp
 
     public void Activate()
     {
-        int randomCoins = Random.Range(5, 11);
+        AudioManager.instance.PlayByName("CoinRain");
+
+        int randomCoins = Random.Range(_ship.randomCoinsMin, _ship.randomCoinsMax);
         for (int i = 0; i < randomCoins; i++)
         {
             LevelManager.instance.AddCoin();

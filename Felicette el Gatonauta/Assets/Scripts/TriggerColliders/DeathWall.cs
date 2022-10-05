@@ -15,6 +15,7 @@ public class DeathWall : TriggerCollider
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+        AudioManager.instance.PlayByName("ShipCrash");
         EventManager.Trigger(Evento.DeathWall, _esteNivel);
     }
 }

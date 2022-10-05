@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TMPro.TextMeshProUGUI))]
 public class TutorialText : MonoBehaviour
 {
+    //este script maneja la secuencia de textos que aparecen en el nivel tutorial
+
     TMPro.TextMeshProUGUI _yo;
     Color _originalColor;
     int _textIndex;
@@ -177,6 +179,22 @@ public class TutorialText : MonoBehaviour
                 break;
             case 10:
                 break;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (gameObject.scene.isLoaded) //cuando se destruye porque lo destrui a mano
+        {
+            //print("destrui a este shipthrusters on isloaded");
+        }
+        else //cuando se destruye porque cambie de escena
+        {
+            EventManager.Unsubscribe(Evento.BasePositionUp, BasePositionNext);
+            EventManager.Unsubscribe(Evento.ThrusterDown, ThrusterNext);
+            EventManager.Unsubscribe(Evento.NextTextWall, WallNext);
+            EventManager.Unsubscribe(Evento.CajaPickup, CajaPickupNext);
+            EventManager.Unsubscribe(Evento.PowerUpButtonUp, PowerUpNext);
         }
     }
 }

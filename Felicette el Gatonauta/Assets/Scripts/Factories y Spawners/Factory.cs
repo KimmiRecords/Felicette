@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Factory<T> where T : MonoBehaviour
 {
+    //la factory generica 
+
     [SerializeField]
     protected T prefab;
 

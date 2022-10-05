@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedPowerUp : IPowerUp
+public class EmptyPowerUp : IPowerUp
 {
-    Ship _ship;
-    float boostTime;
+    //este es el powerup vacio, que tenes por default. 
 
-    public SpeedPowerUp(Ship ship)
+    Ship _ship;
+
+    public EmptyPowerUp(Ship ship)
     {
         _ship = ship;
     }
 
     public void Activate()
     {
-        Debug.Log("aumente la movespeed");
-        _ship.StartBoost();
+        Debug.Log("nada");
     }
 }

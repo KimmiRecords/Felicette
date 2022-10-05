@@ -29,8 +29,10 @@ public enum Evento
     //otros
     BurnGas,
     OutOfGas,
-    CoinUpdate
-
+    CoinUpdate,
+    GotPowerUp,
+    ModoChiquitoStart,
+    ModoChiquitoEnd
 }
 public class EventManager
 {

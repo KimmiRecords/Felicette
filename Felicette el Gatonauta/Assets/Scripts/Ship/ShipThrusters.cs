@@ -7,6 +7,7 @@ public class ShipThrusters : Ship, IGravity
 {
     //la clase principal de nuestra nave
     //controla su rigidbody, y aplica la fuerza que corresponde
+    //aplica powerups tambien
 
     bool _isThrusting;
     bool _isReleased;
@@ -15,22 +16,31 @@ public class ShipThrusters : Ship, IGravity
     BasePositionDirection _dir;
     Vector3 _move;
 
+    IPowerUp[] _powers = new IPowerUp[4];
+    IPowerUp _currentPowerUp;
+
+
     void Start()
     {
         EventManager.Subscribe(Evento.ThrusterDown, StartThruster);
         EventManager.Subscribe(Evento.ThrusterDown, ReleaseShip);
         EventManager.Subscribe(Evento.ThrusterUp, EndThruster);
-
         EventManager.Subscribe(Evento.BasePositionDown, StartMoveShip);
         EventManager.Subscribe(Evento.BasePositionUp, EndMoveShip);
-
         EventManager.Subscribe(Evento.AtmosphereWall, EscapeAtmosphere);
+        EventManager.Subscribe(Evento.CajaPickup, SetCurrentPowerUp);
+        EventManager.Subscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
 
         CurrentGas = maxGas;
         myRigidBody.useGravity = true;
         _isReleased = false;
-
         myRigidBody = this.gameObject.GetComponent<Rigidbody>();
+
+        _powers[0] = new EmptyPowerUp(this);
+        _powers[1] = new GasPowerUp(this);
+        _powers[2] = new ScalePowerUp(this);
+        _powers[3] = new CoinPowerUp(this);
+        _currentPowerUp = _powers[0];
     }
 
     private void FixedUpdate()
@@ -145,6 +155,89 @@ public class ShipThrusters : Ship, IGravity
         myRigidBody.AddForce(grav * Time.deltaTime, ForceMode.Force);
     }
 
+    public void SetCurrentPowerUp(params object[] parameters)
+    {
+        print("setcurrentpowerup");
+        if (parameters[0] is int)
+        {
+            switch ((int)parameters[0])
+            {
+                case 0: //si en la caja sale 0, es gas powerup
+                    _currentPowerUp = _powers[1];
+                    break;
+                case 1: //si sale 1, es speed powerup
+                    _currentPowerUp = _powers[2];
+                    break;
+                case 2:
+                    _currentPowerUp = _powers[3];
+                    break;
+            }
+        }
+        else
+        {
+            print("ojo, no me pasaste int de primer parametro");
+        }
+
+        EventManager.Trigger(Evento.GotPowerUp, parameters[0]);
+
+    }
+    public void ActivatePowerUp(params object[] parameters)
+    {
+        //lo activo y lo hago empty de nuevo
+        print("activate powerup");
+
+        _currentPowerUp.Activate();
+
+        if (_currentPowerUp == _powers[2]) //solo para modo chiquito
+        {
+            EventManager.Trigger(Evento.ModoChiquitoStart);
+        }
+
+        _currentPowerUp = _powers[0];
+    }
+    //public void StartBoost()
+    //{
+    //    StartCoroutine(Boost());
+    //}
+    //public IEnumerator Boost()
+    //{
+    //    Vector3 originalScale = transform.localScale;
+    //    //pasan cosas
+    //    print("arranca el boost");
+    //    transform.localScale = Vector3.one * bonusScale;
+
+    //    yield return new WaitForSeconds(boostTime);
+
+    //    //terminan de pasar cosas
+    //    print("termina el boost");
+    //    transform.localScale = originalScale;
+    //}
+    public void StartRescale()
+    {
+        StartCoroutine(Rescale());
+    }
+    public IEnumerator Rescale()
+    {
+
+        Vector3 originalScale = transform.localScale;
+
+        //pasan cosas
+        //print("arranca el boost");
+        transform.localScale = Vector3.one * rescaleFactor;
+
+        yield return new WaitForSeconds(1);
+        AudioManager.instance.PlayByName("TimerFourTicks");
+
+        yield return new WaitForSeconds(rescaleDuration - 1);
+
+        //terminan de pasar cosas
+        //print("termina el boost");
+        AudioManager.instance.PlayByName("ModoChiquitoOff");
+        EventManager.Trigger(Evento.ModoChiquitoEnd);
+        transform.localScale = originalScale;
+
+    }
+
     private void OnDestroy()
     {
         if (gameObject.scene.isLoaded) //cuando se destruye porque lo destrui a mano
@@ -157,6 +250,8 @@ public class ShipThrusters : Ship, IGravity
             EventManager.Unsubscribe(Evento.ThrusterDown, ReleaseShip);
             EventManager.Unsubscribe(Evento.ThrusterUp, EndThruster);
             EventManager.Unsubscribe(Evento.AtmosphereWall, EscapeAtmosphere);
+            EventManager.Unsubscribe(Evento.CajaPickup, SetCurrentPowerUp);
+            EventManager.Unsubscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
             //print("destrui a este shipthrusters on sceneclosure");
         }
     }

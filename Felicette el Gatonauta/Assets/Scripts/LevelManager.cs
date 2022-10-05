@@ -16,7 +16,6 @@ public class LevelManager : MonoBehaviour
     bool[] _nivelesCompletados;
     string _escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel;
     int _coins;
-
     public int Coins
     {
         get
@@ -45,6 +44,8 @@ public class LevelManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
+
+        Screen.orientation = ScreenOrientation.Portrait;
     }
 
     void Start()

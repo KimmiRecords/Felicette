@@ -6,10 +6,8 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    //el ButtonManager tiene un diccionario con todos sus hijos botones
-    //asi puedo acceder a ellos facilmente.
-
-    //se encarga de habilitar los botones de los niveles a medida que los desbloqueas
+    //el ButtonManager se encarga de habilitar los botones de los NIVELES a medida que los desbloqueas
+    //tiene un diccionario con todos sus hijos botones asi puedo acceder a ellos facilmente.
 
     Button[] _childrenButtons;
     Dictionary<string, Button> _botones = new Dictionary<string, Button>();

@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmptyPowerUp : IPowerUp
+public class ShieldPowerUp : IPowerUp
 {
+    //este powerup te da un escudo. TODAVIA NO ESTA IMPLEMENTADO.
     Ship _ship;
 
-    public EmptyPowerUp(Ship ship)
+    public ShieldPowerUp(Ship ship)
     {
         _ship = ship;
     }
 
     public void Activate()
     {
-        Debug.Log("nada");
+        //giveshield;
     }
 }

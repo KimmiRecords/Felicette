@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomPositionSpawner : MonoBehaviour
 {
-    //este script fabrica n objetos de tipo triggercollider (como los pickups) en posiciones random
+    //este script fabrica objetos de tipo triggercollider (como los pickups) en posiciones random
 
     private TriggerColliderFactory _factory;
 
@@ -33,7 +33,6 @@ public class RandomPositionSpawner : MonoBehaviour
         {
             TriggerCollider instance = _factory.Get();
             instance.transform.position = RandomPosition(minimumX, maximumX, minimumX, maximumY);
-            //Debug.Log("spawner: cree el objeto " + instance + " en la posicion " + instance.transform.position);
         }
     }
 

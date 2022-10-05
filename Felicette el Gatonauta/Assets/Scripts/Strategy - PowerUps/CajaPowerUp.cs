@@ -7,11 +7,11 @@ public class CajaPowerUp : TriggerCollider
     //el script de las cajas
     //cuando las chocas, te dan su poder.
 
-    int thisBoxPowerUp;
+    int _thisBoxPowerUp;
 
     private void Start()
     {
-        thisBoxPowerUp = GetPowerType();
+        _thisBoxPowerUp = GetPowerType();
     }
 
     int GetPowerType()
@@ -22,10 +22,9 @@ public class CajaPowerUp : TriggerCollider
 
     protected override void OnTriggerEnter(Collider other)
     {
-        AudioManager.instance.PlayByNamePitch("PickupSFX", 1.7f);
-
-        print("rompi la caja, su poder es " + thisBoxPowerUp);
-        EventManager.Trigger(Evento.CajaPickup, thisBoxPowerUp); 
+        //print("rompi la caja, su poder es " + thisBoxPowerUp);
+        AudioManager.instance.PlayByName("CrateBreak");
+        EventManager.Trigger(Evento.CajaPickup, _thisBoxPowerUp); 
         Destroy(this.gameObject);
     }
 }
