@@ -9,6 +9,7 @@ public class ShipThrusters : Ship, IGravity
     //controla su rigidbody, y aplica la fuerza que corresponde
     //aplica powerups tambien
 
+    public Animator m_Animator;
     bool _isThrusting;
     bool _isReleased;
     
@@ -72,6 +73,7 @@ public class ShipThrusters : Ship, IGravity
         {
             AudioManager.instance.PlayByName("PropulsoresSFX");
             _isThrusting = true;
+            m_Animator.SetBool("IsThrusting", true);
         }
     }
     public void Thruster()
@@ -84,6 +86,7 @@ public class ShipThrusters : Ship, IGravity
     {
         AudioManager.instance.StopByName("PropulsoresSFX");
         _isThrusting = false;
+        m_Animator.SetBool("IsThrusting", false);
     }
 
     public void StartMoveShip(params object[] parameters)
@@ -192,7 +195,10 @@ public class ShipThrusters : Ship, IGravity
         {
             EventManager.Trigger(Evento.ModoChiquitoStart);
         }
-
+        if (_currentPowerUp == _powers[3]) //solo para lluvia de monedas
+        {
+            m_Animator.SetTrigger("Monedas");
+        }
         _currentPowerUp = _powers[0];
     }
     //public void StartBoost()
