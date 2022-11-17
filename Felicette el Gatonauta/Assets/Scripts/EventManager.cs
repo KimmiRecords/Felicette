@@ -28,6 +28,7 @@ public enum Evento
 
     //otros
     BurnGas,
+    RefillGas,
     CoinUpdate,
     GotPowerUp,
     ModoChiquitoStart,

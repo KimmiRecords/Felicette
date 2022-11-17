@@ -18,7 +18,7 @@ public class GasPowerUp : IPowerUp
         AudioManager.instance.PlayByNamePitch("GasRefill", 1.2f);
 
         _ship.CurrentGas = _ship.CurrentGas + _ship.bonusGas;
-        EventManager.Trigger(Evento.BurnGas, _ship.CurrentGas);
+        EventManager.Trigger(Evento.RefillGas, _ship.CurrentGas); //para que se updatee el slider
         Debug.Log("aumente el gas");
 
     }

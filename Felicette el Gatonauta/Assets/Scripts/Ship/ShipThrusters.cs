@@ -20,7 +20,7 @@ public class ShipThrusters : Ship, IGravity
     IPowerUp[] _powers = new IPowerUp[4];
     IPowerUp _currentPowerUp;
 
-    ShipGasManager gasManager;
+    public ShipGasManager gasManager;
 
 
     void Start()
@@ -64,12 +64,6 @@ public class ShipThrusters : Ship, IGravity
     public void ReleaseShip(params object[] parameters)
     {
         //la primera vez que tocas el thrusterbutton, suelta a la nave de su base
-
-        //myRigidBody.constraints = RigidbodyConstraints.None;
-        //myRigidBody.constraints = RigidbodyConstraints.FreezePositionZ;
-        //myRigidBody.constraints = RigidbodyConstraints.FreezeRotationX;
-
-        //freezeaar rotations
         _isReleased = true;
         EventManager.Unsubscribe(Evento.ThrusterDown, ReleaseShip);
     }
@@ -87,9 +81,11 @@ public class ShipThrusters : Ship, IGravity
     {
         //pum para arriba, y consume gas
         myRigidBody.AddForce(transform.up * thrusterPower);
-        if (canThrust)
+        gasManager.BurnGas();
+
+        if (!canThrust)
         {
-            gasManager.BurnGas();
+            EndThruster();
         }
     }
     public void EndThruster(params object[] parameters)
