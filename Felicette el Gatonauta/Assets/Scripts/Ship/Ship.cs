@@ -9,7 +9,7 @@ public enum BasePositionDirection
     right
 }
 
-public class Ship : MonoBehaviour
+public abstract class Ship : MonoBehaviour
 {
     //la clase base de la nave. despues puede servir para otros tipos de naves
 
@@ -50,5 +50,7 @@ public class Ship : MonoBehaviour
             }
         }
     }
+    public bool canThrust;
+
 }
 

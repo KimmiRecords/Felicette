@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Trigger : MonoBehaviour
+public interface ITriggerCollider
 {
-    
+    public void Activate();
 }

@@ -20,6 +20,8 @@ public class ShipThrusters : Ship, IGravity
     IPowerUp[] _powers = new IPowerUp[4];
     IPowerUp _currentPowerUp;
 
+    ShipGasManager gasManager;
+
 
     void Start()
     {
@@ -42,16 +44,18 @@ public class ShipThrusters : Ship, IGravity
         _powers[2] = new ScalePowerUp(this);
         _powers[3] = new CoinPowerUp(this);
         _currentPowerUp = _powers[0];
+
+        gasManager = new ShipGasManager(this);
     }
 
     private void FixedUpdate()
     {
-        if (_isThrusting && CurrentGas > 0)
+        if (_isThrusting && canThrust)
         {
             Thruster();
         }
 
-        if (_isMoving && CurrentGas > 0)
+        if (_isMoving && canThrust)
         {
             MoveShip();
         }
@@ -61,15 +65,18 @@ public class ShipThrusters : Ship, IGravity
     {
         //la primera vez que tocas el thrusterbutton, suelta a la nave de su base
 
-        myRigidBody.constraints = RigidbodyConstraints.None;
-        myRigidBody.constraints = RigidbodyConstraints.FreezePositionZ;
+        //myRigidBody.constraints = RigidbodyConstraints.None;
+        //myRigidBody.constraints = RigidbodyConstraints.FreezePositionZ;
+        //myRigidBody.constraints = RigidbodyConstraints.FreezeRotationX;
+
+        //freezeaar rotations
         _isReleased = true;
         EventManager.Unsubscribe(Evento.ThrusterDown, ReleaseShip);
     }
 
     public void StartThruster(params object[] parameters)
     {
-        if (CurrentGas > 0)
+        if (canThrust)
         {
             AudioManager.instance.PlayByName("PropulsoresSFX");
             _isThrusting = true;
@@ -80,7 +87,10 @@ public class ShipThrusters : Ship, IGravity
     {
         //pum para arriba, y consume gas
         myRigidBody.AddForce(transform.up * thrusterPower);
-        BurnGas();
+        if (canThrust)
+        {
+            gasManager.BurnGas();
+        }
     }
     public void EndThruster(params object[] parameters)
     {
@@ -113,30 +123,21 @@ public class ShipThrusters : Ship, IGravity
             _move = Vector3.right;
         }
 
-        if (_isReleased)
+        if (_isReleased && canThrust)
         {
             //fuera de la base se mueve mucho pero quema gas
-            BurnGas();
+            gasManager.BurnGas();
             transform.position += _move * moveSpeed * Time.deltaTime;
-
         }
         else
         {
             //en la base no quema gas pero se mueve poquito
             transform.position += _move * basePositionMoveSpeed * Time.deltaTime;
         }
-
     }
     public void EndMoveShip(params object[] parameters)
     {
         _isMoving = false;
-    }
-
-    public void BurnGas()
-    {
-        CurrentGas -= burnFactor;
-        EventManager.Trigger(Evento.BurnGas, CurrentGas);
-        //print("current gas = " + CurrentGas);
     }
 
     public void EscapeAtmosphere(params object[] parameters)
@@ -201,23 +202,7 @@ public class ShipThrusters : Ship, IGravity
         }
         _currentPowerUp = _powers[0];
     }
-    //public void StartBoost()
-    //{
-    //    StartCoroutine(Boost());
-    //}
-    //public IEnumerator Boost()
-    //{
-    //    Vector3 originalScale = transform.localScale;
-    //    //pasan cosas
-    //    print("arranca el boost");
-    //    transform.localScale = Vector3.one * bonusScale;
 
-    //    yield return new WaitForSeconds(boostTime);
-
-    //    //terminan de pasar cosas
-    //    print("termina el boost");
-    //    transform.localScale = originalScale;
-    //}
     public void StartRescale()
     {
         StartCoroutine(Rescale());
@@ -259,6 +244,15 @@ public class ShipThrusters : Ship, IGravity
             EventManager.Unsubscribe(Evento.CajaPickup, SetCurrentPowerUp);
             EventManager.Unsubscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
             //print("destrui a este shipthrusters on sceneclosure");
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<ITriggerCollider>() != null)
+        {
+            var collider = other.GetComponent<ITriggerCollider>();
+            collider.Activate();
         }
     }
 }

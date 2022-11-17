@@ -5,9 +5,11 @@ using UnityEngine;
 public class AtmosphereWall : TriggerCollider
 {
     //cuando atravesas esta pared, se desactiva la gravedad y quedas flotando con la inercia que tenias
-    protected override void OnTriggerEnter(Collider other)
+    
+
+    public override void Activate()
     {
-        base.OnTriggerEnter(other);
+        base.Activate();
         EventManager.Trigger(Evento.AtmosphereWall);
     }
 }

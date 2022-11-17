@@ -152,23 +152,24 @@ public class LevelManager : MonoBehaviour
         if (parameters[1] is int)
         {
             _nivelesCompletados[(int)parameters[1]] = true;
-            print("acabo de completar el nivel " + (int)parameters[1]);
+            //print("acabo de completar el nivel " + (int)parameters[1]);
         }
         else
         {
-            print("el primer parametro que me pasaste no era un int");
+            //print("el primer parametro que me pasaste no era un int");
         }
 
         SaveData();
-        print("nivel completado: savedata");
+        //print("nivel completado: savedata");
 
         GoToScene("LevelComplete");
     }
     public void NivelFallado(params object[] parameters)
     {
         _escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel = (string)parameters[0];
+        print(_escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel);
         LoadData();
-        print("nivel fallado: loaddata");
+        //print("nivel fallado: loaddata");
 
         GoToScene("LevelFailed");
     }

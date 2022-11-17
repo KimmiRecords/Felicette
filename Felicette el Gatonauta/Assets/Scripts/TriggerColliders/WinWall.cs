@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class WinWall : TriggerCollider
 {
-    //esta wall te hace ganar y avisa al levelmanager que nivel completaste
+    //esta wall te hace ganar y avisa al levelmanager cual nivel completaste
+
     public int numeroDeEsteNivel;
     string _esteNivel;
 
@@ -15,9 +16,16 @@ public class WinWall : TriggerCollider
         _esteNivel = SceneManager.GetActiveScene().name;
     }
 
-    protected override void OnTriggerEnter(Collider other)
+    //protected override void OnTriggerEnter(Collider other)
+    //{
+    //    //base.OnTriggerEnter(other);
+    //    EventManager.Trigger(Evento.WinWall, _esteNivel, numeroDeEsteNivel);
+    //}
+
+    public override void Activate()
     {
-        //base.OnTriggerEnter(other);
+        base.Activate();
         EventManager.Trigger(Evento.WinWall, _esteNivel, numeroDeEsteNivel);
+
     }
 }

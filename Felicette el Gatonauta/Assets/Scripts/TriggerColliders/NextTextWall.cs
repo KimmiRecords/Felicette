@@ -6,9 +6,16 @@ public class NextTextWall : TriggerCollider
 {
     //un tipo de wall que avisa al tutorial text manager cual texto disparar
     public int nextText;
-    protected override void OnTriggerEnter(Collider other)
+
+    //protected override void OnTriggerEnter(Collider other)
+    //{
+    //    base.OnTriggerEnter(other);
+    //    EventManager.Trigger(Evento.NextTextWall, nextText);
+    //}
+
+    public override void Activate()
     {
-        base.OnTriggerEnter(other);
+        base.Activate();
         EventManager.Trigger(Evento.NextTextWall, nextText);
     }
 }
