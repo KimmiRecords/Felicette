@@ -17,8 +17,8 @@ public class ShipThrusters : Ship, IGravity
     BasePositionDirection _dir;
     Vector3 _move;
 
-    IPowerUp[] _powers = new IPowerUp[4];
-    IPowerUp _currentPowerUp;
+    //IPowerUp[] _powers = new IPowerUp[4];
+    //IPowerUp _currentPowerUp;
 
     public ShipGasManager gasManager;
 
@@ -31,19 +31,21 @@ public class ShipThrusters : Ship, IGravity
         EventManager.Subscribe(Evento.BasePositionDown, StartMoveShip);
         EventManager.Subscribe(Evento.BasePositionUp, EndMoveShip);
         EventManager.Subscribe(Evento.AtmosphereWall, EscapeAtmosphere);
-        EventManager.Subscribe(Evento.CajaPickup, SetCurrentPowerUp);
-        EventManager.Subscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+        //EventManager.Subscribe(Evento.CajaPickup, SetCurrentPowerUp);
+        //EventManager.Subscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+        EventManager.Subscribe(Evento.ModoChiquitoStart, StartRescale);
+        EventManager.Subscribe(Evento.CoinRainStart, CoinRainAnimationStart);
 
         CurrentGas = maxGas;
         myRigidBody.useGravity = true;
         _isReleased = false;
         myRigidBody = this.gameObject.GetComponent<Rigidbody>();
 
-        _powers[0] = new EmptyPowerUp(this);
-        _powers[1] = new GasPowerUp(this);
-        _powers[2] = new ScalePowerUp(this);
-        _powers[3] = new CoinPowerUp(this);
-        _currentPowerUp = _powers[0];
+        //_powers[0] = new EmptyPowerUp(this);
+        //_powers[1] = new GasPowerUp(this);
+        //_powers[2] = new ScalePowerUp(this);
+        //_powers[3] = new CoinPowerUp(this);
+        //_currentPowerUp = _powers[0];
 
         gasManager = new ShipGasManager(this);
     }
@@ -155,51 +157,35 @@ public class ShipThrusters : Ship, IGravity
         myRigidBody.AddForce(grav * Time.deltaTime, ForceMode.Force);
     }
 
-    public void SetCurrentPowerUp(params object[] parameters)
-    {
-        print("setcurrentpowerup");
-        if (parameters[0] is int)
-        {
-            switch ((int)parameters[0])
-            {
-                case 0: //si en la caja sale 0, es gas powerup
-                    _currentPowerUp = _powers[1];
-                    break;
-                case 1: //si sale 1, es speed powerup
-                    _currentPowerUp = _powers[2];
-                    break;
-                case 2:
-                    _currentPowerUp = _powers[3];
-                    break;
-            }
-        }
-        else
-        {
-            print("ojo, no me pasaste int de primer parametro");
-        }
+    //public void SetCurrentPowerUp(params object[] parameters)
+    //{
+    //    print("setcurrentpowerup");
+    //    if (parameters[0] is int)
+    //    {
+    //        _currentPowerUp = _powers[(int)parameters[0]];
+    //    }
+    //    else
+    //    {
+    //        print("ojo, no me pasaste int de primer parametro");
+    //    }
 
-        EventManager.Trigger(Evento.GotPowerUp, parameters[0]);
+    //    EventManager.Trigger(Evento.GotPowerUp, parameters[0]);
+
+    //}
+    //public void ActivatePowerUp(params object[] parameters)
+    //{
+    //    //lo activo y lo hago empty de nuevo
+    //    print("activate powerup");
+    //    _currentPowerUp.Activate();
+    //    _currentPowerUp = _powers[0];
+    //}
+
+    public void CoinRainAnimationStart(params object[] parameters)
+    {
+        m_Animator.SetTrigger("Monedas");
 
     }
-    public void ActivatePowerUp(params object[] parameters)
-    {
-        //lo activo y lo hago empty de nuevo
-        print("activate powerup");
-
-        _currentPowerUp.Activate();
-
-        if (_currentPowerUp == _powers[2]) //solo para modo chiquito
-        {
-            EventManager.Trigger(Evento.ModoChiquitoStart);
-        }
-        if (_currentPowerUp == _powers[3]) //solo para lluvia de monedas
-        {
-            m_Animator.SetTrigger("Monedas");
-        }
-        _currentPowerUp = _powers[0];
-    }
-
-    public void StartRescale()
+    public void StartRescale(params object[] parameters)
     {
         StartCoroutine(Rescale());
     }
@@ -237,8 +223,12 @@ public class ShipThrusters : Ship, IGravity
             EventManager.Unsubscribe(Evento.ThrusterDown, ReleaseShip);
             EventManager.Unsubscribe(Evento.ThrusterUp, EndThruster);
             EventManager.Unsubscribe(Evento.AtmosphereWall, EscapeAtmosphere);
-            EventManager.Unsubscribe(Evento.CajaPickup, SetCurrentPowerUp);
-            EventManager.Unsubscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+            //EventManager.Unsubscribe(Evento.CajaPickup, SetCurrentPowerUp);
+            //EventManager.Unsubscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+            EventManager.Unsubscribe(Evento.ModoChiquitoStart, StartRescale);
+            EventManager.Unsubscribe(Evento.CoinRainStart, CoinRainAnimationStart);
+
+
             //print("destrui a este shipthrusters on sceneclosure");
         }
     }

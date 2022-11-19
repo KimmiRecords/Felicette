@@ -44,13 +44,13 @@ public class PowerUpButton : BaseButton
         {
             switch ((int)parameters[0])
             {
-                case 0: //si en la caja sale 0, es gas powerup
+                case 1: //si en la caja sale 0, es gas powerup
                     _miTexto.text = "GAS REFILL";
                     break;
-                case 1: //si sale 1, es speed powerup
+                case 2: //si sale 1, es speed powerup
                     _miTexto.text = "MODO CHIQUITO";
                     break;
-                case 2: //2 es randomcoins
+                case 3: //2 es randomcoins
                     _miTexto.text = "LLUVIA DE MONEDAS";
                     break;
             }
