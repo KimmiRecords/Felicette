@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7207941756813141665}
   - component: {fileID: 5947185493166852395}
   m_Layer: 0
-  m_Name: ere
+  m_Name: Palo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,11 +27,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2519428376634944255}
   m_LocalRotation: {x: -0, y: -0, z: -0.70706934, w: 0.7071443}
-  m_LocalPosition: {x: 0.000000094513, y: 0.0000000051996, z: -0.000000084975}
-  m_LocalScale: {x: 0.10896733, y: 1.2515966, z: 0.10896733}
+  m_LocalPosition: {x: 0.00000009472, y: -0.0022721, z: -0.00000006438}
+  m_LocalScale: {x: 0.082558006, y: 0.94825965, z: 0.082558006}
   m_Children: []
   m_Father: {fileID: 6889412959495673519}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.994}
 --- !u!33 &5293542842323820648
 MeshFilter:
@@ -91,7 +91,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2519428376634944255}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 1896864509084603335}
   - component: {fileID: 4098878650285820316}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: PanelSolar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,11 +153,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5735415547342220389}
   m_LocalRotation: {x: 0.12700103, y: 0.12698759, z: -0.6955726, w: 0.69564617}
-  m_LocalPosition: {x: -0.946875, y: -0.009375, z: 0}
-  m_LocalScale: {x: 0.89941615, y: 0.347418, z: 0.105587445}
+  m_LocalPosition: {x: -0.71739, y: -0.009375, z: 0}
+  m_LocalScale: {x: 0.6814337, y: 0.26321778, z: 0.07999727}
   m_Children: []
   m_Father: {fileID: 6889412959495673519}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 20.693, y: 0, z: -89.994}
 --- !u!33 &784792539700860757
 MeshFilter:
@@ -217,7 +217,7 @@ BoxCollider:
   m_GameObject: {fileID: 5735415547342220389}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -255,8 +255,8 @@ Transform:
   m_Children:
   - {fileID: 6910980569546829279}
   - {fileID: 9072368152855142338}
-  - {fileID: 8130264301381493899}
   - {fileID: 2369920674394394211}
+  - {fileID: 8130264301381493899}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -320,8 +320,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.8566364
+  m_Center: {x: -0.03764477, y: 0.050974082, z: 0}
 --- !u!114 &6889412959495673507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 5476858848000373015}
   - component: {fileID: 4722724889232831016}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: PanelSolar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,8 +376,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9170505377145898945}
   m_LocalRotation: {x: 0.12700103, y: 0.12698759, z: -0.6955726, w: 0.69564617}
-  m_LocalPosition: {x: 0.959375, y: -0.009375, z: 0}
-  m_LocalScale: {x: 0.89941615, y: 0.347418, z: 0.105587445}
+  m_LocalPosition: {x: 0.72686, y: -0.009375, z: 0}
+  m_LocalScale: {x: 0.6814337, y: 0.26321778, z: 0.07999727}
   m_Children: []
   m_Father: {fileID: 6889412959495673519}
   m_RootOrder: 1
@@ -440,7 +440,7 @@ BoxCollider:
   m_GameObject: {fileID: 9170505377145898945}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

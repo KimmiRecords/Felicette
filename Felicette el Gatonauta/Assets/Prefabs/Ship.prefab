@@ -497,7 +497,7 @@ MonoBehaviour:
   randomCoinsMin: 5
   randomCoinsMax: 11
   canThrust: 0
-  m_Animator: {fileID: 1724095274}
+  anim: {fileID: 1724095274}
 --- !u!114 &1538598443036514306
 MonoBehaviour:
   m_ObjectHideFlags: 0

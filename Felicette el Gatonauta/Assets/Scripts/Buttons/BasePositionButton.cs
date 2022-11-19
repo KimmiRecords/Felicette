@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class BasePositionButton : BaseButton
 {
     //los baseposition buttons mueven la base antes del despegue
-    //despues del despegue, mueven apenitas a la nave
+    //despues del despegue, mueven la nave hacia los lados
 
     public BasePositionDirection dir;
     
