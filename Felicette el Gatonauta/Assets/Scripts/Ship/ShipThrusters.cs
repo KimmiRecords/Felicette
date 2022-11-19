@@ -17,8 +17,10 @@ public class ShipThrusters : Ship, IGravity
     BasePositionDirection _dir;
     Vector3 _move;
 
-    IPowerUp[] _powers = new IPowerUp[4];
-    IPowerUp _currentPowerUp;
+    //IPowerUp[] _powers = new IPowerUp[4];
+    //IPowerUp _currentPowerUp;
+
+    public ShipGasManager gasManager;
 
 
     void Start()
@@ -29,29 +31,33 @@ public class ShipThrusters : Ship, IGravity
         EventManager.Subscribe(Evento.BasePositionDown, StartMoveShip);
         EventManager.Subscribe(Evento.BasePositionUp, EndMoveShip);
         EventManager.Subscribe(Evento.AtmosphereWall, EscapeAtmosphere);
-        EventManager.Subscribe(Evento.CajaPickup, SetCurrentPowerUp);
-        EventManager.Subscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+        //EventManager.Subscribe(Evento.CajaPickup, SetCurrentPowerUp);
+        //EventManager.Subscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+        EventManager.Subscribe(Evento.ModoChiquitoStart, StartRescale);
+        EventManager.Subscribe(Evento.CoinRainStart, CoinRainAnimationStart);
 
         CurrentGas = maxGas;
         myRigidBody.useGravity = true;
         _isReleased = false;
         myRigidBody = this.gameObject.GetComponent<Rigidbody>();
 
-        _powers[0] = new EmptyPowerUp(this);
-        _powers[1] = new GasPowerUp(this);
-        _powers[2] = new ScalePowerUp(this);
-        _powers[3] = new CoinPowerUp(this);
-        _currentPowerUp = _powers[0];
+        //_powers[0] = new EmptyPowerUp(this);
+        //_powers[1] = new GasPowerUp(this);
+        //_powers[2] = new ScalePowerUp(this);
+        //_powers[3] = new CoinPowerUp(this);
+        //_currentPowerUp = _powers[0];
+
+        gasManager = new ShipGasManager(this);
     }
 
     private void FixedUpdate()
     {
-        if (_isThrusting && CurrentGas > 0)
+        if (_isThrusting && canThrust)
         {
             Thruster();
         }
 
-        if (_isMoving && CurrentGas > 0)
+        if (_isMoving && canThrust)
         {
             MoveShip();
         }
@@ -60,16 +66,13 @@ public class ShipThrusters : Ship, IGravity
     public void ReleaseShip(params object[] parameters)
     {
         //la primera vez que tocas el thrusterbutton, suelta a la nave de su base
-
-        myRigidBody.constraints = RigidbodyConstraints.None;
-        myRigidBody.constraints = RigidbodyConstraints.FreezePositionZ;
         _isReleased = true;
         EventManager.Unsubscribe(Evento.ThrusterDown, ReleaseShip);
     }
 
     public void StartThruster(params object[] parameters)
     {
-        if (CurrentGas > 0)
+        if (canThrust)
         {
             AudioManager.instance.PlayByName("PropulsoresSFX");
             _isThrusting = true;
@@ -80,7 +83,12 @@ public class ShipThrusters : Ship, IGravity
     {
         //pum para arriba, y consume gas
         myRigidBody.AddForce(transform.up * thrusterPower);
-        BurnGas();
+        gasManager.BurnGas();
+
+        if (!canThrust)
+        {
+            EndThruster();
+        }
     }
     public void EndThruster(params object[] parameters)
     {
@@ -113,30 +121,21 @@ public class ShipThrusters : Ship, IGravity
             _move = Vector3.right;
         }
 
-        if (_isReleased)
+        if (_isReleased && canThrust)
         {
             //fuera de la base se mueve mucho pero quema gas
-            BurnGas();
+            gasManager.BurnGas();
             transform.position += _move * moveSpeed * Time.deltaTime;
-
         }
         else
         {
             //en la base no quema gas pero se mueve poquito
             transform.position += _move * basePositionMoveSpeed * Time.deltaTime;
         }
-
     }
     public void EndMoveShip(params object[] parameters)
     {
         _isMoving = false;
-    }
-
-    public void BurnGas()
-    {
-        CurrentGas -= burnFactor;
-        EventManager.Trigger(Evento.BurnGas, CurrentGas);
-        //print("current gas = " + CurrentGas);
     }
 
     public void EscapeAtmosphere(params object[] parameters)
@@ -158,67 +157,35 @@ public class ShipThrusters : Ship, IGravity
         myRigidBody.AddForce(grav * Time.deltaTime, ForceMode.Force);
     }
 
-    public void SetCurrentPowerUp(params object[] parameters)
-    {
-        print("setcurrentpowerup");
-        if (parameters[0] is int)
-        {
-            switch ((int)parameters[0])
-            {
-                case 0: //si en la caja sale 0, es gas powerup
-                    _currentPowerUp = _powers[1];
-                    break;
-                case 1: //si sale 1, es speed powerup
-                    _currentPowerUp = _powers[2];
-                    break;
-                case 2:
-                    _currentPowerUp = _powers[3];
-                    break;
-            }
-        }
-        else
-        {
-            print("ojo, no me pasaste int de primer parametro");
-        }
+    //public void SetCurrentPowerUp(params object[] parameters)
+    //{
+    //    print("setcurrentpowerup");
+    //    if (parameters[0] is int)
+    //    {
+    //        _currentPowerUp = _powers[(int)parameters[0]];
+    //    }
+    //    else
+    //    {
+    //        print("ojo, no me pasaste int de primer parametro");
+    //    }
 
-        EventManager.Trigger(Evento.GotPowerUp, parameters[0]);
+    //    EventManager.Trigger(Evento.GotPowerUp, parameters[0]);
+
+    //}
+    //public void ActivatePowerUp(params object[] parameters)
+    //{
+    //    //lo activo y lo hago empty de nuevo
+    //    print("activate powerup");
+    //    _currentPowerUp.Activate();
+    //    _currentPowerUp = _powers[0];
+    //}
+
+    public void CoinRainAnimationStart(params object[] parameters)
+    {
+        m_Animator.SetTrigger("Monedas");
 
     }
-    public void ActivatePowerUp(params object[] parameters)
-    {
-        //lo activo y lo hago empty de nuevo
-        print("activate powerup");
-
-        _currentPowerUp.Activate();
-
-        if (_currentPowerUp == _powers[2]) //solo para modo chiquito
-        {
-            EventManager.Trigger(Evento.ModoChiquitoStart);
-        }
-        if (_currentPowerUp == _powers[3]) //solo para lluvia de monedas
-        {
-            m_Animator.SetTrigger("Monedas");
-        }
-        _currentPowerUp = _powers[0];
-    }
-    //public void StartBoost()
-    //{
-    //    StartCoroutine(Boost());
-    //}
-    //public IEnumerator Boost()
-    //{
-    //    Vector3 originalScale = transform.localScale;
-    //    //pasan cosas
-    //    print("arranca el boost");
-    //    transform.localScale = Vector3.one * bonusScale;
-
-    //    yield return new WaitForSeconds(boostTime);
-
-    //    //terminan de pasar cosas
-    //    print("termina el boost");
-    //    transform.localScale = originalScale;
-    //}
-    public void StartRescale()
+    public void StartRescale(params object[] parameters)
     {
         StartCoroutine(Rescale());
     }
@@ -256,9 +223,22 @@ public class ShipThrusters : Ship, IGravity
             EventManager.Unsubscribe(Evento.ThrusterDown, ReleaseShip);
             EventManager.Unsubscribe(Evento.ThrusterUp, EndThruster);
             EventManager.Unsubscribe(Evento.AtmosphereWall, EscapeAtmosphere);
-            EventManager.Unsubscribe(Evento.CajaPickup, SetCurrentPowerUp);
-            EventManager.Unsubscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+            //EventManager.Unsubscribe(Evento.CajaPickup, SetCurrentPowerUp);
+            //EventManager.Unsubscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
+            EventManager.Unsubscribe(Evento.ModoChiquitoStart, StartRescale);
+            EventManager.Unsubscribe(Evento.CoinRainStart, CoinRainAnimationStart);
+
+
             //print("destrui a este shipthrusters on sceneclosure");
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<ITriggerCollider>() != null)
+        {
+            var collider = other.GetComponent<ITriggerCollider>();
+            collider.Activate();
         }
     }
 }

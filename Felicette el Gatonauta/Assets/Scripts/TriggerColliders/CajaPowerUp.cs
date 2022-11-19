@@ -5,7 +5,7 @@ using UnityEngine;
 public class CajaPowerUp : TriggerCollider
 {
     //el script de las cajas
-    //cuando las chocas, te dan su poder.
+    //en el start, se genera random qué tipo de poder da. luego el powerup manager se encarga del resto
 
     int _thisBoxPowerUp;
 
@@ -16,15 +16,15 @@ public class CajaPowerUp : TriggerCollider
 
     int GetPowerType()
     {
-        int randomPower = Random.Range(0, 3);
+        int randomPower = Random.Range(1, 4);
         return randomPower;
     }
 
-    protected override void OnTriggerEnter(Collider other)
+    public override void Activate()
     {
-        //print("rompi la caja, su poder es " + thisBoxPowerUp);
+        base.Activate();
         AudioManager.instance.PlayByName("CrateBreak");
-        EventManager.Trigger(Evento.CajaPickup, _thisBoxPowerUp); 
+        EventManager.Trigger(Evento.CajaPickup, _thisBoxPowerUp);
         Destroy(this.gameObject);
     }
 }

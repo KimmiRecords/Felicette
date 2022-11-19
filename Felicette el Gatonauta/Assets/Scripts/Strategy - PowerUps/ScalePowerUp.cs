@@ -6,9 +6,9 @@ public class ScalePowerUp : IPowerUp
 {
     //este powerup te cambia el tamaño de la nave durante unos segundos
 
-    ShipThrusters _ship;
+    Ship _ship;
 
-    public ScalePowerUp(ShipThrusters ship)
+    public ScalePowerUp(Ship ship)
     {
         _ship = ship;
     }
@@ -18,6 +18,7 @@ public class ScalePowerUp : IPowerUp
         AudioManager.instance.PlayByName("ModoChiquitoOn");
 
         Debug.Log("cambio la scale");
-        _ship.StartRescale();
+        EventManager.Trigger(Evento.ModoChiquitoStart);
+        //_ship.StartRescale();
     }
 }

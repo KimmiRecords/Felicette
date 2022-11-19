@@ -20,7 +20,7 @@ public class ButtonManager : MonoBehaviour
         {
             _botones.Add(_childrenButtons[i].gameObject.name, _childrenButtons[i]);
             _childrenButtons[i].gameObject.SetActive(false);
-            print(_childrenButtons[i].gameObject.name);
+            //print(_childrenButtons[i].gameObject.name);
         }
 
         ActivateLevelButtons();

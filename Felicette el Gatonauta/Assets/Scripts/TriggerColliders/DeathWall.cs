@@ -12,9 +12,9 @@ public class DeathWall : TriggerCollider
         _esteNivel = SceneManager.GetActiveScene().name;
     }
 
-    protected override void OnTriggerEnter(Collider other)
+    public override void Activate()
     {
-        base.OnTriggerEnter(other);
+        base.Activate();
         AudioManager.instance.PlayByName("ShipCrash");
         EventManager.Trigger(Evento.DeathWall, _esteNivel);
     }

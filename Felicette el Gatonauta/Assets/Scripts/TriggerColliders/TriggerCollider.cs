@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class TriggerCollider : Trigger
+public abstract class TriggerCollider : MonoBehaviour, ITriggerCollider
 {
-    //clase base para los colliders triggers que hacen cosas
-
+    public virtual void Activate()
+    {
+        //Debug.Log(this.name + ": Activate");
+    }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
