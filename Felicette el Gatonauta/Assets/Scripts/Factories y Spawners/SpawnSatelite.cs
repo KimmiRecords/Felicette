@@ -5,18 +5,23 @@ using UnityEngine;
 public class SpawnSatelite : MonoBehaviour
 {
     //este script se lo adjuntas a un planeta y spawnea satelites que orbitan alrededor
+    [Header("Satelite Settings")]
     public Satelite satelitePrefab;
     public int sateliteAmount;
     public float orbitRadio;
     public float revolutionSpeed;
 
-    Vector3 firstSatelitePos;
+    [Header("Bullet Settings")]
+    public float bulletSpeed;
+    public float shootingInterval;
+    public int totalBullets;
 
     private void Start()
     {
-        firstSatelitePos = transform.position + GetRandomPositionAroundMe(orbitRadio);
-        CreateSatelites(sateliteAmount);
-
+        if (sateliteAmount > 0)
+        {
+            CreateSatelites(sateliteAmount);
+        }
     }
 
     public void CreateSatelites(int amount)
@@ -27,12 +32,11 @@ public class SpawnSatelite : MonoBehaviour
             SetColor(Color.blue).
             SetOrbit(true, this.gameObject, revolutionSpeed, orbitRadio).
             SetParent(this.transform).
-            SetPosition(firstSatelitePos).
+            SetRandomPositionInCircleAroundTarget(this.transform, orbitRadio).
             SetShootingInterval(0.2f).
             SetTotalBullets(3);
 
         sat.name = "Satelite";
-
 
         if (amount > 1)
         {
@@ -42,13 +46,4 @@ public class SpawnSatelite : MonoBehaviour
             }
         }
     }
-
-    public Vector3 GetRandomPositionAroundMe(float radio)
-    {
-        Vector3 pos = Random.onUnitSphere * radio;
-        pos.z = 0;
-
-        return pos;
-    }
-
 }

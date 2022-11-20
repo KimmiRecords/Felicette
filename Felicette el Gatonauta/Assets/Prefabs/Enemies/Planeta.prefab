@@ -199,4 +199,7 @@ MonoBehaviour:
   satelitePrefab: {fileID: 8268042323943797441, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
   sateliteAmount: 3
   orbitRadio: 25
-  revolutionSpeed: 10
+  revolutionSpeed: 20
+  bulletSpeed: 2
+  shootingInterval: 0.3
+  totalBullets: 3

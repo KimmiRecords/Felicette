@@ -113,7 +113,7 @@ public class LevelManager : MonoBehaviour
                 value++;
             }
         }
-        print("en " + levelList + " hay " + value + " valores True");
+        //print("en " + levelList + " hay " + value + " valores True");
         return value;
     }
 
@@ -167,7 +167,7 @@ public class LevelManager : MonoBehaviour
     public void NivelFallado(params object[] parameters)
     {
         _escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel = (string)parameters[0];
-        print(_escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel);
+        //print(_escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel);
         LoadData();
         //print("nivel fallado: loaddata");
 

@@ -32,7 +32,7 @@ public class ButtonManager : MonoBehaviour
         for (int i = 0; i < (PlayerPrefs.GetInt("nivelesCompletados") + 1); i++)
         {
             _childrenButtons[i].gameObject.SetActive(true);
-            print("habilite el boton " + _childrenButtons[i].name);
+            //print("habilite el boton " + _childrenButtons[i].name);
         }
     }
 
@@ -43,7 +43,7 @@ public class ButtonManager : MonoBehaviour
             ColorBlock cb = _childrenButtons[i].colors;
             cb.normalColor = Color.green;
             _childrenButtons[i].colors = cb;
-            print("pinte el boton " + _childrenButtons[i].name);
+            //print("pinte el boton " + _childrenButtons[i].name);
         }
     }
 }

@@ -24,6 +24,6 @@ public class CoinPowerUp : IPowerUp
         }
 
         EventManager.Trigger(Evento.CoinRainStart);
-        Debug.Log("ganaste " + randomCoins + " monedas");
+        //Debug.Log("ganaste " + randomCoins + " monedas");
     }
 }
