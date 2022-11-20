@@ -20,7 +20,7 @@ public class ShipModel
     {
         ship = st;
         
-        EventManager.Subscribe(Evento.AtmosphereWall, EscapeAtmosphere);
+        //EventManager.Subscribe(Evento.AtmosphereWall, EscapeAtmosphere);
 
         ship.CurrentGas = ship.maxGas;
         _isReleased = false;

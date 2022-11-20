@@ -24,7 +24,7 @@ public class PowerUpManager : MonoBehaviour
 
     public void SetCurrentPowerUp(params object[] parameters)
     {
-        print("setcurrentpowerup");
+        //print("setcurrentpowerup");
         if (parameters[0] is int)
         {
             _currentPowerUp = _powers[(int)parameters[0]];
@@ -41,7 +41,7 @@ public class PowerUpManager : MonoBehaviour
     public void ActivatePowerUp(params object[] parameters)
     {
         //lo activo y lo hago empty de nuevo
-        print("activate powerup");
+        //print("activate powerup");
         _currentPowerUp.Activate();
         _currentPowerUp = _powers[0];
     }

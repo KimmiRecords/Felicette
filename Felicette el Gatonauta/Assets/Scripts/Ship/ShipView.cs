@@ -10,7 +10,7 @@ public class ShipView
 
     public ShipView(ShipModel sm, Animator a)
     {
-        Debug.Log("view created");
+        //Debug.Log("view created");
         _model = sm;
         _anim = a;
 

@@ -22,7 +22,7 @@ public class ShipGasManager
         //si no queda mas gas
         if (ship.CurrentGas <= 0)
         {
-            Debug.Log("no hay gas para quemar");
+            //Debug.Log("no hay gas para quemar");
             ship.canThrust = false;
         }
 

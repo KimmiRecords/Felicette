@@ -21,6 +21,9 @@ public class ShipThrusters : Ship, IGravity
         myRigidBody.useGravity = true;
         myRigidBody = this.gameObject.GetComponent<Rigidbody>();
         gasManager = new ShipGasManager(this);
+
+        EventManager.Subscribe(Evento.AtmosphereWall, EscapeAtmosphere);
+
     }
 
     private void FixedUpdate()
@@ -56,7 +59,8 @@ public class ShipThrusters : Ship, IGravity
             EventManager.Unsubscribe(Evento.ThrusterDown, _model.StartThruster);
             EventManager.Unsubscribe(Evento.ThrusterDown, _model.ReleaseShip);
             EventManager.Unsubscribe(Evento.ThrusterUp, _model.EndThruster);
-            EventManager.Unsubscribe(Evento.AtmosphereWall, _model.EscapeAtmosphere);
+            EventManager.Unsubscribe(Evento.AtmosphereWall, EscapeAtmosphere);
+            //EventManager.Unsubscribe(Evento.AtmosphereWall, _model.EscapeAtmosphere);
             EventManager.Unsubscribe(Evento.ModoChiquitoStart, _view.StartRescale);
             EventManager.Unsubscribe(Evento.CoinRainStart, _view.CoinRainAnimationStart);
             EventManager.Unsubscribe(Evento.ThrusterDown, _view.StartThrusterFX);
