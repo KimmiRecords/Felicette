@@ -2715,6 +2715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Satelite (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6889412959495673506, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6889412959495673519, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4918,6 +4922,10 @@ PrefabInstance:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6851817831912239009, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
+      propertyPath: sateliteAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6889412959495673506, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
       propertyPath: m_Name
       value: Planeta (1)
@@ -6782,6 +6790,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Satelite (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6889412959495673506, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6889412959495673519, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -7068,6 +7080,10 @@ PrefabInstance:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6851817831912239009, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
+      propertyPath: sateliteAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6889412959495673506, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
       propertyPath: m_Name
       value: Planeta
@@ -7292,6 +7308,10 @@ PrefabInstance:
     - target: {fileID: 6889412959495673506, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_Name
       value: Satelite (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889412959495673506, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6889412959495673519, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_RootOrder
@@ -8944,6 +8964,10 @@ PrefabInstance:
     - target: {fileID: 6889412959495673506, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_Name
       value: Satelite
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889412959495673506, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6889412959495673519, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_RootOrder
