@@ -40,12 +40,13 @@ public class ShipThrusters : Ship, IGravity
     public void EscapeAtmosphere(params object[] parameters)
     {
         _model.EscapeAtmosphere();
-        _view.EscapeAtmosphereSFX();
+        _view.EscapeAtmosphereFX();
     }
 
     public void ApplyGravity(Vector3 planetPosition, float planetMass)
     {
         _model.ApplyGravity(planetPosition, planetMass);
+        _view.ApplyGravityFX();
     }
 
     private void OnDestroy()

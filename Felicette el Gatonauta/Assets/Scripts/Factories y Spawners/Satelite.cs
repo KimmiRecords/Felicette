@@ -124,6 +124,7 @@ public class Satelite : Prototype, ITriggerCollider
                 SetTarget(playerPos);
 
             print("disparo bala");
+            AudioManager.instance.PlayByName("Zap1");
             yield return new WaitForSeconds(shootingInterval);
         }
     }
