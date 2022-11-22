@@ -314,8 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a55075d4b5da543828ad7f131e00b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.01
-  frequency: 0.5
+  amplitude: 3
+  frequency: 3
   orientation: 0
 --- !u!114 &6851817831912239009
 MonoBehaviour:

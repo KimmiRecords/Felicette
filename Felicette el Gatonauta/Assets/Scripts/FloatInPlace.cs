@@ -11,8 +11,8 @@ public class FloatInPlace : MonoBehaviour
     //este script se lo adjuntas a un objeto para que oscile en el lugar. 
     //podes elegir amplitud, frecuencia y sentido del movimiento
 
-    [Range(0.01f, 0.1f)]
-    public float amplitude = 0.05f;
+    [Range(0.1f, 5f)]
+    public float amplitude = 1f;
     public float frequency = 1;
     public Orientation orientation = Orientation.vertical;
 
@@ -31,6 +31,6 @@ public class FloatInPlace : MonoBehaviour
 
     void Update()
     {
-        transform.position += _dir * amplitude * Mathf.Sin(frequency * Time.time);
+        transform.position += _dir * amplitude * Mathf.Sin(frequency * Time.time) * Time.deltaTime;
     }
 }

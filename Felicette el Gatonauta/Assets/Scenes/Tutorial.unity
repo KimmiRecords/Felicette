@@ -3223,10 +3223,6 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 598443681465597131, guid: 5e9ec0ec26b591d4a8cdd6304be1390a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 19.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 598443681465597131, guid: 5e9ec0ec26b591d4a8cdd6304be1390a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -4123,11 +4119,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4358318151457878818, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
       propertyPath: amplitude
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4358318151457878818, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
-      propertyPath: frequency
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4358318151457878818, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
       propertyPath: orientation
@@ -6126,11 +6118,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4358318151457878818, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
       propertyPath: amplitude
-      value: 0.01
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4358318151457878818, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
       propertyPath: frequency
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4358318151457878818, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
       propertyPath: orientation
