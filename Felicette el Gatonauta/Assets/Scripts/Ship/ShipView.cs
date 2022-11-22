@@ -51,7 +51,7 @@ public class ShipView
 
     }
 
-    public void EscapeAtmosphereSFX(params object[] parameters)
+    public void EscapeAtmosphereFX(params object[] parameters)
     {
         AudioManager.instance.StopByName("RadioPreLaunchSFX");
 
@@ -59,6 +59,12 @@ public class ShipView
         {
             AudioManager.instance.PlayByName("EroicaLoop");
         }
+    }
+
+    public void ApplyGravityFX()
+    {
+        //AudioManager.instance.PlayByName("GravityAoE"); //esto es mejor si lo hace el planeta con su ontrigger enter stay exit
+        //efectitos de sprite de la ship si los hubiera
     }
 
     public void StartThrusterFX(params object[] parameters)
