@@ -17,7 +17,7 @@ public class ScalePowerUp : IPowerUp
     {
         AudioManager.instance.PlayByName("ModoChiquitoOn");
 
-        Debug.Log("cambio la scale");
+        //Debug.Log("cambio la scale");
         EventManager.Trigger(Evento.ModoChiquitoStart);
         //_ship.StartRescale();
     }

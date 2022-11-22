@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
 
-    public int nivelesJugables = 2;
+    public int nivelesJugables;
 
     bool[] _nivelesCompletados;
     string _escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel;
@@ -90,7 +90,7 @@ public class LevelManager : MonoBehaviour
 
         //print("cargue la data");
         //print("load data: tengo " + Coins + " coins");
-        //print("load data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
+        print("load data: hay " + CountCompletedLevels(_nivelesCompletados) + " niveles completados");
     }
     public void EraseData(params object[] parameters)
     {
@@ -102,13 +102,13 @@ public class LevelManager : MonoBehaviour
         //print("erase data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
     }
 
-    public int CountCompletedLevels(bool[] levelList)
+    public int CountCompletedLevels(bool[] completedLevels)
     {
         int value = 0;
 
-        for (int i = 0; i < levelList.Length; i++)
+        for (int i = 0; i < completedLevels.Length; i++)
         {
-            if (levelList[i] == true)
+            if (completedLevels[i] == true)
             {
                 value++;
             }
@@ -122,11 +122,14 @@ public class LevelManager : MonoBehaviour
         _coins++;
         EventManager.Trigger(Evento.CoinUpdate, _coins);
     }
-
     void GoToScene(params object[] parameters)
     {
         AudioManager.instance.StopByName("RadioPreLaunchSFX");
         AudioManager.instance.StopByName("PropulsoresSFX");
+        AudioManager.instance.StopByName("GravityAoE");
+        AudioManager.instance.StopByName("TimerFourTicks");
+
+
 
         //al metodo gotoscene le pasas un string con el nombre de la escena a la que queres ir
         if (parameters[0] is string)
@@ -149,18 +152,19 @@ public class LevelManager : MonoBehaviour
     {
         //pongo true en el numero de nivel que se completo recien
         //y te mando a la escena de level completed
+
         if (parameters[1] is int)
         {
             _nivelesCompletados[(int)parameters[1]] = true;
-            //print("acabo de completar el nivel " + (int)parameters[1]);
+            print("acabo de completar el nivel " + (int)parameters[1]);
         }
         else
         {
-            //print("el primer parametro que me pasaste no era un int");
+            print("el primer parametro que me pasaste no era un int");
         }
 
         SaveData();
-        //print("nivel completado: savedata");
+        //print("nivel " + (int)parameters[1] + " completado: savedata");
 
         GoToScene("LevelComplete");
     }

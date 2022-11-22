@@ -109,7 +109,7 @@ public class Satelite : Prototype, ITriggerCollider
 
     public void Activate()
     {
-        print("entraste al radio de ataque del satelite");
+        //print("entraste al radio de ataque del satelite");
         StartCoroutine(Shoot());
     }
 
@@ -123,7 +123,7 @@ public class Satelite : Prototype, ITriggerCollider
                 SetSpeed(bulletSpeed).
                 SetTarget(playerPos);
 
-            print("disparo bala");
+            //print("disparo bala");
             AudioManager.instance.PlayByName("Zap1");
             yield return new WaitForSeconds(shootingInterval);
         }
