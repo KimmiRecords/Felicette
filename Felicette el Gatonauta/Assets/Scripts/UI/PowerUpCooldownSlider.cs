@@ -25,7 +25,7 @@ public class PowerUpCooldownSlider : MonoBehaviour
 
     public IEnumerator CooldownTimer()
     {
-        print("empieza el timer");
+        //print("empieza el timer");
         thisSlider.value = thisSlider.maxValue;
         yield return new WaitForSeconds(1);
 
