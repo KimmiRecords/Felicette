@@ -25,6 +25,8 @@ public enum Evento
     PowerUpButtonUp,
     PauseButtonUp,
     UnpauseButtonUp,
+    EquipItemButtonUp,
+    UnequipItem,
 
     //otros
     BurnGas,

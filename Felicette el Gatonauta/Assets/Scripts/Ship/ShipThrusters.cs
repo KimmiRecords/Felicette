@@ -8,6 +8,7 @@ public class ShipThrusters : Ship, IGravity
     //el "player", partido en los 3 mvc
 
     public Animator anim;
+    public SpriteRenderer itemsSpriteRenderer;
     ShipModel _model;
     ShipView _view;
     ShipController _controller;
@@ -15,7 +16,7 @@ public class ShipThrusters : Ship, IGravity
     void Start()
     {
         _model = new ShipModel(this);
-        _view = new ShipView(_model, anim);
+        _view = new ShipView(_model, anim, itemsSpriteRenderer);
         _controller = new ShipController(_model);
 
         myRigidBody.useGravity = true;
@@ -60,13 +61,15 @@ public class ShipThrusters : Ship, IGravity
             EventManager.Unsubscribe(Evento.ThrusterDown, _model.StartThruster);
             EventManager.Unsubscribe(Evento.ThrusterDown, _model.ReleaseShip);
             EventManager.Unsubscribe(Evento.ThrusterUp, _model.EndThruster);
+
             EventManager.Unsubscribe(Evento.AtmosphereWall, EscapeAtmosphere);
-            //EventManager.Unsubscribe(Evento.AtmosphereWall, _model.EscapeAtmosphere);
+
             EventManager.Unsubscribe(Evento.ModoChiquitoStart, _view.StartRescale);
             EventManager.Unsubscribe(Evento.CoinRainStart, _view.CoinRainAnimationStart);
             EventManager.Unsubscribe(Evento.ThrusterDown, _view.StartThrusterFX);
             EventManager.Unsubscribe(Evento.ThrusterUp, _view.EndThrusterFX);
-            //print("destrui a este shipthrusters on sceneclosure");
+            //EventManager.Unsubscribe(Evento.EquipItem, _view.EquipItem);
+            //EventManager.Unsubscribe(Evento.UnequipItem, _view.UnequipItem);
         }
     }
 
