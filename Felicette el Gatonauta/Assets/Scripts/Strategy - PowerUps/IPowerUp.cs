@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPowerUp
 {
-    void Activate();
+    void Activate(Ship s);
 }

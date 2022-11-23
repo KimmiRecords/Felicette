@@ -12,10 +12,10 @@ public class PowerUpManager : MonoBehaviour
 
     void Start()
     {
-        _powers[0] = new EmptyPowerUp(ship);
-        _powers[1] = new GasPowerUp(ship);
-        _powers[2] = new ScalePowerUp(ship);
-        _powers[3] = new CoinPowerUp(ship);
+        _powers[0] = new EmptyPowerUp();
+        _powers[1] = new GasPowerUp();
+        _powers[2] = new ScalePowerUp();
+        _powers[3] = new CoinPowerUp();
         _currentPowerUp = _powers[0];
 
         EventManager.Subscribe(Evento.CajaPickup, SetCurrentPowerUp);
@@ -42,7 +42,7 @@ public class PowerUpManager : MonoBehaviour
     {
         //lo activo y lo hago empty de nuevo
         //print("activate powerup");
-        _currentPowerUp.Activate();
+        _currentPowerUp.Activate(ship);
         _currentPowerUp = _powers[0];
     }
 

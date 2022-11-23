@@ -4301,11 +4301,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2936955704723668987, guid: e51c28ad66316a849b86bc51d92a97db, type: 3}
-  objectAmount: 10
+  objectAmount: 5
   minimumX: -24
   maximumX: 24
-  minimumY: 10
-  maximumY: 1500
+  minimumY: 24
+  maximumY: 3000
 --- !u!4 &1170991640
 Transform:
   m_ObjectHideFlags: 0

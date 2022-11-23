@@ -6,14 +6,7 @@ public class EmptyPowerUp : IPowerUp
 {
     //este es el powerup vacio, que tenes por default. 
 
-    Ship _ship;
-
-    public EmptyPowerUp(Ship ship)
-    {
-        _ship = ship;
-    }
-
-    public void Activate()
+    public void Activate(Ship s)
     {
         Debug.Log("nada");
     }
