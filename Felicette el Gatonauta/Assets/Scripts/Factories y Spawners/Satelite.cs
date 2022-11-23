@@ -97,6 +97,11 @@ public class Satelite : Prototype, ITriggerCollider
         return sat;
     }
 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         if (orbits)
@@ -117,13 +122,12 @@ public class Satelite : Prototype, ITriggerCollider
     {
         for (int i = 0; i < totalBullets; i++)
         {
-            //instantiate bullet
-            var bala = Instantiate(bulletPrefab).
+            print("SATELITE: pido una bala para instanciar");
+            Bullet bala = SateliteManager.instance.GetBullet().
                 SetPosition(transform.position).
                 SetSpeed(bulletSpeed).
-                SetTarget(playerPos);
+                SetTarget(playerPos); 
 
-            //print("disparo bala");
             AudioManager.instance.PlayByName("Zap1");
             yield return new WaitForSeconds(shootingInterval);
         }

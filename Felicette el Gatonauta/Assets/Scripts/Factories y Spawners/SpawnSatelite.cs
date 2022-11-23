@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnSatelite : MonoBehaviour
 {
     //este script se lo adjuntas a un planeta y spawnea satelites que orbitan alrededor
+
     [Header("Satelite Settings")]
     public Satelite satelitePrefab;
     public int sateliteAmount;
@@ -28,13 +29,13 @@ public class SpawnSatelite : MonoBehaviour
     {
         //creo el primero, luego clono
         Satelite sat = Instantiate(satelitePrefab).
-            SetBulletSpeed(1).
+            SetBulletSpeed(bulletSpeed).
             SetColor(Color.blue).
             SetOrbit(true, this.gameObject, revolutionSpeed, orbitRadio).
             SetParent(this.transform).
             SetRandomPositionInCircleAroundTarget(this.transform, orbitRadio).
-            SetShootingInterval(0.2f).
-            SetTotalBullets(3);
+            SetShootingInterval(shootingInterval).
+            SetTotalBullets(totalBullets);
 
         sat.name = "Satelite";
 

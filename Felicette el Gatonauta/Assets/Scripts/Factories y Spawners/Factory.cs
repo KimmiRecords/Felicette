@@ -9,8 +9,14 @@ public class Factory<T> where T : MonoBehaviour
     [SerializeField]
     protected T prefab;
 
+    //public Factory(T objPrefab)
+    //{
+    //    prefab = objPrefab;
+    //}
+
     public T Get()
     {
         return GameObject.Instantiate(prefab);
     }
+
 }
