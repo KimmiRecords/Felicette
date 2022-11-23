@@ -7,17 +7,23 @@ public class ShipView
     //el view del mvc
     Animator _anim;
     ShipModel _model;
+    SpriteRenderer _itemSr;
 
-    public ShipView(ShipModel sm, Animator a)
+    public ShipView(ShipModel sm, Animator a, SpriteRenderer sr)
     {
         //Debug.Log("view created");
         _model = sm;
         _anim = a;
+        _itemSr = sr;
 
         EventManager.Subscribe(Evento.ModoChiquitoStart, StartRescale);
         EventManager.Subscribe(Evento.CoinRainStart, CoinRainAnimationStart);
         EventManager.Subscribe(Evento.ThrusterDown, StartThrusterFX);
         EventManager.Subscribe(Evento.ThrusterUp, EndThrusterFX);
+
+        EventManager.Subscribe(Evento.EquipItem, EquipItem);
+        EventManager.Subscribe(Evento.UnequipItem, UnequipItem);
+
     }
 
     public void CoinRainAnimationStart(params object[] parameters)
@@ -80,5 +86,14 @@ public class ShipView
     {
         AudioManager.instance.StopByName("PropulsoresSFX");
         _anim.SetBool("IsThrusting", false);
+    }
+
+    public void EquipItem(params object[] parameters)
+    {
+        _itemSr.sprite = (Sprite)parameters[0];
+    }
+    public void UnequipItem(params object[] parameters)
+    {
+        _itemSr.sprite = null;
     }
 }

@@ -69,6 +69,14 @@ public class LevelManager : MonoBehaviour
         //print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            AddCoin();
+        }
+    }
+
     public void SaveData()
     {
         PlayerPrefs.SetInt("coins", _coins);
