@@ -25,7 +25,7 @@ public enum Evento
     PowerUpButtonUp,
     PauseButtonUp,
     UnpauseButtonUp,
-    EquipItem,
+    EquipItemButtonUp,
     UnequipItem,
 
     //otros

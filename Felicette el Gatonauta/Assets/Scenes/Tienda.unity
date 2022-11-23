@@ -395,7 +395,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.77647066, g: 0.9607844, b: 0.7137255, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8679245, g: 0.749199, b: 0.749199, a: 1}
     m_PressedColor: {r: 0.764151, g: 0.5803222, b: 0.5803222, a: 1}
     m_SelectedColor: {r: 0.6805351, g: 1, b: 0.18396229, a: 1}
@@ -468,13 +468,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1c7c9af3b44cc409052316b12e6533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: vostok
+  itemName: pirata
   itemCost: 5
-  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  lockedColor: {r: 0.4811321, g: 0.4788626, b: 0.4788626, a: 0}
-  unlockedColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0}
-  purchasedColor: {r: 0.8007143, g: 0.9716981, b: 0.79294235, a: 0}
-  equippedColor: {r: 0.3086353, g: 0.754717, b: 0.28835887, a: 1}
+  itemSprite: {fileID: 21300000, guid: 35b83ac8281b26546b22515dba1dde75, type: 3}
+  wasPurchased: 0
 --- !u!1 &72631760
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,7 +875,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Nave \nApollo\n$20"
+  m_text: 'Item
+
+    Bloqueado
+
+    $---
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1161,11 +1164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Nave
-
-    Soyuz
-
-    $10'
+  m_text: "Sombrero \nN\xF3n L\xE1\n$10"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1299,11 +1298,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sombrero
+  m_text: 'Item
 
-    Pirata
+    Bloqueado
 
-    $10'
+    $---
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1550,7 +1551,7 @@ RectTransform:
   - {fileID: 1376201579}
   - {fileID: 714608139}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2703,7 +2704,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sombrero \nNon L\xE1\n$20"
+  m_text: 'Item
+
+    Bloqueado
+
+    $---
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2837,7 +2844,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sombrero \nCowboy\n$15"
+  m_text: 'Item
+
+    Bloqueado
+
+    $---
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3149,9 +3162,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Nave
-
-    Vostok
+  m_text: 'Sombrero Pirata
 
     $5'
   m_isRightToLeft: 0
@@ -3287,7 +3298,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Nave \nArtemis\n$15"
+  m_text: 'Item
+
+    Bloqueado
+
+    $---
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3421,7 +3438,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sombrero \nBruja \n$5"
+  m_text: 'Item
+
+    Bloqueado
+
+    $---
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3562,7 +3585,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2122264197
 GameObject:
@@ -3625,7 +3648,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.8089372, g: 1, b: 0.740566, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.8679245, g: 0.749199, b: 0.749199, a: 1}
     m_PressedColor: {r: 0.764151, g: 0.5803222, b: 0.5803222, a: 1}
     m_SelectedColor: {r: 0.6805351, g: 1, b: 0.18396229, a: 1}
@@ -3698,13 +3721,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1c7c9af3b44cc409052316b12e6533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: soyuz
+  itemName: nonla
   itemCost: 10
-  itemSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  lockedColor: {r: 0.48235294, g: 0.47843137, b: 0.47843137, a: 0}
-  unlockedColor: {r: 0.85882354, g: 0.85882354, b: 0.85882354, a: 0}
-  purchasedColor: {r: 0.8, g: 0.972549, b: 0.7921569, a: 0}
-  equippedColor: {r: 0.30980393, g: 0.7529412, b: 0.2901961, a: 1}
+  itemSprite: {fileID: 21300000, guid: 33c09c83d31385d429a663ae5f31cd8f, type: 3}
+  wasPurchased: 0
 --- !u!1 &2139596909
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,3 +3846,117 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139596909}
   m_CullTransparentMesh: 1
+--- !u!1001 &1670148154809903416
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 550.7374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 709.403
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.783981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621504, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670148155199621518, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+      propertyPath: m_Name
+      value: SkinsManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 527c87f5e0a8ce44cad8e992790a5d88, type: 3}
+--- !u!1001 &6478702600423580197
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 550.7374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 709.4031
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.783981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517377113513045921, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571395480753921030, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}
+      propertyPath: m_Name
+      value: ItemButtonManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5ec8095ba2b33f94395bba5b714d54b0, type: 3}

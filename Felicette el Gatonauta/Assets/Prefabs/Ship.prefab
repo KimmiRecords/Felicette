@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 1276214291517294217}
   - component: {fileID: 2742990574165987400}
   m_Layer: 0
-  m_Name: SpriteItem
+  m_Name: ItemSpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,8 +127,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005069265719154387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.32366073, y: 0.68973213, z: 0}
-  m_LocalScale: {x: 2.504, y: 2.504, z: 2.504}
+  m_LocalPosition: {x: 0, y: 0.292, z: -0.419}
+  m_LocalScale: {x: 0.11899874, y: 0.11899874, z: 0.11899874}
   m_Children: []
   m_Father: {fileID: 7287007433076890875}
   m_RootOrder: 2
@@ -178,7 +178,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -581,7 +581,7 @@ MonoBehaviour:
   randomCoinsMax: 11
   canThrust: 0
   anim: {fileID: 1724095274}
-  itemsSpriteRenderer: {fileID: 0}
+  itemsSpriteRenderer: {fileID: 2742990574165987400}
 --- !u!114 &1538598443036514306
 MonoBehaviour:
   m_ObjectHideFlags: 0

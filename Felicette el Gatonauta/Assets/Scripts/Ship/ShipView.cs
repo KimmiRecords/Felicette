@@ -21,9 +21,7 @@ public class ShipView
         EventManager.Subscribe(Evento.ThrusterDown, StartThrusterFX);
         EventManager.Subscribe(Evento.ThrusterUp, EndThrusterFX);
 
-        EventManager.Subscribe(Evento.EquipItem, EquipItem);
-        EventManager.Subscribe(Evento.UnequipItem, UnequipItem);
-
+        _itemSr.sprite = SkinsManager.instance.currentSkin;
     }
 
     public void CoinRainAnimationStart(params object[] parameters)
@@ -88,12 +86,14 @@ public class ShipView
         _anim.SetBool("IsThrusting", false);
     }
 
-    public void EquipItem(params object[] parameters)
-    {
-        _itemSr.sprite = (Sprite)parameters[0];
-    }
-    public void UnequipItem(params object[] parameters)
-    {
-        _itemSr.sprite = null;
-    }
+    //public void EquipItem(params object[] parameters)
+    //{
+    //    Debug.Log("ship view: equipe el item " + (Sprite)parameters[0]);
+    //    _itemSr.sprite = (Sprite)parameters[0];
+    //}
+    //public void UnequipItem(params object[] parameters)
+    //{
+    //    Debug.Log("ship view: desequipe todo");
+    //    _itemSr.sprite = null;
+    //}
 }

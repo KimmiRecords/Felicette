@@ -68,8 +68,8 @@ public class ShipThrusters : Ship, IGravity
             EventManager.Unsubscribe(Evento.CoinRainStart, _view.CoinRainAnimationStart);
             EventManager.Unsubscribe(Evento.ThrusterDown, _view.StartThrusterFX);
             EventManager.Unsubscribe(Evento.ThrusterUp, _view.EndThrusterFX);
-            EventManager.Unsubscribe(Evento.EquipItem, _view.EquipItem);
-            EventManager.Unsubscribe(Evento.UnequipItem, _view.UnequipItem);
+            //EventManager.Unsubscribe(Evento.EquipItem, _view.EquipItem);
+            //EventManager.Unsubscribe(Evento.UnequipItem, _view.UnequipItem);
         }
     }
 

@@ -14,8 +14,12 @@ public class LevelManager : MonoBehaviour
     public int nivelesJugables;
 
     bool[] _nivelesCompletados;
-    string _escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel;
+    string _sceneToRestart;
     int _coins;
+
+    //el bool es si fue comprado o no
+    public Dictionary<string, int> allSkins = new Dictionary<string, int>();
+
     public int Coins
     {
         get
@@ -65,6 +69,7 @@ public class LevelManager : MonoBehaviour
         EventManager.Subscribe(Evento.EraseDataButtonUp, EraseData);
        
         _nivelesCompletados = new bool[nivelesJugables];
+
         //print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
         //print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
     }
@@ -81,6 +86,9 @@ public class LevelManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("coins", _coins);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(_nivelesCompletados));
+        PlayerPrefs.SetInt("pirata", allSkins["pirata"]);
+        PlayerPrefs.SetInt("nonla", allSkins["nonla"]);
+
         PlayerPrefs.Save();
 
         //print("guarde la data");
@@ -88,22 +96,27 @@ public class LevelManager : MonoBehaviour
     public void LoadData()
     {
         Coins = PlayerPrefs.GetInt("coins");
+        EventManager.Trigger(Evento.CoinUpdate, Coins);
 
         for (int i = 0; i < PlayerPrefs.GetInt("nivelesCompletados"); i++)
         {
             _nivelesCompletados[i] = true;
         }
 
-        EventManager.Trigger(Evento.CoinUpdate, Coins);
+        allSkins["pirata"] = PlayerPrefs.GetInt("pirata");
+        allSkins["nonla"] = PlayerPrefs.GetInt("nonla");
+
+
 
         //print("cargue la data");
-        //print("load data: tengo " + Coins + " coins");
-        print("load data: hay " + CountCompletedLevels(_nivelesCompletados) + " niveles completados");
     }
     public void EraseData(params object[] parameters)
     {
         PlayerPrefs.SetInt("coins", 0);
         PlayerPrefs.SetInt("nivelesCompletados", 0);
+        PlayerPrefs.SetInt("pirata", 0);
+        PlayerPrefs.SetInt("nonla", 0);
+
         LoadData();
 
         //print("erase data: tengo " + Coins + " coins");
@@ -178,7 +191,7 @@ public class LevelManager : MonoBehaviour
     }
     public void NivelFallado(params object[] parameters)
     {
-        _escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel = (string)parameters[0];
+        _sceneToRestart = (string)parameters[0];
         //print(_escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel);
         LoadData();
         //print("nivel fallado: loaddata");
@@ -192,7 +205,7 @@ public class LevelManager : MonoBehaviour
     }
     public void ResetLevel(params object[] parameters)
     {
-        GoToScene(_escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel);
+        GoToScene(_sceneToRestart);
     }
     public void QuitGame(params object[] parameters)
     {
