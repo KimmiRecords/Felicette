@@ -34,6 +34,7 @@ public class ShipGasManager
     public void OnGasRefill(params object[] parameters)
     {
         ship.canThrust = true;
+        ship.CurrentGas += (float)parameters[1];
     }
 
     private void OnDestroy()
