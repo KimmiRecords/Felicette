@@ -8,12 +8,13 @@ public class LevelCompleteManager : MonoBehaviour
 
     void Start()
     {
-        int monedas = Random.Range(5, 11) + PlayerPrefs.GetInt("nivelesCompletados");
+        //mandar el ad interstitial molesto
 
-        for (int i = 0; i < monedas; i++)
-        {
-            LevelManager.instance.AddCoin();
-        }
+        int monedas = Random.Range(5, 11) + PlayerPrefs.GetInt("nivelesCompletados");
+        LevelManager.instance.Coins += monedas;
+        AudioManager.instance.PlayByNamePitch("CoinRain", 1.1f);
+
+
         monedasGanadasTMP.text = "Ganaste " + monedas + " monedas extra!";
         LevelManager.instance.SaveData();
     }

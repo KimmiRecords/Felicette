@@ -43,7 +43,6 @@ public class LevelManager : MonoBehaviour
             {
                 _coins = 0;
             }
-            AudioManager.instance.PlayByNamePitch("PickupSFX", 1.9f);
             EventManager.Trigger(Evento.CoinUpdate, _coins);
 
         }
@@ -67,7 +66,6 @@ public class LevelManager : MonoBehaviour
             {
                 _stamina = maxStamina;
             }
-            AudioManager.instance.PlayByNamePitch("CoinRain", 1.5f);
             EventManager.Trigger(Evento.StaminaUpdate, _stamina);
             //EventManager.Trigger(Evento.StaminaUpdate, _stamina);
 
@@ -130,9 +128,11 @@ public class LevelManager : MonoBehaviour
     public void SaveData()
     {
         PlayerPrefs.SetInt("coins", _coins);
+        PlayerPrefs.SetFloat("stamina", _stamina);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(_nivelesCompletados));
         PlayerPrefs.SetInt("pirata", allSkins["Sombrero Pirata"]);
         PlayerPrefs.SetInt("nonla", allSkins["Sombrero Nón Lá"]);
+
 
         PlayerPrefs.Save();
 
@@ -143,6 +143,10 @@ public class LevelManager : MonoBehaviour
         Coins = PlayerPrefs.GetInt("coins");
         EventManager.Trigger(Evento.CoinUpdate, Coins);
 
+        Stamina = PlayerPrefs.GetFloat("stamina");
+        EventManager.Trigger(Evento.StaminaUpdate, Stamina);
+
+
         for (int i = 0; i < PlayerPrefs.GetInt("nivelesCompletados"); i++)
         {
             _nivelesCompletados[i] = true;
@@ -150,9 +154,6 @@ public class LevelManager : MonoBehaviour
 
         allSkins["Sombrero Pirata"] = PlayerPrefs.GetInt("pirata");
         allSkins["Sombrero Nón Lá"] = PlayerPrefs.GetInt("nonla");
-
-
-
         //print("cargue la data");
     }
     public void EraseData(params object[] parameters)
@@ -184,6 +185,8 @@ public class LevelManager : MonoBehaviour
     public void AddCoin(params object[] parameters)
     {
         Coins++;
+        AudioManager.instance.PlayByNamePitch("PickupSFX", 1.9f);
+
     }
     void GoToScene(params object[] parameters)
     {
@@ -240,7 +243,7 @@ public class LevelManager : MonoBehaviour
     public void ExitLevel(params object[] parameters)
     {
         LoadData();
-        print("exitlevel: loaddata");
+        //print("exitlevel: loaddata");
     }
     public void ResetLevel(params object[] parameters)
     {

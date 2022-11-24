@@ -11,10 +11,7 @@ public class CoinPowerUp : IPowerUp
         AudioManager.instance.PlayByName("CoinRain");
 
         int randomCoins = Random.Range(s.randomCoinsMin, s.randomCoinsMax);
-        for (int i = 0; i < randomCoins; i++)
-        {
-            LevelManager.instance.AddCoin();
-        }
+        LevelManager.instance.Coins += randomCoins;
 
         EventManager.Trigger(Evento.CoinRainStart);
         //Debug.Log("ganaste " + randomCoins + " monedas");
