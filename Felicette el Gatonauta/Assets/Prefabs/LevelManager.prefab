@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 8422237598538065367}
   - component: {fileID: 8422237598538065192}
   - component: {fileID: 564662565713922874}
+  - component: {fileID: 3308332801547818904}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -278,6 +279,7 @@ MonoBehaviour:
   canvas: {fileID: 229664688482228033}
   currentSkinImage: {fileID: 4550181241531744962}
   myStaminaSystem: {fileID: 564662565713922874}
+  myNotificationManager: {fileID: 3308332801547818904}
 --- !u!114 &564662565713922874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +294,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToRecharge: 5
   timerText: {fileID: 7913588744778551770}
+--- !u!114 &3308332801547818904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422237598538065193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c68981af4944644a47597847d1ff72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5345530585848331873
 PrefabInstance:
   m_ObjectHideFlags: 0

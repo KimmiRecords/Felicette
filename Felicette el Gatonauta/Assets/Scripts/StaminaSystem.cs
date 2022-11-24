@@ -6,7 +6,7 @@ using TMPro;
 
 public class StaminaSystem : MonoBehaviour
 {
-    [SerializeField] float timeToRecharge = 10f;
+    [SerializeField] public int timeToRecharge = 10;
     bool restoring;
 
     public bool HaveStamina { get => LevelManager.instance.Stamina > 0; }

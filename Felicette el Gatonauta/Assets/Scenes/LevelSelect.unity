@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Tutorial
-  staminaCost: 0
+  staminaCost: 5
 --- !u!1001 &1886338263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1277,7 +1277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_text
-      value: "Misi\xF3n Tutorial\n(0 Stamina)"
+      value: "Misi\xF3n Tutorial\n(5 Stamina)"
       objectReference: {fileID: 0}
     - target: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_Name

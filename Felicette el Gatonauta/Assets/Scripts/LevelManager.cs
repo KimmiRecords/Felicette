@@ -30,6 +30,8 @@ public class LevelManager : MonoBehaviour
     public Image currentSkinImage;
 
     public StaminaSystem myStaminaSystem;
+    public NotificationManager myNotificationManager;
+
 
     public int Coins
     {
@@ -253,6 +255,7 @@ public class LevelManager : MonoBehaviour
     }
     public void QuitGame(params object[] parameters)
     {
+        myNotificationManager.PrepareNotification();
         Application.Quit();
         //print("quitee el juego");
     }
