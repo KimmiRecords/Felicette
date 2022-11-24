@@ -27,8 +27,10 @@ public class LevelSelectButton : GoToSceneButton
         if (_canPayEntrance)
         {
             //print("tenias guita, pagaste el stamina y entras al nivel");
-            LevelManager.instance.Stamina -= staminaCost; //pago el stamina
             AudioManager.instance.PlayByNamePitch("StaminaUp", 0.5f);
+            LevelManager.instance.Stamina -= staminaCost; //pago el stamina
+            LevelManager.instance.SaveData(); //pago el stamina
+
             base.OnPointerUp(eventData); //ir a la escena
         }
     }

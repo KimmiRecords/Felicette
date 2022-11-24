@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsToAdd: 0
-  staminaToAdd: 100
+  staminaToAdd: 10
 --- !u!1 &1170626645
 GameObject:
   m_ObjectHideFlags: 0

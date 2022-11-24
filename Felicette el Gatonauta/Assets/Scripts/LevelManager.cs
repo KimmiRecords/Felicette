@@ -159,6 +159,7 @@ public class LevelManager : MonoBehaviour
     public void EraseData(params object[] parameters)
     {
         PlayerPrefs.SetInt("coins", 0);
+        PlayerPrefs.SetInt("stamina", 100);
         PlayerPrefs.SetInt("nivelesCompletados", 0);
         PlayerPrefs.SetInt("pirata", 0);
         PlayerPrefs.SetInt("nonla", 0);
@@ -252,7 +253,7 @@ public class LevelManager : MonoBehaviour
     public void QuitGame(params object[] parameters)
     {
         Application.Quit();
-        print("quitee el juego");
+        //print("quitee el juego");
     }
     public void ActivateLMCanvas(params object[] parameters)
     {
