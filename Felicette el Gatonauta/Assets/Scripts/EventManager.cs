@@ -7,6 +7,7 @@ public enum Evento
     //triggers
     WinWall,
     DeathWall,
+    StartDeathSequence,
     AtmosphereWall,
     CoinPickup,
     CajaPickup,

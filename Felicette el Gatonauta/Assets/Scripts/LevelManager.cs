@@ -19,6 +19,9 @@ public class LevelManager : MonoBehaviour
     string _sceneToRestart;
     int _coins;
     float _stamina;
+    
+    [HideInInspector]
+    public bool inDeathSequence = false;
 
     //el int 0 = comprado. int 1 = no comprado
     public Dictionary<string, int> allSkins = new Dictionary<string, int>();
@@ -231,10 +234,7 @@ public class LevelManager : MonoBehaviour
     public void NivelFallado(params object[] parameters)
     {
         _sceneToRestart = (string)parameters[0];
-        //print(_escenaEnLaQuePerdiYVoyAResetearSiTocoReiniciarNivel);
         LoadData();
-        //print("nivel fallado: loaddata");
-
         GoToScene("LevelFailed");
     }
     public void ExitLevel(params object[] parameters)

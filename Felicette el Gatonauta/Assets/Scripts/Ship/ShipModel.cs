@@ -20,10 +20,9 @@ public class ShipModel
     {
         ship = st;
         
-        //EventManager.Subscribe(Evento.AtmosphereWall, EscapeAtmosphere);
-
         ship.CurrentGas = ship.maxGas;
         _isReleased = false;
+
     }
 
     public void ArtificialUpdate()
@@ -115,4 +114,6 @@ public class ShipModel
         Vector3 grav = GravityForce.GetGravityVector3(ship.myRigidBody.mass, planetMass, Vector3.Distance(ship.transform.position, planetPosition), (planetPosition - ship.transform.position).normalized);
         ship.myRigidBody.AddForce(grav * Time.deltaTime, ForceMode.Force);
     }
+
+    
 }

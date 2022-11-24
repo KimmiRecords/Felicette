@@ -20,6 +20,7 @@ public class ShipView
         EventManager.Subscribe(Evento.CoinRainStart, CoinRainAnimationStart);
         EventManager.Subscribe(Evento.ThrusterDown, StartThrusterFX);
         EventManager.Subscribe(Evento.ThrusterUp, EndThrusterFX);
+        EventManager.Subscribe(Evento.StartDeathSequence, StartDeathSequence);
 
         _itemSr.sprite = SkinsManager.instance.currentSkin;
     }
@@ -86,14 +87,12 @@ public class ShipView
         _anim.SetBool("IsThrusting", false);
     }
 
-    //public void EquipItem(params object[] parameters)
-    //{
-    //    Debug.Log("ship view: equipe el item " + (Sprite)parameters[0]);
-    //    _itemSr.sprite = (Sprite)parameters[0];
-    //}
-    //public void UnequipItem(params object[] parameters)
-    //{
-    //    Debug.Log("ship view: desequipe todo");
-    //    _itemSr.sprite = null;
-    //}
+    public void StartDeathSequence(params object[] parameters)
+    {
+        Vector3 currentPos = _model.ship.transform.position;
+        _model.ship.transform.position = currentPos;
+        _model.ship.canThrust = false;
+        //cambiar la animacion
+        _model.ship.myRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+    }
 }
