@@ -67,7 +67,7 @@ public class LevelManager : MonoBehaviour
             {
                 _stamina = maxStamina;
             }
-            AudioManager.instance.PlayByNamePitch("CoinRain", 0.5f);
+            AudioManager.instance.PlayByNamePitch("CoinRain", 1.5f);
             EventManager.Trigger(Evento.StaminaUpdate, _stamina);
             //EventManager.Trigger(Evento.StaminaUpdate, _stamina);
 

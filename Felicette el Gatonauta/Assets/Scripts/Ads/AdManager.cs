@@ -91,6 +91,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         {
             LevelManager.instance.Stamina += staminaReward;
             print("te ganaste " + staminaReward + " stamina por ver ese horrible ad");
+            AudioManager.instance.PlayByNamePitch("CoinRain", 0.5f);
         }
         LevelManager.instance.SaveData();
 

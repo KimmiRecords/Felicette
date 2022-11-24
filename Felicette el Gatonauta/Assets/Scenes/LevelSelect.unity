@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_text
-      value: Nivel 3
+      value: "Misi\xF3n 3\n(Patreons only)"
       objectReference: {fileID: 0}
     - target: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_Name
@@ -439,6 +439,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33ffbafddea6d1d4188efb5c519a2198, type: 3}
+--- !u!1 &531997703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+  m_PrefabInstance: {fileID: 1772213857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &531997704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531997703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7318e3348497d04e81588c30aeab142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: SampleScene
+  staminaCost: 10
+--- !u!1 &741150768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+  m_PrefabInstance: {fileID: 757379753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &741150769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741150768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7318e3348497d04e81588c30aeab142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Nivel2
+  staminaCost: 30
 --- !u!1001 &757379753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_text
-      value: Nivel 2
+      value: "Misi\xF3n 2\n(30 Stamina)"
       objectReference: {fileID: 0}
     - target: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_Name
@@ -550,7 +588,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 726649972860542185, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
 --- !u!224 &757379754 stripped
 RectTransform:
@@ -943,7 +982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_text
-      value: Nivel 1
+      value: "Misi\xF3n 1\n(10 Stamina)"
       objectReference: {fileID: 0}
     - target: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_Name
@@ -1033,13 +1072,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 726649972860542185, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
 --- !u!224 &1772213858 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5926761448517319619, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
   m_PrefabInstance: {fileID: 1772213857}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1810432277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+  m_PrefabInstance: {fileID: 1886338263}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1810432278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810432277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7318e3348497d04e81588c30aeab142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Tutorial
+  staminaCost: 0
 --- !u!1001 &1886338263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1053,7 +1112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_text
-      value: Tutorial
+      value: "Misi\xF3n Tutorial\n(0 Stamina)"
       objectReference: {fileID: 0}
     - target: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_Name
@@ -1147,7 +1206,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 726649972860542185, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
 --- !u!224 &1886338264 stripped
 RectTransform:
