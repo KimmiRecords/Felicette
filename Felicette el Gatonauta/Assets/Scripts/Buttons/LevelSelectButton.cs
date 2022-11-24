@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LevelSelectButton : GoToSceneButton
 {
     //entrar a un nivel cuesta N Stamina de entrada.
-    public float staminaCost;
+    public int staminaCost;
     bool _canPayEntrance = false;
     Button yo;
 
@@ -28,7 +28,7 @@ public class LevelSelectButton : GoToSceneButton
         {
             //print("tenias guita, pagaste el stamina y entras al nivel");
             AudioManager.instance.PlayByNamePitch("StaminaUp", 0.5f);
-            LevelManager.instance.Stamina -= staminaCost; //pago el stamina
+            LevelManager.instance.myStaminaSystem.UseEnergy(staminaCost); //pago el stamina
             LevelManager.instance.SaveData(); //pago el stamina
 
             base.OnPointerUp(eventData); //ir a la escena

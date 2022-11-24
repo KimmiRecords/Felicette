@@ -13,12 +13,12 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public int nivelesJugables;
-    public float maxStamina;
+    public int maxStamina;
 
     bool[] _nivelesCompletados;
     string _sceneToRestart;
     int _coins;
-    float _stamina;
+    int _stamina;
     
     [HideInInspector]
     public bool inDeathSequence = false;
@@ -28,6 +28,8 @@ public class LevelManager : MonoBehaviour
 
     public Canvas canvas; //mi lmcanvas
     public Image currentSkinImage;
+
+    public StaminaSystem myStaminaSystem;
 
     public int Coins
     {
@@ -47,7 +49,7 @@ public class LevelManager : MonoBehaviour
 
         }
     }
-    public float Stamina
+    public int Stamina
     {
         get
         {
@@ -67,10 +69,12 @@ public class LevelManager : MonoBehaviour
                 _stamina = maxStamina;
             }
             EventManager.Trigger(Evento.StaminaUpdate, _stamina);
-            //EventManager.Trigger(Evento.StaminaUpdate, _stamina);
 
         }
     }
+
+
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -106,15 +110,12 @@ public class LevelManager : MonoBehaviour
         EventManager.Subscribe(Evento.SplashButtonUp, ActivateLMCanvas);
         EventManager.Subscribe(Evento.EquipItemButtonUp, SetSkinImage);
 
-
-
         if (SceneManager.GetActiveScene().name == "Splash")
         {
             canvas.gameObject.SetActive(false);
         }
 
         LoadData();
-
         //print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
         //print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
     }
@@ -128,7 +129,7 @@ public class LevelManager : MonoBehaviour
     public void SaveData()
     {
         PlayerPrefs.SetInt("coins", _coins);
-        PlayerPrefs.SetFloat("stamina", _stamina);
+        PlayerPrefs.SetInt("stamina", _stamina);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(_nivelesCompletados));
         PlayerPrefs.SetInt("pirata", allSkins["Sombrero Pirata"]);
         PlayerPrefs.SetInt("nonla", allSkins["Sombrero Nón Lá"]);
@@ -143,7 +144,7 @@ public class LevelManager : MonoBehaviour
         Coins = PlayerPrefs.GetInt("coins");
         EventManager.Trigger(Evento.CoinUpdate, Coins);
 
-        Stamina = PlayerPrefs.GetFloat("stamina");
+        Stamina = PlayerPrefs.GetInt("stamina");
         EventManager.Trigger(Evento.StaminaUpdate, Stamina);
 
 
@@ -159,7 +160,7 @@ public class LevelManager : MonoBehaviour
     public void EraseData(params object[] parameters)
     {
         PlayerPrefs.SetInt("coins", 0);
-        PlayerPrefs.SetInt("stamina", 100);
+        PlayerPrefs.SetInt("stamina", 50);
         PlayerPrefs.SetInt("nivelesCompletados", 0);
         PlayerPrefs.SetInt("pirata", 0);
         PlayerPrefs.SetInt("nonla", 0);

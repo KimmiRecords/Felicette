@@ -14,7 +14,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     string adToShow = "Rewarded_Android";
     RewardType adRewardType;
 
-    public float staminaReward;
+    public int staminaReward;
 
     private void Start()
     {

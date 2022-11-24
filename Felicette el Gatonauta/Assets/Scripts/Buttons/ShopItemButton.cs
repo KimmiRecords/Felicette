@@ -38,7 +38,7 @@ public class ShopItemButton : BaseButton
         if (LevelManager.instance.allSkins[itemName] == 1)
         {
             //print este item ya estaba comprado
-            print("start shopitembutton - este item ya estaba comprado");
+            //print("start shopitembutton - este item ya estaba comprado");
             itemState = ItemState.Unlocked;
             yo.enabled = true;
             yo.interactable = true;
@@ -64,7 +64,7 @@ public class ShopItemButton : BaseButton
         }
         if (LevelManager.instance.Coins >= itemCost)
         {
-            print("tenes guita. itemstate unlocked - button enabled");
+            //print("tenes guita. itemstate unlocked - button enabled");
             itemState = ItemState.Unlocked;
             yo.enabled = true;
             yo.interactable = true;
@@ -72,7 +72,7 @@ public class ShopItemButton : BaseButton
         }
         else
         {
-            print("no tenes plata campeon. start shopitembutton - button disabled");
+            //print("no tenes plata campeon. start shopitembutton - button disabled");
             yo.enabled = false;
             yo.interactable = false;
         }
@@ -83,13 +83,13 @@ public class ShopItemButton : BaseButton
         switch (itemState)
         {
             case ItemState.Locked:
-                print("no tenes guita para comprar esto");
+                //print("no tenes guita para comprar esto");
                 break;
 
             case ItemState.Unlocked:
                 if (!wasPurchased)
                 {
-                    print("tuki, te compraste y equipaste " + itemName);
+                    //print("tuki, te compraste y equipaste " + itemName);
                     AudioManager.instance.PlayByName("PurchaseItem");
                     AudioManager.instance.PlayByName("EquipItem");
                     EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite, this);
@@ -100,7 +100,7 @@ public class ShopItemButton : BaseButton
                 }
                 else
                 {
-                    print("volviste a equipar " + itemName);
+                    //print("volviste a equipar " + itemName);
                     AudioManager.instance.PlayByName("EquipItem");
                     EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite, this);
                 }

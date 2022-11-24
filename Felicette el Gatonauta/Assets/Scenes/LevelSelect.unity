@@ -1549,6 +1549,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 564662565713922874, guid: 933ceea58f78cf049944e9031850049a, type: 3}
+      propertyPath: fullTimeText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8422237598538065193, guid: 933ceea58f78cf049944e9031850049a, type: 3}
       propertyPath: m_Name
       value: LevelManager

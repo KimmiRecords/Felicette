@@ -9,7 +9,7 @@ public class OperationButton : BaseButton
 {
     //estos en vez de mandar mensaje, hacen la operacion y ya
     public int coinsToAdd;
-    public float staminaToAdd;
+    public int staminaToAdd;
     Button yo;
 
     private void Start()
