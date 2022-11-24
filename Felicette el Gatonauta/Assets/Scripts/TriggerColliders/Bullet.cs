@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
 
         if (timer > bulletLifetime)
         {
-            print("la bala supero su vida util");
+            //print("la bala supero su vida util");
             MeDevuelvo();
         }
     }
@@ -52,27 +52,27 @@ public class Bullet : MonoBehaviour
 
     public static void TurnOn(Bullet b)
     {
-        print("BULLET: prendo la bala");
+        //print("BULLET: prendo la bala");
         //b.transform.position = BulletSpawner.RandomPosition();
         b.gameObject.SetActive(true);
     }
 
     public static void TurnOff(Bullet b)
     {
-        print("BULLET: apago la bala");
+        //print("BULLET: apago la bala");
         b.gameObject.SetActive(false);
     }
 
 
     private void OnBecameInvisible()
     {
-        print("BULLET: me hice invi");
+        //print("BULLET: me hice invi");
         MeDevuelvo();
     }
 
     public void MeDevuelvo()
     {
-        print("BULLET: me devuelvo");
+        //print("BULLET: me devuelvo");
         SateliteManager.instance.ReturnBullet(this);
     }
 

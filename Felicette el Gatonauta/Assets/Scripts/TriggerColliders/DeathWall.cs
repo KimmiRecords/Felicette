@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class DeathWall : TriggerCollider
 {
     string _esteNivel;
+    float timeToSceneChange = 1.5f;
+
 
     private void Start()
     {
@@ -14,8 +16,25 @@ public class DeathWall : TriggerCollider
 
     public override void Activate()
     {
-        base.Activate();
+        if (!LevelManager.instance.inDeathSequence)
+        {
+            StartCoroutine(StartDeathSequence());
+        }
+    }
+
+    public IEnumerator StartDeathSequence()
+    {
+        LevelManager.instance.inDeathSequence = true;
         AudioManager.instance.PlayByName("ShipCrash");
+        AudioManager.instance.PlayByName("Explosion");
+
+        EventManager.Trigger(Evento.StartDeathSequence);
+
+        yield return new WaitForSeconds(timeToSceneChange);
         EventManager.Trigger(Evento.DeathWall, _esteNivel);
+        LevelManager.instance.inDeathSequence = true;
+
+
+
     }
 }

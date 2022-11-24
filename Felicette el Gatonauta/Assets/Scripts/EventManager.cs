@@ -7,6 +7,7 @@ public enum Evento
     //triggers
     WinWall,
     DeathWall,
+    StartDeathSequence,
     AtmosphereWall,
     CoinPickup,
     CajaPickup,
@@ -27,11 +28,15 @@ public enum Evento
     UnpauseButtonUp,
     EquipItemButtonUp,
     UnequipItem,
+    WatchAdButtonUp,
+    WatchAdButtonDown,
+    SplashButtonUp,
 
     //otros
     BurnGas,
     RefillGas,
     CoinUpdate,
+    StaminaUpdate,
     GotPowerUp,
     ModoChiquitoStart,
     ModoChiquitoEnd,

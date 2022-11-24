@@ -18,12 +18,6 @@ public class WinWall : TriggerCollider
         _esteNivel = SceneManager.GetActiveScene().name;
     }
 
-    //protected override void OnTriggerEnter(Collider other)
-    //{
-    //    //base.OnTriggerEnter(other);
-    //    EventManager.Trigger(Evento.WinWall, _esteNivel, numeroDeEsteNivel);
-    //}
-
     public override void Activate()
     {
         base.Activate();

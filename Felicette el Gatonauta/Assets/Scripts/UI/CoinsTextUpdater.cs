@@ -5,20 +5,9 @@ using UnityEngine.UI;
 
 public class CoinsTextUpdater : TextUpdater
 {
-    //actualiza el texto del boton donde dice cuantas monedas tenes
-    public string baseText;
-
     private void Start()
     {
         UpdateText(LevelManager.instance.Coins);
         EventManager.Subscribe(Evento.CoinUpdate, UpdateText);
-    }
-
-    public override void UpdateText(params object[] parameters)
-    {
-        if (parameters[0] is int)
-        {
-            myTMP.text = baseText + (int)parameters[0];
-        }
     }
 }

@@ -25,7 +25,10 @@ public class ItemButtonsManager : MonoBehaviour
 
     private void Start()
     {
-        LevelManager.instance.LoadData();
+        LevelManager.instance.LoadData();   
+
+
+        
     }
 
     public void AddButton(string b)
@@ -45,6 +48,8 @@ public class ItemButtonsManager : MonoBehaviour
     public void Purchase(string b)
     {
         print("itembutton manager: purchased " + b);
+        //en el dict, cambio el valor de esa entrada a 1, que es Comprado.
         LevelManager.instance.allSkins[b] = 1;
+
     }
 }
