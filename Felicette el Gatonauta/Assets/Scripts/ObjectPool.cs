@@ -20,7 +20,7 @@ public class ObjectPool<T>
 
         for (int i = 0; i < initialStock; i++) //cuando nace, objectpool crea todas
         {
-            Debug.Log("construi la bala " + i);
+            //Debug.Log("construi la bala " + i);
             var o = _factoryMethod();
             _turnOffCallback(o);
             _currentStock.Add(o);
@@ -42,8 +42,8 @@ public class ObjectPool<T>
         }
 
         _turnOnCallback(result);
-        Debug.Log("GetObject: te estoy dando el objeto " + result);
-        Debug.Log("hay " + _currentStock.Count + " objetos en la pool");
+        //Debug.Log("GetObject: te estoy dando el objeto " + result);
+        //Debug.Log("hay " + _currentStock.Count + " objetos en la pool");
         return result;
     }
 
@@ -51,8 +51,8 @@ public class ObjectPool<T>
     {
         _turnOffCallback(o);
         _currentStock.Add(o);
-        Debug.Log("ReturnObject: devolvi el objeto " + o);
-        Debug.Log("hay " + _currentStock.Count + " objetos en la pool");
+        //Debug.Log("ReturnObject: devolvi el objeto " + o);
+        //Debug.Log("hay " + _currentStock.Count + " objetos en la pool");
     }
 
 }

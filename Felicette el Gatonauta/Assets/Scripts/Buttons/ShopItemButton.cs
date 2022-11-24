@@ -18,6 +18,8 @@ public class ShopItemButton : BaseButton
     public int itemCost;
     public Sprite itemSprite;
 
+    TMPro.TextMeshProUGUI myTMP;
+
     Button yo;
     public bool wasPurchased;
     ItemState itemState = ItemState.Locked;
@@ -26,6 +28,7 @@ public class ShopItemButton : BaseButton
     void Start()
     {
         yo = GetComponent<Button>();
+        myTMP = GetComponentInChildren<TMPro.TextMeshProUGUI>();
 
         if (!LevelManager.instance.allSkins.ContainsKey(itemName))
         {
@@ -40,20 +43,17 @@ public class ShopItemButton : BaseButton
             yo.enabled = true;
             yo.interactable = true;
             wasPurchased = true;
+            myTMP.text = itemName;
 
-            ColorBlock cb = yo.colors;
-            cb.normalColor = cb.selectedColor;
-            yo.colors = cb;
         }
         else
         {
             CheckMoney();
         }
 
-        
-
-        //EventManager.Subscribe(Evento.EquipItem, OnOtherItemEquipped);
         EventManager.Subscribe(Evento.CoinUpdate, CheckMoney);
+        //EventManager.Subscribe(Evento.EquipItemButtonUp, UnpressAllButtons);
+
     }
 
     public void CheckMoney(params object[] parameters)
@@ -68,7 +68,7 @@ public class ShopItemButton : BaseButton
             itemState = ItemState.Unlocked;
             yo.enabled = true;
             yo.interactable = true;
-
+            
         }
         else
         {
@@ -77,7 +77,6 @@ public class ShopItemButton : BaseButton
             yo.interactable = false;
         }
     }
-
 
     public override void OnPointerUp(PointerEventData eventData)
     {
@@ -91,19 +90,16 @@ public class ShopItemButton : BaseButton
                 if (!wasPurchased)
                 {
                     print("tuki, te compraste y equipaste " + itemName);
-                    LevelManager.instance.Coins -= itemCost;
-                    //EventManager.Trigger(Evento.UnequipItem);
-                    EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite);
-
+                    EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite, this);
                     wasPurchased = true;
                     ItemButtonsManager.instance.Purchase(itemName);
-                    EventManager.Trigger(Evento.CoinUpdate, LevelManager.instance.Coins);
+                    myTMP.text = itemName;
+                    LevelManager.instance.Coins -= itemCost;
                 }
                 else
                 {
                     print("volviste a equipar " + itemName);
-                    //EventManager.Trigger(Evento.UnequipItem);
-                    EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite);
+                    EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite, this);
                 }
                 LevelManager.instance.SaveData();
                 break;

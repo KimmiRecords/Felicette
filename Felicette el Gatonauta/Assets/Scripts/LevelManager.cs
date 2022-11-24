@@ -12,13 +12,17 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public int nivelesJugables;
+    public float maxStamina;
 
     bool[] _nivelesCompletados;
     string _sceneToRestart;
     int _coins;
+    float _stamina;
 
     //el bool es si fue comprado o no
     public Dictionary<string, int> allSkins = new Dictionary<string, int>();
+
+    public Canvas canvas;
 
     public int Coins
     {
@@ -34,6 +38,34 @@ public class LevelManager : MonoBehaviour
             {
                 _coins = 0;
             }
+            AudioManager.instance.PlayByNamePitch("PickupSFX", 1.9f);
+            EventManager.Trigger(Evento.CoinUpdate, _coins);
+
+        }
+    }
+
+    public float Stamina
+    {
+        get
+        {
+            return _stamina;
+        }
+        set
+        {
+            _stamina = value;
+
+            if (_stamina < 0)
+            {
+                _stamina = 0;
+            }
+
+            if (_stamina > maxStamina)
+            {
+                _stamina = maxStamina;
+            }
+
+            //EventManager.Trigger(Evento.StaminaUpdate, _stamina);
+
         }
     }
 
@@ -69,6 +101,15 @@ public class LevelManager : MonoBehaviour
         EventManager.Subscribe(Evento.EraseDataButtonUp, EraseData);
        
         _nivelesCompletados = new bool[nivelesJugables];
+
+        if (SceneManager.GetActiveScene().name == "Splash")
+        {
+            canvas.gameObject.SetActive(false);
+        }
+        else
+        {
+            canvas.gameObject.SetActive(true);
+        }
 
         //print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
         //print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
@@ -140,8 +181,7 @@ public class LevelManager : MonoBehaviour
 
     public void AddCoin(params object[] parameters)
     {
-        _coins++;
-        EventManager.Trigger(Evento.CoinUpdate, _coins);
+        Coins++;
     }
     void GoToScene(params object[] parameters)
     {
@@ -177,11 +217,11 @@ public class LevelManager : MonoBehaviour
         if (parameters[1] is int)
         {
             _nivelesCompletados[(int)parameters[1]] = true;
-            print("acabo de completar el nivel " + (int)parameters[1]);
+            //print("acabo de completar el nivel " + (int)parameters[1]);
         }
         else
         {
-            print("el primer parametro que me pasaste no era un int");
+            //print("el primer parametro que me pasaste no era un int");
         }
 
         SaveData();

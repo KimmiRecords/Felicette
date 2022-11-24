@@ -27,6 +27,8 @@ public enum Evento
     UnpauseButtonUp,
     EquipItemButtonUp,
     UnequipItem,
+    WatchAdButtonUp,
+    WatchAdButtonDown,
 
     //otros
     BurnGas,

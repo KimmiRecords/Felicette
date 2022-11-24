@@ -270,6 +270,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 229664688482228044, guid: 933ceea58f78cf049944e9031850049a, type: 3}
+      propertyPath: m_Name
+      value: LMCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422237598538065192, guid: 933ceea58f78cf049944e9031850049a, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 621219816}
     - target: {fileID: 8422237598538065193, guid: 933ceea58f78cf049944e9031850049a, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -676,6 +684,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382725491}
   m_CullTransparentMesh: 1
+--- !u!223 &621219816 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 229664688482228033, guid: 933ceea58f78cf049944e9031850049a, type: 3}
+  m_PrefabInstance: {fileID: 55143423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &781107159
 GameObject:
   m_ObjectHideFlags: 0

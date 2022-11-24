@@ -45,6 +45,8 @@ public class ItemButtonsManager : MonoBehaviour
     public void Purchase(string b)
     {
         print("itembutton manager: purchased " + b);
+        //en el dict, cambio el valor de esa entrada a 1, que es Comprado.
         LevelManager.instance.allSkins[b] = 1;
+
     }
 }
