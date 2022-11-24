@@ -459,7 +459,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 141361613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c379ee2ec150ae43affb6bbec1aff39, type: 3}
+  m_Script: {fileID: 11500000, guid: 2146227fd4ca9a546a5fa252e31e5f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: MainMenu
@@ -899,7 +899,6 @@ GameObject:
   - component: {fileID: 912254119}
   - component: {fileID: 912254118}
   - component: {fileID: 912254121}
-  - component: {fileID: 912254117}
   m_Layer: 5
   m_Name: decoracion (1)
   m_TagString: Untagged
@@ -927,19 +926,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 650}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &912254117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 912254115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c379ee2ec150ae43affb6bbec1aff39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: MainMenu
 --- !u!114 &912254118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1034,8 +1020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a55075d4b5da543828ad7f131e00b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.1
-  frequency: -8
+  amplitude: 2
+  frequency: 8.1
   orientation: 0
 --- !u!1 &926806256
 GameObject:
@@ -1711,7 +1697,6 @@ GameObject:
   - component: {fileID: 1389907812}
   - component: {fileID: 1389907811}
   - component: {fileID: 1389907814}
-  - component: {fileID: 1389907810}
   m_Layer: 5
   m_Name: decoracion
   m_TagString: Untagged
@@ -1739,19 +1724,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -600}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1389907810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389907808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c379ee2ec150ae43affb6bbec1aff39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: MainMenu
 --- !u!114 &1389907811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1846,7 +1818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a55075d4b5da543828ad7f131e00b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.1
+  amplitude: 2
   frequency: 8
   orientation: 0
 --- !u!1 &1404004645
@@ -2854,7 +2826,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1762170177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c379ee2ec150ae43affb6bbec1aff39, type: 3}
+  m_Script: {fileID: 11500000, guid: 2146227fd4ca9a546a5fa252e31e5f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: MainMenu
@@ -2990,7 +2962,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1910848603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c379ee2ec150ae43affb6bbec1aff39, type: 3}
+  m_Script: {fileID: 11500000, guid: 2146227fd4ca9a546a5fa252e31e5f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: MainMenu

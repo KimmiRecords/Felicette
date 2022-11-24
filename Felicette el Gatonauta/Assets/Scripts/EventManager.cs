@@ -29,11 +29,13 @@ public enum Evento
     UnequipItem,
     WatchAdButtonUp,
     WatchAdButtonDown,
+    SplashButtonUp,
 
     //otros
     BurnGas,
     RefillGas,
     CoinUpdate,
+    StaminaUpdate,
     GotPowerUp,
     ModoChiquitoStart,
     ModoChiquitoEnd,

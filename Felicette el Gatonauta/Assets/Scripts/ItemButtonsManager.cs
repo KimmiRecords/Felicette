@@ -25,7 +25,10 @@ public class ItemButtonsManager : MonoBehaviour
 
     private void Start()
     {
-        LevelManager.instance.LoadData();
+        LevelManager.instance.LoadData();   
+
+
+        
     }
 
     public void AddButton(string b)

@@ -90,6 +90,8 @@ public class ShopItemButton : BaseButton
                 if (!wasPurchased)
                 {
                     print("tuki, te compraste y equipaste " + itemName);
+                    AudioManager.instance.PlayByName("PurchaseItem");
+                    AudioManager.instance.PlayByName("EquipItem");
                     EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite, this);
                     wasPurchased = true;
                     ItemButtonsManager.instance.Purchase(itemName);
@@ -99,6 +101,7 @@ public class ShopItemButton : BaseButton
                 else
                 {
                     print("volviste a equipar " + itemName);
+                    AudioManager.instance.PlayByName("EquipItem");
                     EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite, this);
                 }
                 LevelManager.instance.SaveData();

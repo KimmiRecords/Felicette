@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
@@ -19,10 +20,11 @@ public class LevelManager : MonoBehaviour
     int _coins;
     float _stamina;
 
-    //el bool es si fue comprado o no
+    //el int 0 = comprado. int 1 = no comprado
     public Dictionary<string, int> allSkins = new Dictionary<string, int>();
 
-    public Canvas canvas;
+    public Canvas canvas; //mi lmcanvas
+    public Image currentSkinImage;
 
     public int Coins
     {
@@ -43,7 +45,6 @@ public class LevelManager : MonoBehaviour
 
         }
     }
-
     public float Stamina
     {
         get
@@ -63,12 +64,12 @@ public class LevelManager : MonoBehaviour
             {
                 _stamina = maxStamina;
             }
-
+            AudioManager.instance.PlayByNamePitch("CoinRain", 0.5f);
+            EventManager.Trigger(Evento.StaminaUpdate, _stamina);
             //EventManager.Trigger(Evento.StaminaUpdate, _stamina);
 
         }
     }
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -82,8 +83,10 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         Screen.orientation = ScreenOrientation.Portrait;
-    }
 
+        _nivelesCompletados = new bool[nivelesJugables];
+
+    }
     void Start()
     {
         AudioManager.instance.PlayBGM();
@@ -99,22 +102,21 @@ public class LevelManager : MonoBehaviour
         EventManager.Subscribe(Evento.QuitGameButtonUp, QuitGame);
         EventManager.Subscribe(Evento.GoToSceneButtonUp, GoToScene);
         EventManager.Subscribe(Evento.EraseDataButtonUp, EraseData);
-       
-        _nivelesCompletados = new bool[nivelesJugables];
+        EventManager.Subscribe(Evento.SplashButtonUp, ActivateLMCanvas);
+        EventManager.Subscribe(Evento.EquipItemButtonUp, SetSkinImage);
+
+
 
         if (SceneManager.GetActiveScene().name == "Splash")
         {
             canvas.gameObject.SetActive(false);
         }
-        else
-        {
-            canvas.gameObject.SetActive(true);
-        }
+
+        LoadData();
 
         //print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
         //print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
     }
-
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Keypad8))
@@ -122,13 +124,12 @@ public class LevelManager : MonoBehaviour
             AddCoin();
         }
     }
-
     public void SaveData()
     {
         PlayerPrefs.SetInt("coins", _coins);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(_nivelesCompletados));
-        PlayerPrefs.SetInt("pirata", allSkins["pirata"]);
-        PlayerPrefs.SetInt("nonla", allSkins["nonla"]);
+        PlayerPrefs.SetInt("pirata", allSkins["Sombrero Pirata"]);
+        PlayerPrefs.SetInt("nonla", allSkins["Sombrero Nón Lá"]);
 
         PlayerPrefs.Save();
 
@@ -144,8 +145,8 @@ public class LevelManager : MonoBehaviour
             _nivelesCompletados[i] = true;
         }
 
-        allSkins["pirata"] = PlayerPrefs.GetInt("pirata");
-        allSkins["nonla"] = PlayerPrefs.GetInt("nonla");
+        allSkins["Sombrero Pirata"] = PlayerPrefs.GetInt("pirata");
+        allSkins["Sombrero Nón Lá"] = PlayerPrefs.GetInt("nonla");
 
 
 
@@ -163,7 +164,6 @@ public class LevelManager : MonoBehaviour
         //print("erase data: tengo " + Coins + " coins");
         //print("erase data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
     }
-
     public int CountCompletedLevels(bool[] completedLevels)
     {
         int value = 0;
@@ -178,7 +178,6 @@ public class LevelManager : MonoBehaviour
         //print("en " + levelList + " hay " + value + " valores True");
         return value;
     }
-
     public void AddCoin(params object[] parameters)
     {
         Coins++;
@@ -251,6 +250,14 @@ public class LevelManager : MonoBehaviour
     {
         Application.Quit();
         print("quitee el juego");
+    }
+    public void ActivateLMCanvas(params object[] parameters)
+    {
+        canvas.gameObject.SetActive(true);
+    }
+    public void SetSkinImage(params object[] parameters)
+    {
+        currentSkinImage.sprite = (Sprite)parameters[0];
     }
 
 }

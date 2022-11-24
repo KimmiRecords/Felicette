@@ -13,12 +13,6 @@ public class WatchAdButton : BaseButton
     [SerializeField] RewardType adRewardType = RewardType.coins;
 
 
-    public override void OnPointerDown(PointerEventData eventData)
-    {
-        base.OnPointerDown(eventData);
-        EventManager.Trigger(Evento.WatchAdButtonDown, adType, adRewardType);
-    }
-
     public override void OnPointerUp(PointerEventData eventData)
     {
         base.OnPointerUp(eventData);
