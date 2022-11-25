@@ -37,6 +37,14 @@ public class NotificationManager : MonoBehaviour
         //print("mando la notif");
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))
+        {
+            PrepareNotification();
+        }
+    }
+
     public void UpdateTimeToFullStamina()
     {
         secondsToFullStamina = (LevelManager.instance.maxStamina - LevelManager.instance.Stamina) * LevelManager.instance.myStaminaSystem.timeToRecharge;
@@ -74,5 +82,7 @@ public class NotificationManager : MonoBehaviour
         AndroidNotificationCenter.SendNotification(notification, "reminder_notif");
         //print("mando la notif");
     }
+
+
 
 }
