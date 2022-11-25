@@ -14,15 +14,14 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     string adToShow = "Rewarded_Android";
     RewardType adRewardType;
 
-    public float staminaReward;
+    public int staminaReward;
 
     private void Start()
     {
         Advertisement.AddListener(this);
-        Debug.Log("agregue este admanager como listener");
+        //Debug.Log("agregue este admanager como listener");
         Advertisement.Initialize(gameID);
-        Debug.Log("initialize");
-
+        //Debug.Log("initialize");
         EventManager.Subscribe(Evento.WatchAdButtonUp, SetAdType);
 
     }
@@ -38,13 +37,12 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     {
         if (!Advertisement.IsReady())
         {
-            print("PlayAd: quise darle play pero no estaba ready");
+            //print("PlayAd: quise darle play pero no estaba ready");
             return;
         }
 
         Advertisement.Show(adToShow);
-        Debug.Log("PlayAd: muestro el " + adToShow);
-
+        //Debug.Log("PlayAd: muestro el " + adToShow);
     }
 
     public void OnUnityAdsReady(string placementId)
@@ -66,7 +64,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         {
             if(ShowResult.Finished == showResult)
             {
-                Debug.Log("Terminaste el ad: Te doy la recompensa");
+                //Debug.Log("Terminaste el ad: Te doy la recompensa");
                 GiveReward();
             }
             else
@@ -75,7 +73,6 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
             }
         }
     }
-
                 
     public void GiveReward()
     {
@@ -84,18 +81,16 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         {
             int randomCoins = Random.Range(8, 15);
             LevelManager.instance.Coins += randomCoins;
-            print("te ganaste " + randomCoins + " monedas por ver ese horrible ad");
+            //print("te ganaste " + randomCoins + " monedas por ver ese horrible ad");
             AudioManager.instance.PlayByName("CoinRain");
         }
         else
         {
             LevelManager.instance.Stamina += staminaReward;
-            print("te ganaste " + staminaReward + " stamina por ver ese horrible ad");
+            //print("te ganaste " + staminaReward + " stamina por ver ese horrible ad");
+            AudioManager.instance.PlayByName("StaminaUp");
         }
         LevelManager.instance.SaveData();
-
-
-
     }
 
     private void OnDestroy()
@@ -105,6 +100,4 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
             EventManager.Unsubscribe(Evento.WatchAdButtonUp, SetAdType);
         }
     }
-
-    
 }

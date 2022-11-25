@@ -13,12 +13,12 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public int nivelesJugables;
-    public float maxStamina;
+    public int maxStamina;
 
     bool[] _nivelesCompletados;
     string _sceneToRestart;
     int _coins;
-    float _stamina;
+    int _stamina;
     
     [HideInInspector]
     public bool inDeathSequence = false;
@@ -28,6 +28,10 @@ public class LevelManager : MonoBehaviour
 
     public Canvas canvas; //mi lmcanvas
     public Image currentSkinImage;
+
+    public StaminaSystem myStaminaSystem;
+    public NotificationManager myNotificationManager;
+
 
     public int Coins
     {
@@ -43,12 +47,11 @@ public class LevelManager : MonoBehaviour
             {
                 _coins = 0;
             }
-            AudioManager.instance.PlayByNamePitch("PickupSFX", 1.9f);
             EventManager.Trigger(Evento.CoinUpdate, _coins);
 
         }
     }
-    public float Stamina
+    public int Stamina
     {
         get
         {
@@ -67,12 +70,13 @@ public class LevelManager : MonoBehaviour
             {
                 _stamina = maxStamina;
             }
-            AudioManager.instance.PlayByNamePitch("CoinRain", 0.5f);
             EventManager.Trigger(Evento.StaminaUpdate, _stamina);
-            //EventManager.Trigger(Evento.StaminaUpdate, _stamina);
 
         }
     }
+
+
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -108,15 +112,12 @@ public class LevelManager : MonoBehaviour
         EventManager.Subscribe(Evento.SplashButtonUp, ActivateLMCanvas);
         EventManager.Subscribe(Evento.EquipItemButtonUp, SetSkinImage);
 
-
-
         if (SceneManager.GetActiveScene().name == "Splash")
         {
             canvas.gameObject.SetActive(false);
         }
 
         LoadData();
-
         //print("LEVEL MANAGER: hay " + nivelesCompletados.Length + " niveles");
         //print("PlayerPrefs: hay " + PlayerPrefs.GetInt("nivelesCompletados") + " niveles completados");
     }
@@ -130,9 +131,11 @@ public class LevelManager : MonoBehaviour
     public void SaveData()
     {
         PlayerPrefs.SetInt("coins", _coins);
+        PlayerPrefs.SetInt("stamina", _stamina);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(_nivelesCompletados));
         PlayerPrefs.SetInt("pirata", allSkins["Sombrero Pirata"]);
         PlayerPrefs.SetInt("nonla", allSkins["Sombrero Nón Lá"]);
+
 
         PlayerPrefs.Save();
 
@@ -143,6 +146,10 @@ public class LevelManager : MonoBehaviour
         Coins = PlayerPrefs.GetInt("coins");
         EventManager.Trigger(Evento.CoinUpdate, Coins);
 
+        Stamina = PlayerPrefs.GetInt("stamina");
+        EventManager.Trigger(Evento.StaminaUpdate, Stamina);
+
+
         for (int i = 0; i < PlayerPrefs.GetInt("nivelesCompletados"); i++)
         {
             _nivelesCompletados[i] = true;
@@ -150,14 +157,12 @@ public class LevelManager : MonoBehaviour
 
         allSkins["Sombrero Pirata"] = PlayerPrefs.GetInt("pirata");
         allSkins["Sombrero Nón Lá"] = PlayerPrefs.GetInt("nonla");
-
-
-
         //print("cargue la data");
     }
     public void EraseData(params object[] parameters)
     {
         PlayerPrefs.SetInt("coins", 0);
+        PlayerPrefs.SetInt("stamina", 50);
         PlayerPrefs.SetInt("nivelesCompletados", 0);
         PlayerPrefs.SetInt("pirata", 0);
         PlayerPrefs.SetInt("nonla", 0);
@@ -184,6 +189,8 @@ public class LevelManager : MonoBehaviour
     public void AddCoin(params object[] parameters)
     {
         Coins++;
+        AudioManager.instance.PlayByNamePitch("PickupSFX", 1.9f);
+
     }
     void GoToScene(params object[] parameters)
     {
@@ -240,7 +247,7 @@ public class LevelManager : MonoBehaviour
     public void ExitLevel(params object[] parameters)
     {
         LoadData();
-        print("exitlevel: loaddata");
+        //print("exitlevel: loaddata");
     }
     public void ResetLevel(params object[] parameters)
     {
@@ -248,8 +255,9 @@ public class LevelManager : MonoBehaviour
     }
     public void QuitGame(params object[] parameters)
     {
+        myNotificationManager.PrepareNotification();
         Application.Quit();
-        print("quitee el juego");
+        //print("quitee el juego");
     }
     public void ActivateLMCanvas(params object[] parameters)
     {

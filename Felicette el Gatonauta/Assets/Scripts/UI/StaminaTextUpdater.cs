@@ -12,9 +12,9 @@ public class StaminaTextUpdater : TextUpdater
 
     public override void UpdateText(params object[] parameters)
     {
-        if (parameters[0] is float)
+        if (parameters[0] is int)
         {
-            myTMP.text = baseText + (float)parameters[0] + "/" + LevelManager.instance.maxStamina;
+            myTMP.text = baseText + (int)parameters[0] + "/" + LevelManager.instance.maxStamina;
         }
     }
 }
