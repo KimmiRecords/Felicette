@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45779407, g: 0.4588825, b: 0.46170312, a: 1}
+  m_IndirectSpecularColor: {r: 0.36108008, g: 0.36522967, b: 0.37820795, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -597,6 +597,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5926761448517319621, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a76dd517d61c8e345916ac791aac120c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
 --- !u!224 &1396100195 stripped
@@ -707,8 +711,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c6e201c0c0a5dcc488a83dbf0e5bd848, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -795,15 +799,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_text
-      value: Reiniciar Nivel
+      value: "Reiniciar \nNivel"
       objectReference: {fileID: 0}
     - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_fontSize
-      value: 65
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_fontSizeBase
-      value: 65
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_overflowMode
@@ -913,6 +917,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5926761448517319621, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a76dd517d61c8e345916ac791aac120c, type: 3}
     m_RemovedComponents:
     - {fileID: 726649972860542185, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
@@ -1004,8 +1012,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

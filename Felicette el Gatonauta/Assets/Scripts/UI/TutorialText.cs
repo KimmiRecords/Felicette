@@ -13,6 +13,8 @@ public class TutorialText : MonoBehaviour
     int _textIndex;
 
     public float fadeTime;
+
+    [TextArea(1, 3)]
     public string[] textos;
     public Graphic[] cuadrosRojos;
 
