@@ -129,24 +129,16 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("coins", _coins);
         PlayerPrefs.SetInt("stamina", _stamina);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(_nivelesCompletados));
-        //PlayerPrefs.SetInt("pirata", allSkins["Sombrero Pirata"]);
-        //PlayerPrefs.SetInt("nonla", allSkins["Sombrero Nón Lá"]);
-
-        //print("save: en allskins hay " + allSkins.Count + " elementos");
 
         if (allSkins.Count > 0)
         {
-            foreach (KeyValuePair<string, int> skinName in allSkins)
+            foreach (string skinName in SkinsManager.instance.skinNames)
             {
-                PlayerPrefs.SetInt(skinName.Key, allSkins[skinName.Key]);
+                PlayerPrefs.SetInt(skinName, allSkins[skinName]);
                 //print("guarde el" + skinName.Key + " con " + allSkins[skinName.Key]);
             }
         }
-
-
         PlayerPrefs.Save();
-
-        //print("guarde la data");
     }
     public void LoadData()
     {
@@ -156,52 +148,31 @@ public class LevelManager : MonoBehaviour
         Stamina = PlayerPrefs.GetInt("stamina");
         EventManager.Trigger(Evento.StaminaUpdate, Stamina);
 
-
         for (int i = 0; i < PlayerPrefs.GetInt("nivelesCompletados"); i++)
         {
             _nivelesCompletados[i] = true;
         }
 
-        allSkins.Clear();
-
-        //print("load: en allskins hay " + allSkins.Count + " elementos"); 
-        //if (allSkins.Count > 0)
-        //{
-        //    foreach (KeyValuePair<string, int> skinName in allSkins)
-        //    {
-        //        allSkins[skinName.Key] = PlayerPrefs.GetInt(skinName.Key);
-        //        print("cargue el " + skinName.Key + " con " + PlayerPrefs.GetInt(skinName.Key));
-
-        //    }
-        //}
-
-        //allSkins["Sombrero Pirata"] = PlayerPrefs.GetInt("pirata");
-        //allSkins["Sombrero Nón Lá"] = PlayerPrefs.GetInt("nonla");
-        //print("cargue la data");
+        if (allSkins.Count > 0)
+        {
+            foreach (string skinName in SkinsManager.instance.skinNames)
+            {
+                //allSkins[skinName.Key] = PlayerPrefs.GetInt(skinName.Key);
+                SetDictionaryKeyAndValue(skinName, PlayerPrefs.GetInt(skinName));
+                //print("cargue el " + skinName.Key + " con " + PlayerPrefs.GetInt(skinName.Key));
+            }
+        }
     }
     public void EraseData(params object[] parameters)
     {
         PlayerPrefs.SetInt("coins", 0);
         PlayerPrefs.SetInt("stamina", 50);
         PlayerPrefs.SetInt("nivelesCompletados", 0);
-        //PlayerPrefs.SetInt("pirata", 0);
-        //PlayerPrefs.SetInt("nonla", 0);
-
         //print("erase: en allskins hay " + allSkins.Count + " elementos");
+        EventManager.Trigger(Evento.EquipItemButtonUp, SkinsManager.instance.defaultSkin);
 
-        if (allSkins.Count > 0)
-        {
-            foreach (KeyValuePair<string, int> skinName in allSkins)
-            {
-                PlayerPrefs.SetInt(skinName.Key, 0);
-                //print("puse a 0 el skin " + skinName.Key);
-            }
-        }
-
+        allSkins.Clear();
         LoadData();
-
-        //print("erase data: tengo " + Coins + " coins");
-        //print("erase data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
     }
     public int CountCompletedLevels(bool[] completedLevels)
     {
@@ -217,9 +188,12 @@ public class LevelManager : MonoBehaviour
         //print("en " + levelList + " hay " + value + " valores True");
         return value;
     }
-    public void InitializeSkinDictionary()
+    public void SetDictionaryKeyAndValue(string key, int value)
     {
-        allSkins.Clear();
+        if (allSkins.ContainsKey(key))
+        {
+            allSkins[key] = value;
+        }
     }
     public void AddCoin(params object[] parameters)
     {
