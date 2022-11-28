@@ -1,6 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
+public struct ShipSkin
+{
+    public Sprite sprite;
+    public string name;
+    public int cost;
+}
 
 public class SkinsManager : MonoBehaviour
 {
@@ -10,6 +17,8 @@ public class SkinsManager : MonoBehaviour
     //public Dictionary<string, Sprite> allButtons = new Dictionary<string, bool>();
 
     public Sprite currentSkin;
+
+
 
     private void Awake()
     {
@@ -28,7 +37,7 @@ public class SkinsManager : MonoBehaviour
     void Start()
     {
         EventManager.Subscribe(Evento.EquipItemButtonUp, EquipSkin);
-        currentSkin = null;
+        //currentSkin = null;
 
         //eventualmente esto tiene un diccionario que une strings a sprites, asi aca en el codigo 
         //puedo escribir el nombre de lo que quiero, y no el Sprite. como con el audiomanager

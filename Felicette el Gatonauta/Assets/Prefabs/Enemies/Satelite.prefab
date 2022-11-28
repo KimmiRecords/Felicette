@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5650043325362835900}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 8025752376078591888}
   - component: {fileID: 1251116262167379932}
   m_Layer: 0
-  m_Name: "Sat\xE9lite"
+  m_Name: "Sat\xE9liteSprite"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

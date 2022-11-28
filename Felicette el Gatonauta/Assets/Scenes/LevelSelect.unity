@@ -142,6 +142,22 @@ PrefabInstance:
       propertyPath: m_text
       value: "Misi\xF3n 3\n(Patreons only)"
       objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontSize
+      value: 57.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 57.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     - target: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_Name
       value: Nivel3Button
@@ -496,6 +512,22 @@ PrefabInstance:
       propertyPath: m_text
       value: "Misi\xF3n 2\n(20 Stamina)"
       objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontSize
+      value: 57.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 57.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     - target: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_Name
       value: Nivel2Button
@@ -820,22 +852,30 @@ PrefabInstance:
       propertyPath: m_Colors.m_NormalColor.r
       value: 0.7688679
       objectReference: {fileID: 0}
+    - target: {fileID: 1166031354210865011, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
       propertyPath: m_text
-      value: 'RECARGAR
-
-        STAMINA
-
-        (TEST)'
+      value: "RECARGAR\nAT\xDAN\n(TEST)"
       objectReference: {fileID: 0}
     - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 38.2
       objectReference: {fileID: 0}
     - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
       propertyPath: m_fontSizeBase
-      value: 40
+      value: 38.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     m_RemovedComponents:
     - {fileID: 1166031353366601494, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
@@ -1149,6 +1189,22 @@ PrefabInstance:
       propertyPath: m_text
       value: "Misi\xF3n 1\n(10 Stamina)"
       objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontSize
+      value: 57.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 57.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     - target: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_Name
       value: Nivel1Button
@@ -1279,6 +1335,22 @@ PrefabInstance:
       propertyPath: m_text
       value: "Misi\xF3n Tutorial\n(5 Stamina)"
       objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontSize
+      value: 57.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 57.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926761447234035362, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     - target: {fileID: 5926761448517319616, guid: 836d1868c884bfc45ac2ae769c67a8c9, type: 3}
       propertyPath: m_Name
       value: TutorialButton
@@ -1506,20 +1578,30 @@ PrefabInstance:
       propertyPath: m_Colors.m_NormalColor.r
       value: 0.7688679
       objectReference: {fileID: 0}
+    - target: {fileID: 1166031354210865011, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
       propertyPath: m_text
-      value: 'Compra Stamina
-
-        (10 coins = 5 Stamina)'
+      value: "Compr\xE1 at\xFAn\n(10 coins = 5 Stamina)"
       objectReference: {fileID: 0}
     - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 31.8
       objectReference: {fileID: 0}
     - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
       propertyPath: m_fontSizeBase
-      value: 40
+      value: 31.8
       objectReference: {fileID: 0}
+    - target: {fileID: 1166031354210865013, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     m_RemovedComponents:
     - {fileID: 1166031353366601494, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d455a37088be254fb73de3e5d0716cf, type: 3}
@@ -1642,6 +1724,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -974
       objectReference: {fileID: 0}
+    - target: {fileID: 2689415802480700562, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689415802480700564, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_text
+      value: "Mira un \nAD por \nmonedas!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689415802480700564, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_fontSize
+      value: 38.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689415802480700564, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 2689415802480700564, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689415802480700564, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     - target: {fileID: 2689415802728856819, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9213797
@@ -1672,6 +1778,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2689415802728856820, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
       propertyPath: m_Colors.m_NormalColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689415802791342402, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_text
+      value: "Mira un \nAD por \nat\xFAn!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689415802791342402, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_fontSize
+      value: 38.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689415802791342402, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 2689415802791342402, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689415802791342402, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689415802791342402, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 2689415802791342404, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3854001813431792570, guid: 0bf8de2fdee6ece44982bcbb9b2b1a08, type: 3}

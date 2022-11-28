@@ -32,7 +32,6 @@ public class LevelManager : MonoBehaviour
     public StaminaSystem myStaminaSystem;
     public NotificationManager myNotificationManager;
 
-
     public int Coins
     {
         get
@@ -71,11 +70,8 @@ public class LevelManager : MonoBehaviour
                 _stamina = maxStamina;
             }
             EventManager.Trigger(Evento.StaminaUpdate, _stamina);
-
         }
     }
-
-
 
     private void Awake()
     {
@@ -133,8 +129,19 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("coins", _coins);
         PlayerPrefs.SetInt("stamina", _stamina);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(_nivelesCompletados));
-        PlayerPrefs.SetInt("pirata", allSkins["Sombrero Pirata"]);
-        PlayerPrefs.SetInt("nonla", allSkins["Sombrero Nón Lá"]);
+        //PlayerPrefs.SetInt("pirata", allSkins["Sombrero Pirata"]);
+        //PlayerPrefs.SetInt("nonla", allSkins["Sombrero Nón Lá"]);
+
+        //print("save: en allskins hay " + allSkins.Count + " elementos");
+
+        if (allSkins.Count > 0)
+        {
+            foreach (KeyValuePair<string, int> skinName in allSkins)
+            {
+                PlayerPrefs.SetInt(skinName.Key, allSkins[skinName.Key]);
+                //print("guarde el" + skinName.Key + " con " + allSkins[skinName.Key]);
+            }
+        }
 
 
         PlayerPrefs.Save();
@@ -155,8 +162,21 @@ public class LevelManager : MonoBehaviour
             _nivelesCompletados[i] = true;
         }
 
-        allSkins["Sombrero Pirata"] = PlayerPrefs.GetInt("pirata");
-        allSkins["Sombrero Nón Lá"] = PlayerPrefs.GetInt("nonla");
+        allSkins.Clear();
+
+        //print("load: en allskins hay " + allSkins.Count + " elementos"); 
+        //if (allSkins.Count > 0)
+        //{
+        //    foreach (KeyValuePair<string, int> skinName in allSkins)
+        //    {
+        //        allSkins[skinName.Key] = PlayerPrefs.GetInt(skinName.Key);
+        //        print("cargue el " + skinName.Key + " con " + PlayerPrefs.GetInt(skinName.Key));
+
+        //    }
+        //}
+
+        //allSkins["Sombrero Pirata"] = PlayerPrefs.GetInt("pirata");
+        //allSkins["Sombrero Nón Lá"] = PlayerPrefs.GetInt("nonla");
         //print("cargue la data");
     }
     public void EraseData(params object[] parameters)
@@ -164,8 +184,19 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("coins", 0);
         PlayerPrefs.SetInt("stamina", 50);
         PlayerPrefs.SetInt("nivelesCompletados", 0);
-        PlayerPrefs.SetInt("pirata", 0);
-        PlayerPrefs.SetInt("nonla", 0);
+        //PlayerPrefs.SetInt("pirata", 0);
+        //PlayerPrefs.SetInt("nonla", 0);
+
+        //print("erase: en allskins hay " + allSkins.Count + " elementos");
+
+        if (allSkins.Count > 0)
+        {
+            foreach (KeyValuePair<string, int> skinName in allSkins)
+            {
+                PlayerPrefs.SetInt(skinName.Key, 0);
+                //print("puse a 0 el skin " + skinName.Key);
+            }
+        }
 
         LoadData();
 
@@ -185,6 +216,10 @@ public class LevelManager : MonoBehaviour
         }
         //print("en " + levelList + " hay " + value + " valores True");
         return value;
+    }
+    public void InitializeSkinDictionary()
+    {
+        allSkins.Clear();
     }
     public void AddCoin(params object[] parameters)
     {
@@ -240,6 +275,7 @@ public class LevelManager : MonoBehaviour
     }
     public void NivelFallado(params object[] parameters)
     {
+        print("LM nivel fallado");
         _sceneToRestart = (string)parameters[0];
         LoadData();
         GoToScene("LevelFailed");

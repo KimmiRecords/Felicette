@@ -14,9 +14,11 @@ public enum ItemState
 
 public class ShopItemButton : BaseButton
 {
-    public string itemName;
-    public int itemCost;
-    public Sprite itemSprite;
+    //public string itemName;
+    //public int itemCost;
+    //public Sprite itemSprite;
+
+    public ShipSkin itemData;
 
     TMPro.TextMeshProUGUI myTMP;
 
@@ -30,12 +32,12 @@ public class ShopItemButton : BaseButton
         yo = GetComponent<Button>();
         myTMP = GetComponentInChildren<TMPro.TextMeshProUGUI>();
 
-        if (!LevelManager.instance.allSkins.ContainsKey(itemName))
+        if (!LevelManager.instance.allSkins.ContainsKey(itemData.name))
         {
-            ItemButtonsManager.instance.AddButton(itemName);
+            ItemButtonsManager.instance.AddButton(itemData.name);
         }
 
-        if (LevelManager.instance.allSkins[itemName] == 1)
+        if (LevelManager.instance.allSkins[itemData.name] == 1)
         {
             //print este item ya estaba comprado
             //print("start shopitembutton - este item ya estaba comprado");
@@ -43,7 +45,7 @@ public class ShopItemButton : BaseButton
             yo.enabled = true;
             yo.interactable = true;
             wasPurchased = true;
-            myTMP.text = itemName;
+            myTMP.text = itemData.name;
 
         }
         else
@@ -58,21 +60,25 @@ public class ShopItemButton : BaseButton
 
     public void CheckMoney(params object[] parameters)
     {
-        if (LevelManager.instance.allSkins[itemName] == 1)
+        if (LevelManager.instance.allSkins.ContainsKey(itemData.name))
         {
-            return;
+            if (LevelManager.instance.allSkins[itemData.name] == 1)
+            {
+                return;
+            }
         }
-        if (LevelManager.instance.Coins >= itemCost)
+
+        if (LevelManager.instance.Coins >= itemData.cost)
         {
             //print("tenes guita. itemstate unlocked - button enabled");
             itemState = ItemState.Unlocked;
             yo.enabled = true;
             yo.interactable = true;
-            
         }
         else
         {
             //print("no tenes plata campeon. start shopitembutton - button disabled");
+            itemState = ItemState.Locked;
             yo.enabled = false;
             yo.interactable = false;
         }
@@ -92,17 +98,17 @@ public class ShopItemButton : BaseButton
                     //print("tuki, te compraste y equipaste " + itemName);
                     AudioManager.instance.PlayByName("PurchaseItem");
                     AudioManager.instance.PlayByName("EquipItem");
-                    EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite, this);
+                    EventManager.Trigger(Evento.EquipItemButtonUp, itemData.sprite, this);
                     wasPurchased = true;
-                    ItemButtonsManager.instance.Purchase(itemName);
-                    myTMP.text = itemName;
-                    LevelManager.instance.Coins -= itemCost;
+                    ItemButtonsManager.instance.Purchase(itemData.name);
+                    myTMP.text = itemData.name;
+                    LevelManager.instance.Coins -= itemData.cost;
                 }
                 else
                 {
                     //print("volviste a equipar " + itemName);
                     AudioManager.instance.PlayByName("EquipItem");
-                    EventManager.Trigger(Evento.EquipItemButtonUp, itemSprite, this);
+                    EventManager.Trigger(Evento.EquipItemButtonUp, itemData.sprite, this);
                 }
                 LevelManager.instance.SaveData();
                 break;

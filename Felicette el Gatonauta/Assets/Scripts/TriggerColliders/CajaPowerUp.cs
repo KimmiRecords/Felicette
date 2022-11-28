@@ -16,6 +16,7 @@ public class CajaPowerUp : TriggerCollider
 
     int GetPowerType()
     {
+        //produce un valor random de 1 a 3, y avisa al powerupmanager, que sabe cual es cual
         int randomPower = Random.Range(1, 4);
         return randomPower;
     }

@@ -10,6 +10,12 @@ public class PowerUpManager : MonoBehaviour
 
     public Ship ship;
 
+
+    //las sagradas escrituras:
+    public string[] allPowerUpTexts = new string[4];
+    public Sprite[] allPowerUpSprites = new Sprite[4];
+
+
     void Start()
     {
         _powers[0] = new EmptyPowerUp();
@@ -24,6 +30,9 @@ public class PowerUpManager : MonoBehaviour
 
     public void SetCurrentPowerUp(params object[] parameters)
     {
+        //powerup manager la tiene clara y sabe cual powerup es el 1, el 2, el 3, etc.
+        //entonces aviso a cada uno que necesita enterarse de esto, en el idioma que necesita
+
         //print("setcurrentpowerup");
         if (parameters[0] is int)
         {
@@ -34,7 +43,10 @@ public class PowerUpManager : MonoBehaviour
             print("ojo, no me pasaste int de primer parametro");
         }
 
-        EventManager.Trigger(Evento.GotPowerUp, parameters[0]);
+        EventManager.Trigger(Evento.GotPowerUp, 
+                                                parameters[0], 
+                                                allPowerUpTexts[(int)parameters[0]], 
+                                                allPowerUpSprites[(int)parameters[0]]);
     }
 
 
@@ -48,15 +60,12 @@ public class PowerUpManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (gameObject.scene.isLoaded) //cuando se destruye porque lo destrui a mano
-        {
-            //print("destrui a este shipthrusters on isloaded");
-        }
-        else //cuando se destruye porque cambie de escena
+        if (!gameObject.scene.isLoaded) //cuando se destruye porque lo destrui a mano
         {
             EventManager.Unsubscribe(Evento.CajaPickup, SetCurrentPowerUp);
             EventManager.Unsubscribe(Evento.PowerUpButtonUp, ActivatePowerUp);
-            //print("destrui a este shipthrusters on sceneclosure");
+            //print("destrui a este shipthrusters on isloaded");
         }
+        
     }
 }
