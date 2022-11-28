@@ -8,7 +8,8 @@ public class ShipThrusters : Ship, IGravity
     //el "player", partido en los 3 mvc
 
     public Animator anim;
-    public SpriteRenderer itemsSpriteRenderer;
+    public SpriteRenderer naveSpriteRenderer;
+    public GameObject fuegoGameObject;
     ShipModel _model;
     ShipView _view;
     ShipController _controller;
@@ -16,7 +17,7 @@ public class ShipThrusters : Ship, IGravity
     void Start()
     {
         _model = new ShipModel(this);
-        _view = new ShipView(_model, anim, itemsSpriteRenderer);
+        _view = new ShipView(this);
         _controller = new ShipController(_model);
 
         myRigidBody.useGravity = true;

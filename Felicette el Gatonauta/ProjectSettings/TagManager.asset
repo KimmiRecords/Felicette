@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Skybox
+    uniqueID: 3749025463
+    locked: 0
+  - name: Background
+    uniqueID: 1580768177
+    locked: 0
+  - name: MedioAtras
+    uniqueID: 2289009067
+    locked: 0
+  - name: Medio
+    uniqueID: 1077040655
+    locked: 0
+  - name: Foreground
+    uniqueID: 4067953019
+    locked: 0

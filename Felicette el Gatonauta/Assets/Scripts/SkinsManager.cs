@@ -1,6 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
+public struct ShipSkin
+{
+    public Sprite sprite;
+    public string name;
+    public int cost;
+}
 
 public class SkinsManager : MonoBehaviour
 {
@@ -9,7 +16,15 @@ public class SkinsManager : MonoBehaviour
     //el bool es si fue comprado o no
     //public Dictionary<string, Sprite> allButtons = new Dictionary<string, bool>();
 
+    public Sprite defaultSkin;
     public Sprite currentSkin;
+
+    //ya se me va a ocurrir como pedir esto sin depender de los botones
+    [HideInInspector]
+    public string[] skinNames = new string[4] { "Nave Golden", 
+                                                "Nave Diamond", 
+                                                "LANA-V", 
+                                                "Ratonave"};
 
     private void Awake()
     {
@@ -28,10 +43,6 @@ public class SkinsManager : MonoBehaviour
     void Start()
     {
         EventManager.Subscribe(Evento.EquipItemButtonUp, EquipSkin);
-        currentSkin = null;
-
-        //eventualmente esto tiene un diccionario que une strings a sprites, asi aca en el codigo 
-        //puedo escribir el nombre de lo que quiero, y no el Sprite. como con el audiomanager
     }
 
     public void EquipSkin(params object[] parameters)
@@ -39,4 +50,6 @@ public class SkinsManager : MonoBehaviour
         currentSkin = (Sprite)parameters[0];
         print("Skins manager: cambie el currentSkin a " + currentSkin);
     }
+
+    
 }

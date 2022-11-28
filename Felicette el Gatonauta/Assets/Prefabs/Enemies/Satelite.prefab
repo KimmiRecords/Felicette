@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5650043325362835900}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 8025752376078591888}
   - component: {fileID: 1251116262167379932}
   m_Layer: 0
-  m_Name: "Sat\xE9lite"
+  m_Name: "Sat\xE9liteSprite"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,8 +351,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1077040655
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5cfcd965e5f922246a4d508e16870c49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

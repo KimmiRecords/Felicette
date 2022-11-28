@@ -32,7 +32,6 @@ public class LevelManager : MonoBehaviour
     public StaminaSystem myStaminaSystem;
     public NotificationManager myNotificationManager;
 
-
     public int Coins
     {
         get
@@ -71,11 +70,8 @@ public class LevelManager : MonoBehaviour
                 _stamina = maxStamina;
             }
             EventManager.Trigger(Evento.StaminaUpdate, _stamina);
-
         }
     }
-
-
 
     private void Awake()
     {
@@ -133,13 +129,16 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("coins", _coins);
         PlayerPrefs.SetInt("stamina", _stamina);
         PlayerPrefs.SetInt("nivelesCompletados", CountCompletedLevels(_nivelesCompletados));
-        PlayerPrefs.SetInt("pirata", allSkins["Sombrero Pirata"]);
-        PlayerPrefs.SetInt("nonla", allSkins["Sombrero Nón Lá"]);
 
-
+        if (allSkins.Count > 0)
+        {
+            foreach (string skinName in SkinsManager.instance.skinNames)
+            {
+                PlayerPrefs.SetInt(skinName, allSkins[skinName]);
+                //print("guarde el" + skinName.Key + " con " + allSkins[skinName.Key]);
+            }
+        }
         PlayerPrefs.Save();
-
-        //print("guarde la data");
     }
     public void LoadData()
     {
@@ -149,28 +148,34 @@ public class LevelManager : MonoBehaviour
         Stamina = PlayerPrefs.GetInt("stamina");
         EventManager.Trigger(Evento.StaminaUpdate, Stamina);
 
-
         for (int i = 0; i < PlayerPrefs.GetInt("nivelesCompletados"); i++)
         {
             _nivelesCompletados[i] = true;
         }
 
-        allSkins["Sombrero Pirata"] = PlayerPrefs.GetInt("pirata");
-        allSkins["Sombrero Nón Lá"] = PlayerPrefs.GetInt("nonla");
-        //print("cargue la data");
+        if (allSkins.Count > 0)
+        {
+            foreach (string skinName in SkinsManager.instance.skinNames)
+            {
+                //allSkins[skinName.Key] = PlayerPrefs.GetInt(skinName.Key);
+                SetDictionaryKeyAndValue(skinName, PlayerPrefs.GetInt(skinName));
+                //print("cargue el " + skinName.Key + " con " + PlayerPrefs.GetInt(skinName.Key));
+            }
+        }
     }
     public void EraseData(params object[] parameters)
     {
         PlayerPrefs.SetInt("coins", 0);
         PlayerPrefs.SetInt("stamina", 50);
         PlayerPrefs.SetInt("nivelesCompletados", 0);
-        PlayerPrefs.SetInt("pirata", 0);
-        PlayerPrefs.SetInt("nonla", 0);
+        //print("erase: en allskins hay " + allSkins.Count + " elementos");
+        if (SkinsManager.instance != null)
+        {
+            EventManager.Trigger(Evento.EquipItemButtonUp, SkinsManager.instance.defaultSkin);
+        }
 
+        allSkins.Clear();
         LoadData();
-
-        //print("erase data: tengo " + Coins + " coins");
-        //print("erase data: hay " + CountCompletedLevels(nivelesCompletados) + " niveles completados");
     }
     public int CountCompletedLevels(bool[] completedLevels)
     {
@@ -186,6 +191,13 @@ public class LevelManager : MonoBehaviour
         //print("en " + levelList + " hay " + value + " valores True");
         return value;
     }
+    public void SetDictionaryKeyAndValue(string key, int value)
+    {
+        if (allSkins.ContainsKey(key))
+        {
+            allSkins[key] = value;
+        }
+    }
     public void AddCoin(params object[] parameters)
     {
         Coins++;
@@ -199,9 +211,6 @@ public class LevelManager : MonoBehaviour
         AudioManager.instance.StopByName("GravityAoE");
         AudioManager.instance.StopByName("TimerFourTicks");
 
-
-
-        //al metodo gotoscene le pasas un string con el nombre de la escena a la que queres ir
         if (parameters[0] is string)
         {
             string sceneName = parameters[0].ToString();
@@ -210,6 +219,45 @@ public class LevelManager : MonoBehaviour
             {
                 AudioManager.instance.PlayByName("RadioPreLaunchSFX");
             }
+
+            switch ((string)(parameters[0]))
+            {
+                case "Tienda":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.StopByName("EroicaLoop");
+                    AudioManager.instance.PlayByName("PetSocShop");
+                    break;
+                case "MainMenu":
+                    if (SceneManager.GetActiveScene().name == "Tienda")
+                    {
+                        AudioManager.instance.StopByName("PetSocShop");
+                        AudioManager.instance.PlayByName("SpringWaltzLoop");
+                    }
+                    break;
+                case "Tutorial":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.PlayByName("RadioPreLaunchSFX");
+                    break;
+                case "SampleScene":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.PlayByName("RadioPreLaunchSFX");
+                    break;
+                case "Nivel2":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.PlayByName("RadioPreLaunchSFX");
+                    break;
+                case "LevelSelect":
+                    if (!AudioManager.instance.sound["EroicaLoop"].isPlaying &&
+                        !AudioManager.instance.sound["SpringWaltzLoop"].isPlaying)
+                    {
+                        AudioManager.instance.PlayByName("SpringWaltzLoop");
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+
 
             SceneManager.LoadScene(sceneName);
         }
@@ -240,6 +288,7 @@ public class LevelManager : MonoBehaviour
     }
     public void NivelFallado(params object[] parameters)
     {
+        print("LM nivel fallado");
         _sceneToRestart = (string)parameters[0];
         LoadData();
         GoToScene("LevelFailed");

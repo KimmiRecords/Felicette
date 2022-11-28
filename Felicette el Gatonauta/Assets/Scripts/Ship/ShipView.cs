@@ -1,20 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShipView
 {
     //el view del mvc
     Animator _anim;
-    ShipModel _model;
-    SpriteRenderer _itemSr;
+    SpriteRenderer _naveSr;
+    ShipThrusters _shipThrusters;
 
-    public ShipView(ShipModel sm, Animator a, SpriteRenderer sr)
+    public ShipView(ShipThrusters st)
     {
         //Debug.Log("view created");
-        _model = sm;
-        _anim = a;
-        _itemSr = sr;
+        _shipThrusters = st;
+
+        _anim = _shipThrusters.anim;
+        _naveSr = _shipThrusters.naveSpriteRenderer;
 
         EventManager.Subscribe(Evento.ModoChiquitoStart, StartRescale);
         EventManager.Subscribe(Evento.CoinRainStart, CoinRainAnimationStart);
@@ -22,7 +22,7 @@ public class ShipView
         EventManager.Subscribe(Evento.ThrusterUp, EndThrusterFX);
         EventManager.Subscribe(Evento.StartDeathSequence, StartDeathSequence);
 
-        _itemSr.sprite = SkinsManager.instance.currentSkin;
+        _naveSr.sprite = SkinsManager.instance.currentSkin;
     }
 
     public void CoinRainAnimationStart(params object[] parameters)
@@ -32,27 +32,27 @@ public class ShipView
     }
     public void StartRescale(params object[] parameters)
     {
-        _model.ship.StartCoroutine(Rescale());
+        _shipThrusters.StartCoroutine(Rescale());
     }
 
     public IEnumerator Rescale()
     {
-        Vector3 originalScale = _model.ship.transform.localScale;
+        Vector3 originalScale = _shipThrusters.transform.localScale;
 
         //pasan cosas
         //print("arranca el boost");
-        _model.ship.transform.localScale = Vector3.one * _model.ship.rescaleFactor;
+        _shipThrusters.transform.localScale = Vector3.one * _shipThrusters.rescaleFactor;
 
         yield return new WaitForSeconds(1);
         AudioManager.instance.PlayByName("TimerFourTicks");
 
-        yield return new WaitForSeconds(_model.ship.rescaleDuration - 1);
+        yield return new WaitForSeconds(_shipThrusters.rescaleDuration - 1);
 
         //terminan de pasar cosas
         //print("termina el boost");
         AudioManager.instance.PlayByName("ModoChiquitoOff");
         EventManager.Trigger(Evento.ModoChiquitoEnd);
-        _model.ship.transform.localScale = originalScale;
+        _shipThrusters.transform.localScale = originalScale;
 
     }
 
@@ -74,10 +74,11 @@ public class ShipView
 
     public void StartThrusterFX(params object[] parameters)
     {
-        if (_model.ship.canThrust)
+        if (_shipThrusters.canThrust)
         {
             AudioManager.instance.PlayByName("PropulsoresSFX");
             _anim.SetBool("IsThrusting", true);
+            _shipThrusters.fuegoGameObject.SetActive(true);
         }
     }
 
@@ -85,14 +86,25 @@ public class ShipView
     {
         AudioManager.instance.StopByName("PropulsoresSFX");
         _anim.SetBool("IsThrusting", false);
+        _shipThrusters.fuegoGameObject.SetActive(false);
+
     }
 
     public void StartDeathSequence(params object[] parameters)
     {
-        Vector3 currentPos = _model.ship.transform.position;
-        _model.ship.transform.position = currentPos;
-        _model.ship.canThrust = false;
+        Debug.Log("ship View: start death sequence");
+        Vector3 currentPos = _shipThrusters.transform.position;
+        Debug.Log("set current pos");
+
+        _shipThrusters.transform.position = currentPos;
+        Debug.Log("set transform to current pos");
+
+        _shipThrusters.canThrust = false;
+        Debug.Log("can thrust = false");
+
         //cambiar la animacion
-        _model.ship.myRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        _shipThrusters.myRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        Debug.Log("rb freeze");
+
     }
 }
