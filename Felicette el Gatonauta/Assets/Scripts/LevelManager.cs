@@ -169,7 +169,10 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("stamina", 50);
         PlayerPrefs.SetInt("nivelesCompletados", 0);
         //print("erase: en allskins hay " + allSkins.Count + " elementos");
-        EventManager.Trigger(Evento.EquipItemButtonUp, SkinsManager.instance.defaultSkin);
+        if (SkinsManager.instance != null)
+        {
+            EventManager.Trigger(Evento.EquipItemButtonUp, SkinsManager.instance.defaultSkin);
+        }
 
         allSkins.Clear();
         LoadData();
@@ -208,9 +211,6 @@ public class LevelManager : MonoBehaviour
         AudioManager.instance.StopByName("GravityAoE");
         AudioManager.instance.StopByName("TimerFourTicks");
 
-
-
-        //al metodo gotoscene le pasas un string con el nombre de la escena a la que queres ir
         if (parameters[0] is string)
         {
             string sceneName = parameters[0].ToString();
@@ -219,6 +219,45 @@ public class LevelManager : MonoBehaviour
             {
                 AudioManager.instance.PlayByName("RadioPreLaunchSFX");
             }
+
+            switch ((string)(parameters[0]))
+            {
+                case "Tienda":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.StopByName("EroicaLoop");
+                    AudioManager.instance.PlayByName("PetSocShop");
+                    break;
+                case "MainMenu":
+                    if (SceneManager.GetActiveScene().name == "Tienda")
+                    {
+                        AudioManager.instance.StopByName("PetSocShop");
+                        AudioManager.instance.PlayByName("SpringWaltzLoop");
+                    }
+                    break;
+                case "Tutorial":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.PlayByName("RadioPreLaunchSFX");
+                    break;
+                case "SampleScene":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.PlayByName("RadioPreLaunchSFX");
+                    break;
+                case "Nivel2":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.PlayByName("RadioPreLaunchSFX");
+                    break;
+                case "LevelSelect":
+                    if (!AudioManager.instance.sound["EroicaLoop"].isPlaying &&
+                        !AudioManager.instance.sound["SpringWaltzLoop"].isPlaying)
+                    {
+                        AudioManager.instance.PlayByName("SpringWaltzLoop");
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+
 
             SceneManager.LoadScene(sceneName);
         }
