@@ -92,6 +92,8 @@ public class ShipView
 
     public void StartDeathSequence(params object[] parameters)
     {
+        _anim.SetTrigger("Choque");
+
         Debug.Log("ship View: start death sequence");
         Vector3 currentPos = _shipThrusters.transform.position;
         Debug.Log("set current pos");
@@ -102,7 +104,10 @@ public class ShipView
         _shipThrusters.canThrust = false;
         Debug.Log("can thrust = false");
 
-        //cambiar la animacion
+
+
+
+
         _shipThrusters.myRigidBody.constraints = RigidbodyConstraints.FreezeAll;
         Debug.Log("rb freeze");
 

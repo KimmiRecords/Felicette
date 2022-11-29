@@ -25,7 +25,6 @@ public class ShipThrusters : Ship, IGravity
         gasManager = new ShipGasManager(this);
 
         EventManager.Subscribe(Evento.AtmosphereWall, EscapeAtmosphere);
-
     }
 
     private void FixedUpdate()
