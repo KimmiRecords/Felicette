@@ -572,14 +572,14 @@ MonoBehaviour:
   myRigidBody: {fileID: 7287007433076890879}
   thrusterPower: 18
   moveSpeed: 20
-  basePositionMoveSpeed: 1.5
+  basePositionMoveSpeed: 2
   maxGas: 500
   burnFactor: 0.5
-  bonusGas: 200
+  bonusGas: 250
   rescaleFactor: 0.6
   rescaleDuration: 4
-  randomCoinsMin: 5
-  randomCoinsMax: 11
+  randomCoinsMin: 10
+  randomCoinsMax: 19
   canThrust: 0
   anim: {fileID: 1724095274}
   naveSpriteRenderer: {fileID: 759552918280384294}
