@@ -64,28 +64,7 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    //private void ChangeBGM(params object[] parameters)
-    //{
-    //    switch ((string)(parameters[0]))
-    //    {
-    //        case "Tienda":
-    //            StopByName("PetSocMenu");
-    //            PlayByName("PetSocShop");
-    //            break;
-    //        //case "MainMenu":
-    //        //    StopByName("SpringWaltzLoop");
-    //        //    StopByName("PetSocShop");
-    //        //    PlayByName("PetSocMenu");
-    //        //    break;
-    //        case "Tutorial":
-    //            StopByName("PetSocMenu");
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //}
-
-        public void PlayByName(string clipName) //el mas groso. le das el string y te da play a ese audio. muy global y sencillo.
+    public void PlayByName(string clipName) //el mas groso. le das el string y te da play a ese audio. muy global y sencillo.
     {
         AudioSource sound;
         sound = this.sound[clipName];

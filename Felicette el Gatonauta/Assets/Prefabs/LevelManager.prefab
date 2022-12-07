@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78fb096baa19e34f92025144fc5c255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nivelesJugables: 3
+  nivelesJugables: 4
   maxStamina: 100
   inDeathSequence: 0
   canvas: {fileID: 229664688482228033}
