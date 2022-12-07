@@ -97,11 +97,6 @@ public class Satelite : Prototype, ITriggerCollider
         return sat;
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
         if (orbits)

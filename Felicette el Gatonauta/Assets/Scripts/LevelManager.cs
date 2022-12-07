@@ -246,12 +246,15 @@ public class LevelManager : MonoBehaviour
                     AudioManager.instance.StopByName("SpringWaltzLoop");
                     AudioManager.instance.PlayByName("RadioPreLaunchSFX");
                     break;
+                case "Nivel3":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.PlayByName("RadioPreLaunchSFX");
+                    break;
                 case "LevelSelect":
                     if (!AudioManager.instance.sound["EroicaLoop"].isPlaying &&
                         !AudioManager.instance.sound["SpringWaltzLoop"].isPlaying)
                     {
                         AudioManager.instance.PlayByName("SpringWaltzLoop");
-
                     }
                     break;
                 default:
