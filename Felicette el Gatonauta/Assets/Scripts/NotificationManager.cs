@@ -10,37 +10,17 @@ public class NotificationManager : MonoBehaviour
 
     private void Start()
     {
+        print("cancelo todas las notis");
         AndroidNotificationCenter.CancelAllDisplayedNotifications();
         AndroidNotificationCenter.CancelAllScheduledNotifications();
-        PrepareNotification();
-
-        //UpdateTimeToFullStamina();
-
-        //var notifChannel = new AndroidNotificationChannel()
-        //{
-        //    Id = "reminder_notif",
-        //    Name = "Reminder Notification",
-        //    Description = "Channel for Reminders Notifications",
-        //    Importance = Importance.High
-        //};
-
-        //AndroidNotificationCenter.RegisterNotificationChannel(notifChannel);
-
-        //var notification = new AndroidNotification();
-        //notification.Title = "STAMINA LLENA";
-        //notification.Text = "Ya podés volver a jugar niveles!";
-        //notification.SmallIcon = "icon_0";
-        //notification.LargeIcon = "icon_1";
-        //notification.FireTime = DateTime.Now.AddSeconds(secondsToFullStamina);
-
-        //AndroidNotificationCenter.SendNotification(notification, "reminder_notif");
-        //print("mando la notif");
+        //PrepareNotification();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home))
         {
+            print("disparo la notificacion");
             PrepareNotification();
         }
     }
@@ -52,6 +32,8 @@ public class NotificationManager : MonoBehaviour
 
     public void PrepareNotification()
     {
+        print("preparo la notificacion");
+
         UpdateTimeToFullStamina();
         CreateChannel();
         CreateNotification();
@@ -59,6 +41,9 @@ public class NotificationManager : MonoBehaviour
 
     public void CreateChannel()
     {
+
+        print("creo el canal");
+
         var notifChannel = new AndroidNotificationChannel()
         {
             Id = "reminder_notif",
@@ -72,9 +57,11 @@ public class NotificationManager : MonoBehaviour
 
     public void CreateNotification()
     {
+        print("creo y mando la notificacion");
+
         var notification = new AndroidNotification();
-        notification.Title = "STAMINA LLENA";
-        notification.Text = "Ya podés volver a jugar niveles!";
+        notification.Title = "ATÚN LLENO";
+        notification.Text = "Ya podés volver a jugar!";
         notification.SmallIcon = "icon_0";
         notification.LargeIcon = "icon_1";
         notification.FireTime = DateTime.Now.AddSeconds(secondsToFullStamina);
