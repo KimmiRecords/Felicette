@@ -10,7 +10,7 @@ public class NotificationManager : MonoBehaviour
 
     private void Start()
     {
-        print("cancelo todas las notis");
+        //print("cancelo todas las notis");
         AndroidNotificationCenter.CancelAllDisplayedNotifications();
         AndroidNotificationCenter.CancelAllScheduledNotifications();
         //PrepareNotification();

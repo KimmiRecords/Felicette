@@ -50,7 +50,10 @@ public abstract class Ship : MonoBehaviour
             }
         }
     }
+
     public bool canThrust;
+    public bool isShielded;
+
     public ShipGasManager gasManager;
 }
 

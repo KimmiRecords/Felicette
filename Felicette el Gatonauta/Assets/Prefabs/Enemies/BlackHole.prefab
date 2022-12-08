@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 6889412959495673518}
   - component: {fileID: 6889412959495673505}
   - component: {fileID: 6889412959495673504}
-  - component: {fileID: 6889412959495673507}
+  - component: {fileID: 5158530872648236887}
   m_Layer: 0
   m_Name: BlackHole
   m_TagString: Untagged
@@ -371,7 +371,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6889412959495673507
+--- !u!114 &5158530872648236887
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6889412959495673506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d51e4f7626a01b478764265f9c83742, type: 3}
+  m_Script: {fileID: 11500000, guid: 524b11b37b0ea1e4cac36859d1f81b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7436372718906764508

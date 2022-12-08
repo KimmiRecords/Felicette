@@ -21,6 +21,8 @@ public class ShipView
         EventManager.Subscribe(Evento.ThrusterDown, StartThrusterFX);
         EventManager.Subscribe(Evento.ThrusterUp, EndThrusterFX);
         EventManager.Subscribe(Evento.StartDeathSequence, StartDeathSequence);
+        EventManager.Subscribe(Evento.GetShield, GetShieldFX);
+
 
         _naveSr.sprite = SkinsManager.instance.currentSkin;
     }
@@ -94,22 +96,31 @@ public class ShipView
     {
         _anim.SetTrigger("Choque");
 
-        Debug.Log("ship View: start death sequence");
+        //Debug.Log("ship View: start death sequence");
         Vector3 currentPos = _shipThrusters.transform.position;
-        Debug.Log("set current pos");
+        //Debug.Log("set current pos");
 
         _shipThrusters.transform.position = currentPos;
-        Debug.Log("set transform to current pos");
+        //Debug.Log("set transform to current pos");
 
         _shipThrusters.canThrust = false;
-        Debug.Log("can thrust = false");
-
-
-
-
+        //Debug.Log("can thrust = false");
 
         _shipThrusters.myRigidBody.constraints = RigidbodyConstraints.FreezeAll;
-        Debug.Log("rb freeze");
+        //Debug.Log("rb freeze");
+    }
 
+    public void GetShieldFX(params object[] parameters)
+    {
+        Debug.Log("getshieldfx");
+        AudioManager.instance.PlayByNamePitch("Zap1", 0.5f);
+        _shipThrusters.shieldGameObject.SetActive(true);
+    }
+
+    public void LoseShieldFX(params object[] parameters)
+    {
+        Debug.Log("loseshieldfx");
+        AudioManager.instance.PlayByNamePitch("Zap1", 0.2f);
+        _shipThrusters.shieldGameObject.SetActive(false);
     }
 }

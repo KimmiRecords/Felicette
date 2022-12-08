@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6910980569546829279}
   - component: {fileID: 6087163189937276010}
-  - component: {fileID: 4430624708673218413}
+  - component: {fileID: 3033226408459693022}
   m_Layer: 0
   m_Name: SatelitePartes
   m_TagString: Untagged
@@ -176,7 +176,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.8566364
   m_Center: {x: -0.03764477, y: 0.050974082, z: 0}
---- !u!114 &4430624708673218413
+--- !u!114 &3033226408459693022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4767451130507135227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d51e4f7626a01b478764265f9c83742, type: 3}
+  m_Script: {fileID: 11500000, guid: 524b11b37b0ea1e4cac36859d1f81b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5735415547342220389
@@ -461,7 +461,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 5
   m_Center: {x: -0.03764477, y: 0.050974082, z: 0}
 --- !u!114 &2071559263032984034
 MonoBehaviour:

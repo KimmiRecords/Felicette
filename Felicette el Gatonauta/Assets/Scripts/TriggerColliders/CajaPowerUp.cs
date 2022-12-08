@@ -9,6 +9,11 @@ public class CajaPowerUp : TriggerCollider
 
     int _thisBoxPowerUp;
 
+    [Header("Si el powerup esta Seteado o es Random")]
+    public bool isSet = false;
+    //public int powerUpIndex = 0;
+    public PowerUpTypes type;
+
     private void Start()
     {
         _thisBoxPowerUp = GetPowerType();
@@ -17,8 +22,16 @@ public class CajaPowerUp : TriggerCollider
     int GetPowerType()
     {
         //produce un valor random de 1 a 3, y avisa al powerupmanager, que sabe cual es cual
-        int randomPower = Random.Range(1, 4);
-        return randomPower;
+        int power;
+        if (isSet)
+        {
+            power = (int)type;
+        }
+        else
+        {
+            power = Random.Range(1, (int)PowerUpTypes.Count);
+        }
+        return power;
     }
 
     public override void Activate()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,6 +64,8 @@ public class ShipModel
         _isThrusting = false;
     }
 
+    
+
     public void StartMoveShip(params object[] parameters)
     {
         _isMoving = true;
@@ -115,5 +118,4 @@ public class ShipModel
         ship.myRigidBody.AddForce(grav * Time.deltaTime, ForceMode.Force);
     }
 
-    
 }

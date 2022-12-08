@@ -117,7 +117,7 @@ public class Satelite : Prototype, ITriggerCollider
     {
         for (int i = 0; i < totalBullets; i++)
         {
-            print("SATELITE: pido una bala para instanciar");
+            //print("SATELITE: pido una bala para instanciar");
             Bullet bala = SateliteManager.instance.GetBullet().
                 SetPosition(transform.position).
                 SetSpeed(bulletSpeed).

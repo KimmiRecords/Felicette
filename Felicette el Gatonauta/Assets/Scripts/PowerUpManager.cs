@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PowerUpTypes : int
+{
+    empty,
+    gas,
+    scale,
+    coin,
+    shield,
+    Count //que manera mas trucha jajajaj
+}
+
 public class PowerUpManager : MonoBehaviour
 {
-
-    IPowerUp[] _powers = new IPowerUp[4];
+    IPowerUp[] _powers = new IPowerUp[(int)PowerUpTypes.Count];
     IPowerUp _currentPowerUp;
 
     public Ship ship;
 
-
     //las sagradas escrituras:
-    public string[] allPowerUpTexts = new string[4];
-    public Sprite[] allPowerUpSprites = new Sprite[4];
-
+    public string[] allPowerUpTexts = new string[(int)PowerUpTypes.Count];
+    public Sprite[] allPowerUpSprites = new Sprite[(int)PowerUpTypes.Count];
 
     void Start()
     {
@@ -22,6 +29,7 @@ public class PowerUpManager : MonoBehaviour
         _powers[1] = new GasPowerUp();
         _powers[2] = new ScalePowerUp();
         _powers[3] = new CoinPowerUp();
+        _powers[4] = new ShieldPowerUp();
         _currentPowerUp = _powers[0];
 
         EventManager.Subscribe(Evento.CajaPickup, SetCurrentPowerUp);

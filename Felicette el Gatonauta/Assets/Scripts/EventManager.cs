@@ -40,7 +40,8 @@ public enum Evento
     GotPowerUp,
     ModoChiquitoStart,
     ModoChiquitoEnd,
-    CoinRainStart
+    CoinRainStart,
+    GetShield
 }
 public class EventManager
 {

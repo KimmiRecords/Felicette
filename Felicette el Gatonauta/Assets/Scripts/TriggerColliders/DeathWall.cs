@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class DeathWall : TriggerCollider
 {
-    string _esteNivel;
-    float timeToSceneChange = 1f;
-
+    //te mata de una, ni pregunta
+    
+    protected string _esteNivel;
+    protected float timeToSceneChange = 1f;
 
     private void Start()
     {
@@ -16,11 +17,10 @@ public class DeathWall : TriggerCollider
 
     public override void Activate()
     {
-        print("activo deathwall");
+        //print("activo deathwall");
         if (!LevelManager.instance.inDeathSequence)
         {
-            print("start death sequence");
-
+            //print("start death sequence");
             StartCoroutine(StartDeathSequence());
         }
     }
@@ -28,28 +28,28 @@ public class DeathWall : TriggerCollider
     public IEnumerator StartDeathSequence()
     {
         LevelManager.instance.inDeathSequence = true;
-        print("indeath sequence = true");
+        //print("indeath sequence = true");
         AudioManager.instance.PlayByName("ShipCrash");
         AudioManager.instance.PlayByName("Explosion");
-        print("played sounds");
+        //print("played sounds");
 
 
         EventManager.Trigger(Evento.StartDeathSequence);
-        print("event trigger: startdeathsequence");
+        //print("event trigger: startdeathsequence");
 
 
         yield return new WaitForSeconds(timeToSceneChange);
-        print("espere segundos");
+        //print("espere segundos");
 
 
         EventManager.Trigger(Evento.DeathWall, _esteNivel);
-        print("event trigger: deathwall");
+        //print("event trigger: deathwall");
 
         LevelManager.instance.inDeathSequence = false;
-        print("indeath sequence = false");
-
-
-
-
+        //print("indeath sequence = false");
     }
+
+  
+
+
 }
