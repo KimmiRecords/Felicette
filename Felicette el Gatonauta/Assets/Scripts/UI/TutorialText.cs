@@ -4,22 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(TMPro.TextMeshProUGUI))]
-public class TutorialText : MonoBehaviour
+public class TutorialText : TextShower
 {
     //este script maneja la secuencia de textos que aparecen en el nivel tutorial
 
-    TMPro.TextMeshProUGUI _yo;
-    Color _originalColor;
-    int _textIndex;
-
-    public float fadeTime;
-
-    [TextArea(1, 3)]
-    public string[] textos;
     public Graphic[] cuadrosRojos;
 
     
-    void Start()
+    public override void Start()
     {
         _yo = GetComponent<TMPro.TextMeshProUGUI>();
         _originalColor = _yo.color;
@@ -99,49 +91,27 @@ public class TutorialText : MonoBehaviour
         }
     }
 
-    public IEnumerator FadeOutText()
+    public override IEnumerator NextText()
     {
-        float elapsedTime = 0;
-
-        while (elapsedTime < fadeTime)
-        {
-            _yo.color = Color.Lerp(_yo.color, Color.clear, elapsedTime / fadeTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        _yo.color = Color.clear;
-        yield return null;
-    }
-    public IEnumerator FadeInText()
-    {
-        float elapsedTime = 0;
-
-        while (elapsedTime < fadeTime)
-        {
-            _yo.color = Color.Lerp(Color.clear, _originalColor, elapsedTime / fadeTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        _yo.color = _originalColor;
-        yield return null;
-
-    }
-    public IEnumerator NextText()
-    {
+        //APAGO EL TEXTO QUE ESTE DE ANTES
         if (_textIndex < 2)
         {
             yield return new WaitForSeconds(fadeTime * 2);
         }
-
         StartCoroutine(FadeOutText());
         yield return new WaitForSeconds(fadeTime);
+
+        //CAMBIO AL TEXTO ACTUAL
         if (_textIndex < textos.Length)
         {
             _textIndex++;
         }
         _yo.text = textos[_textIndex];
+
+        //PRENDO EL TEXTO ACTUAL
         StartCoroutine(FadeInText());
 
+        //HAGO LO QUE HAYA QUE HACER DEPENDE DEL TEXTO
         switch (_textIndex)
         {
             case 0: //bienvenido a ...

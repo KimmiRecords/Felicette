@@ -471,7 +471,7 @@ MonoBehaviour:
   itemData:
     sprite: {fileID: 21300000, guid: 30bd1018210f83345b69fcae8803f94b, type: 3}
     name: Nave Golden
-    cost: 5
+    cost: 10
   wasPurchased: 0
 --- !u!1 &72631760
 GameObject:
@@ -896,7 +896,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'LANA-V
 
-    $15
+    $20
 
 '
   m_isRightToLeft: 0
@@ -1036,7 +1036,7 @@ MonoBehaviour:
 
     Diamond
 
-    $10'
+    $15'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5775c9dc58736454497268fe2b1e1cc9, type: 2}
   m_sharedMaterial: {fileID: -3671661638392083221, guid: 5775c9dc58736454497268fe2b1e1cc9, type: 2}
@@ -2218,7 +2218,7 @@ MonoBehaviour:
   itemData:
     sprite: {fileID: 21300000, guid: 10977050872222c4c84556724a563203, type: 3}
     name: LANA-V
-    cost: 15
+    cost: 20
   wasPurchased: 0
 --- !u!1 &1380533551
 GameObject:
@@ -2357,7 +2357,7 @@ MonoBehaviour:
   itemData:
     sprite: {fileID: 21300000, guid: cafe558729aaf3246824c4651da56fcb, type: 3}
     name: Ratonave
-    cost: 20
+    cost: 25
   wasPurchased: 0
 --- !u!1 &1468904007
 GameObject:
@@ -2771,7 +2771,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Nave \nGolden\n$5"
+  m_text: "Nave \nGolden\n$10"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5775c9dc58736454497268fe2b1e1cc9, type: 2}
   m_sharedMaterial: {fileID: -3671661638392083221, guid: 5775c9dc58736454497268fe2b1e1cc9, type: 2}
@@ -3041,7 +3041,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Ratonave
 
-    $20
+    $25
 
 '
   m_isRightToLeft: 0
@@ -3449,7 +3449,7 @@ MonoBehaviour:
   itemData:
     sprite: {fileID: 21300000, guid: ff2b969824dc66547be7dae59e859298, type: 3}
     name: Nave Diamond
-    cost: 10
+    cost: 15
   wasPurchased: 0
 --- !u!1 &2136585203
 GameObject:

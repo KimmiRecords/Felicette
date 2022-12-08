@@ -5,25 +5,21 @@ using UnityEngine;
 public class GravityAoE : TriggerCollider
 {
     public float planetMass;
+    
 
     [Header("Gravity Area of Effect")]
     public SpriteRenderer aoeSpriteRenderer;
-    Color aoeSpriteOriginalColor;
+    protected Color aoeSpriteOriginalColor;
 
     public LineRenderer lineToPlayer;
-    Vector3[] allLinePositions = new Vector3[2];
+    protected Vector3[] allLinePositions = new Vector3[2];
 
-
+    
 
 
     private void Start()
     {
         aoeSpriteOriginalColor = aoeSpriteRenderer.color;
-
-        //lineToPlayer.startColor = Color.white;
-        //lineToPlayer.endColor = Color.red;
-
-
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -33,7 +29,6 @@ public class GravityAoE : TriggerCollider
             AudioManager.instance.PlayByName("GravityAoE");
         }
     }
-
 
     protected override void OnTriggerStay(Collider other)
     {
@@ -51,7 +46,6 @@ public class GravityAoE : TriggerCollider
             allLinePositions[0] = transform.position;
             allLinePositions[1] = other.gameObject.transform.position;
             lineToPlayer.SetPositions(allLinePositions);
-            
         }
     }
 

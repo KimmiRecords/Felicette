@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class ShipThrusters : Ship, IGravity
+public class ShipThrusters : Ship, IGravity, IRechargeable
 {
     //el "player", partido en los 3 mvc
     public Animator anim;
@@ -52,15 +52,20 @@ public class ShipThrusters : Ship, IGravity
         _view.ApplyGravityFX();
     }
 
+    public void Recharge(float rechargeFactor)
+    {
+        gasManager.Recharge(rechargeFactor);
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Obstacle>() != null)
         {
-            print("es un obstaculo");
+            //print("es un obstaculo");
             var obstaculo = other.GetComponent<Obstacle>();
             if (isShielded)
             {
-                print("perdiste el escudo");
+                //print("perdiste el escudo");
                 if (!shieldWasBrokenAlready)
                 {
                     Invoke("LoseShield", 0.75f);
@@ -76,7 +81,7 @@ public class ShipThrusters : Ship, IGravity
         }
         else if (other.GetComponent<ITriggerCollider>() != null)
         {
-            print("es solo un triggercollider");
+            //print("es solo un triggercollider");
             var collider = other.GetComponent<ITriggerCollider>();
             collider.Activate();
         }
@@ -95,6 +100,8 @@ public class ShipThrusters : Ship, IGravity
             EventManager.Unsubscribe(Evento.ThrusterDown, _view.StartThrusterFX);
             EventManager.Unsubscribe(Evento.ThrusterUp, _view.EndThrusterFX);
             EventManager.Unsubscribe(Evento.StartDeathSequence, _view.StartDeathSequence);
+            EventManager.Unsubscribe(Evento.GetShield, _view.GetShieldFX);
+
         }
     }
 

@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        predictionAmount = Random.Range(5f, 20f);
+        predictionAmount = Random.Range(5f, 30f);
         timer = 0;
 
     }

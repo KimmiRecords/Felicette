@@ -37,6 +37,13 @@ public class ShipGasManager
         ship.CurrentGas = (float)parameters[0];
     }
 
+    public void Recharge(float rechargeFactor)
+    {
+        ship.canThrust = true;
+        ship.CurrentGas += rechargeFactor;
+        EventManager.Trigger(Evento.BurnGas, ship.CurrentGas);
+    }
+
     private void OnDestroy()
     {
         if (ship.gameObject.scene.isLoaded)
@@ -49,6 +56,8 @@ public class ShipGasManager
             //print("destrui a este shipthrusters on sceneclosure");
         }
     }
+
+    
 
 
 }
