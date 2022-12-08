@@ -1350,11 +1350,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1493449093923221218, guid: 7b8870a5e9f491e45871f670a1873b33, type: 3}
       propertyPath: textos.Array.data[1]
-      value: 'Los agujeros negros
-
-        tienen mucha gravedad.
-
-        Aprovechala.'
+      value: "Aprovech\xE1 la gravedad\nde los agujeros negros."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3342598184741172630, guid: 7b8870a5e9f491e45871f670a1873b33, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7162883330395410042, guid: 7b8870a5e9f491e45871f670a1873b33, type: 3}
       propertyPath: m_Name

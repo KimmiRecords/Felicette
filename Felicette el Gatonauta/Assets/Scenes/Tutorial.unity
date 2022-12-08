@@ -4519,7 +4519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185553398749120162, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
       propertyPath: planetMass
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
@@ -6803,7 +6803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185553398749120162, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
       propertyPath: planetMass
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97774cdbf690fce4eb50a12fc93a30db, type: 3}
@@ -8026,7 +8026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1675223809
 RectTransform:
   m_ObjectHideFlags: 0

@@ -95,14 +95,19 @@ public class ShopItemButton : BaseButton
             case ItemState.Unlocked:
                 if (!wasPurchased)
                 {
+                    AudioManager.instance.PlayByNamePitch("PickupSFX", 0.8f);
+                    EventManager.Subscribe(Evento.ConfirmButtonUp, PopupConfirm);
+                    EventManager.Subscribe(Evento.CancelButtonUp, PopupCancel);
+                    PopupManager.instance.popupcanvas.SetActive(true);
+
                     //print("tuki, te compraste y equipaste " + itemName);
-                    AudioManager.instance.PlayByName("PurchaseItem");
-                    AudioManager.instance.PlayByName("EquipItem");
-                    EventManager.Trigger(Evento.EquipItemButtonUp, itemData.sprite, this);
-                    wasPurchased = true;
-                    ItemButtonsManager.instance.Purchase(itemData.name);
-                    myTMP.text = itemData.name;
-                    LevelManager.instance.Coins -= itemData.cost;
+                    //AudioManager.instance.PlayByName("PurchaseItem");
+                    //AudioManager.instance.PlayByName("EquipItem");
+                    //EventManager.Trigger(Evento.EquipItemButtonUp, itemData.sprite, this);
+                    //wasPurchased = true;
+                    //ItemButtonsManager.instance.Purchase(itemData.name);
+                    //myTMP.text = itemData.name;
+                    //LevelManager.instance.Coins -= itemData.cost;
                 }
                 else
                 {
@@ -114,6 +119,31 @@ public class ShopItemButton : BaseButton
                 break;
 
         }
+    }
+
+    public void PopupConfirm(params object[] parameters)
+    {
+        //print("confirmaste la compra");
+        EventManager.Unsubscribe(Evento.ConfirmButtonUp, PopupConfirm);
+        EventManager.Unsubscribe(Evento.CancelButtonUp, PopupCancel);
+        PopupManager.instance.popupcanvas.SetActive(false);
+
+        AudioManager.instance.PlayByName("PurchaseItem");
+        AudioManager.instance.PlayByName("EquipItem");
+        EventManager.Trigger(Evento.EquipItemButtonUp, itemData.sprite, this);
+        wasPurchased = true;
+        ItemButtonsManager.instance.Purchase(itemData.name);
+        myTMP.text = itemData.name;
+        LevelManager.instance.Coins -= itemData.cost;
+    }
+
+    public void PopupCancel(params object[] parameters)
+    {
+        //print("cancelaste la compra");
+        EventManager.Unsubscribe(Evento.ConfirmButtonUp, PopupConfirm);
+        EventManager.Unsubscribe(Evento.CancelButtonUp, PopupCancel);
+        AudioManager.instance.PlayByNamePitch("PickupReversedSFX", 0.8f);
+        PopupManager.instance.popupcanvas.SetActive(false);
     }
 
     private void OnDestroy()

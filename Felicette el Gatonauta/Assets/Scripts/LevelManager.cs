@@ -309,7 +309,7 @@ public class LevelManager : MonoBehaviour
     {
         myNotificationManager.PrepareNotification();
         Application.Quit();
-        //print("quitee el juego");
+        print("quitee el juego");
     }
     public void ActivateLMCanvas(params object[] parameters)
     {

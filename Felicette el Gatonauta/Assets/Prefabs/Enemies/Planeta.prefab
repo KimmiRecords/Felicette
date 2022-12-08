@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449a1cfda1ecb0d4f922d0ff7411d8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetMass: 50
+  planetMass: 100
   aoeSpriteRenderer: {fileID: 765042341948607506}
   lineToPlayer: {fileID: 8246123960669431699}
 --- !u!1 &6889412959495673506

@@ -31,6 +31,8 @@ public enum Evento
     WatchAdButtonUp,
     WatchAdButtonDown,
     SplashButtonUp,
+    ConfirmButtonUp,
+    CancelButtonUp,
 
     //otros
     BurnGas,
@@ -42,6 +44,7 @@ public enum Evento
     ModoChiquitoEnd,
     CoinRainStart,
     GetShield
+    
 }
 public class EventManager
 {
