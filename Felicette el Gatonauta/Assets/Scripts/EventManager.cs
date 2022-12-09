@@ -33,6 +33,7 @@ public enum Evento
     SplashButtonUp,
     ConfirmButtonUp,
     CancelButtonUp,
+    GachaButtonUp,
 
     //otros
     BurnGas,

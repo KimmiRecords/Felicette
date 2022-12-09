@@ -11,7 +11,6 @@ public enum ItemState
     Unlocked
 }
 
-
 public class ShopItemButton : BaseButton
 {
     //public string itemName;
@@ -19,15 +18,14 @@ public class ShopItemButton : BaseButton
     //public Sprite itemSprite;
 
     public ShipSkin itemData;
-
-    TMPro.TextMeshProUGUI myTMP;
-
-    Button yo;
     public bool wasPurchased;
-    ItemState itemState = ItemState.Locked;
+
+    protected Button yo;
+    protected TMPro.TextMeshProUGUI myTMP;
+    protected ItemState itemState = ItemState.Locked;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         yo = GetComponent<Button>();
         myTMP = GetComponentInChildren<TMPro.TextMeshProUGUI>();
@@ -36,6 +34,8 @@ public class ShopItemButton : BaseButton
         {
             ItemButtonsManager.instance.AddButton(itemData.name);
         }
+
+
 
         if (LevelManager.instance.allSkins[itemData.name] == 1)
         {
@@ -46,7 +46,6 @@ public class ShopItemButton : BaseButton
             yo.interactable = true;
             wasPurchased = true;
             myTMP.text = itemData.name;
-
         }
         else
         {
@@ -58,7 +57,7 @@ public class ShopItemButton : BaseButton
 
     }
 
-    public void CheckMoney(params object[] parameters)
+    public virtual void CheckMoney(params object[] parameters)
     {
         if (LevelManager.instance.allSkins.ContainsKey(itemData.name))
         {
@@ -100,14 +99,7 @@ public class ShopItemButton : BaseButton
                     EventManager.Subscribe(Evento.CancelButtonUp, PopupCancel);
                     PopupManager.instance.popupcanvas.SetActive(true);
 
-                    //print("tuki, te compraste y equipaste " + itemName);
-                    //AudioManager.instance.PlayByName("PurchaseItem");
-                    //AudioManager.instance.PlayByName("EquipItem");
-                    //EventManager.Trigger(Evento.EquipItemButtonUp, itemData.sprite, this);
-                    //wasPurchased = true;
-                    //ItemButtonsManager.instance.Purchase(itemData.name);
-                    //myTMP.text = itemData.name;
-                    //LevelManager.instance.Coins -= itemData.cost;
+                  
                 }
                 else
                 {
@@ -117,16 +109,17 @@ public class ShopItemButton : BaseButton
                 }
                 LevelManager.instance.SaveData();
                 break;
-
         }
     }
 
-    public void PopupConfirm(params object[] parameters)
+    public virtual void PopupConfirm(params object[] parameters)
     {
         //print("confirmaste la compra");
         EventManager.Unsubscribe(Evento.ConfirmButtonUp, PopupConfirm);
         EventManager.Unsubscribe(Evento.CancelButtonUp, PopupCancel);
         PopupManager.instance.popupcanvas.SetActive(false);
+
+        
 
         AudioManager.instance.PlayByName("PurchaseItem");
         AudioManager.instance.PlayByName("EquipItem");

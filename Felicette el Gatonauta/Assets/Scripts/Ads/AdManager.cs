@@ -23,7 +23,6 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         Advertisement.Initialize(gameID);
         //Debug.Log("initialize");
         EventManager.Subscribe(Evento.WatchAdButtonUp, SetAdType);
-
     }
 
     public void SetAdType(params object[] parameters)
@@ -45,18 +44,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         //Debug.Log("PlayAd: muestro el " + adToShow);
     }
 
-    public void OnUnityAdsReady(string placementId)
-    {
-        //Debug.Log("Ads Ready");
-    }
-
-    public void OnUnityAdsDidError(string message)
-    {
-    }
-
-    public void OnUnityAdsDidStart(string placementId)
-    {
-    }
+ 
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
@@ -99,5 +87,19 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         {
             EventManager.Unsubscribe(Evento.WatchAdButtonUp, SetAdType);
         }
+    }
+
+
+
+    public void OnUnityAdsReady(string placementId)
+    {
+    }
+
+    public void OnUnityAdsDidError(string message)
+    {
+    }
+
+    public void OnUnityAdsDidStart(string placementId)
+    {
     }
 }

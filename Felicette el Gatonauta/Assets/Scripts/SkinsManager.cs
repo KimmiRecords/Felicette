@@ -13,9 +13,6 @@ public class SkinsManager : MonoBehaviour
 {
     public static SkinsManager instance;
 
-    //el bool es si fue comprado o no
-    //public Dictionary<string, Sprite> allButtons = new Dictionary<string, bool>();
-
     public Sprite defaultSkin;
     public Sprite currentSkin;
 

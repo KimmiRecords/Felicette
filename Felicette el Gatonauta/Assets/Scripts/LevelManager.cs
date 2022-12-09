@@ -228,7 +228,8 @@ public class LevelManager : MonoBehaviour
                     AudioManager.instance.PlayByName("PetSocShop");
                     break;
                 case "MainMenu":
-                    if (SceneManager.GetActiveScene().name == "Tienda")
+                    if (SceneManager.GetActiveScene().name == "Tienda" ||
+                        SceneManager.GetActiveScene().name == "Gacha")
                     {
                         AudioManager.instance.StopByName("PetSocShop");
                         AudioManager.instance.PlayByName("SpringWaltzLoop");
@@ -256,6 +257,11 @@ public class LevelManager : MonoBehaviour
                     {
                         AudioManager.instance.PlayByName("SpringWaltzLoop");
                     }
+                    break;
+                case "Gacha":
+                    AudioManager.instance.StopByName("SpringWaltzLoop");
+                    AudioManager.instance.StopByName("EroicaLoop");
+                    AudioManager.instance.PlayByName("PetSocShop");
                     break;
                 default:
                     break;
