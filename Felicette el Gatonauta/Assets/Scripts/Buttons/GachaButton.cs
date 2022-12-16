@@ -113,7 +113,7 @@ public class GachaButton : ShopItemButton
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        print("aaaaaao");
+        //print("aaaaaao");
 
         switch (itemState)
         {
