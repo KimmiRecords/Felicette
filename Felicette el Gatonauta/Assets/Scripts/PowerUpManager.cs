@@ -9,7 +9,7 @@ public enum PowerUpTypes : int
     scale,
     coin,
     shield,
-    Count //que manera mas trucha jajajaj
+    Count
 }
 
 public class PowerUpManager : MonoBehaviour
