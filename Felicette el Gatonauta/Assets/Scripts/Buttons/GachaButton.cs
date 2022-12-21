@@ -16,6 +16,8 @@ public class GachaButton : ShopItemButton
     public TMPro.TextMeshProUGUI resultTMP;
     ShipSkin gachaResult;
 
+    public Animator gachaMachineAnimator;
+
     protected override void Start()
     {
         yo = GetComponent<Button>();
@@ -63,21 +65,27 @@ public class GachaButton : ShopItemButton
 
     public void GiveGachaResult()
     {
-        AudioManager.instance.PlayByNamePitch("PurchaseItem", 1.3f);
+        //AudioManager.instance.PlayByNamePitch("PurchaseItem", 1.3f);
+        AudioManager.instance.PlayByNamePitch("GachaTirar", 1f);
+
         LevelManager.instance.Coins -= itemData.cost;
 
         if (gachaResult.name == itemData.name)
         {
             resultTMP.text = "No ganaste nada";
+            SetAnimation("Nada");
             //feedback de que no ganaste nada
         }
         else
         {
-            AudioManager.instance.PlayByName("EquipItem");
+            //AudioManager.instance.PlayByName("EquipItem");
+            //AudioManager.instance.PlayByNamePitch("GachaWin", 1f);
+            Invoke("PlayPullSounds", 2);
             EventManager.Trigger(Evento.EquipItemButtonUp, gachaResult.sprite, this);
             wasPurchased = true;
             ItemButtonsManager.instance.Purchase(gachaResult.name);
             resultTMP.text = "Te ganaste un " + gachaResult.name;
+            SetAnimation("Pull");
         }
 
         LevelManager.instance.SaveData();
@@ -130,21 +138,14 @@ public class GachaButton : ShopItemButton
         }
     }
 
-    //public override void CheckMoney(params object[] parameters)
-    //{
-    //    if (LevelManager.instance.Coins >= itemData.cost)
-    //    {
-    //        //print("tenes guita. itemstate unlocked - button enabled");
-    //        itemState = ItemState.Unlocked;
-    //        yo.enabled = true;
-    //        yo.interactable = true;
-    //    }
-    //    else
-    //    {
-    //        //print("no tenes plata campeon. start shopitembutton - button disabled");
-    //        itemState = ItemState.Locked;
-    //        yo.enabled = false;
-    //        yo.interactable = false;
-    //    }
-    //}
+    public void SetAnimation(string animName)
+    {
+        gachaMachineAnimator.SetTrigger(animName);
+    }
+
+    public void PlayPullSounds()
+    {
+        AudioManager.instance.PlayByName("EquipItem");
+        AudioManager.instance.PlayByNamePitch("GachaWin", 1f);
+    }
 }

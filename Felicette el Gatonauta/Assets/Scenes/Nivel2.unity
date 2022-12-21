@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2108129332}
-  m_IndirectSpecularColor: {r: 0.35978544, g: 0.36289528, b: 0.37522233, a: 1}
+  m_IndirectSpecularColor: {r: 0.36108008, g: 0.36522967, b: 0.37820795, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7646,11 +7646,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6889412959495673519, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -537.83356
+      value: -539.7
       objectReference: {fileID: 0}
     - target: {fileID: 6889412959495673519, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1365.3685
+      value: -1318.3
       objectReference: {fileID: 0}
     - target: {fileID: 6889412959495673519, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7683,18 +7683,6 @@ PrefabInstance:
     - target: {fileID: 6889412959495673519, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -179.949
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268042323943797441, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
-      propertyPath: bulletSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268042323943797441, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
-      propertyPath: totalBullets
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268042323943797441, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
-      propertyPath: shootingInterval
-      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f04655c446a8434cafcc913e78429a9, type: 3}
